@@ -1,16 +1,251 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  /* Cores extraídas */
-  --neon-cyan: #00f2fe;
-  --dark-teal: #078e91;
+  /* Cores base */
+  --main-color: #00f2fe;
+  --main-dark-1: #28d9dc;
+  --main-dark: rgb(20, 208, 211);
+  --blue-color: #008CFF;
+
+  /* Cores claras e simples para o texto */
+  --bg-light: #ffffff;
+  --bg-light-1: #eeeeee;
   --bg-dark: #0f0f0f;
   --bg-glow: #232526;
-} 
+
+
+  /* Cores de texto */
+  --text-line: #727272;
+  --text-light: #FFFFFF;
+}
+
+
+
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+
+/* 
+====================
+  ESPACAMENTOS
+====================
+*/
+
+/* == ESPACAMENTO == */
+.reveal {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+
+
+
+
+
+/* 
+====================
+  BOTÕES
+====================
+*/
+.btn-primary {
+  background-color: var(--main-color);
+  color: var(--bg-dark);
+  padding: 15px 70px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 20px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-weight: 450;
+}
+
+.btn-primary:hover {
+  background-color: var(--main-dark-1);
+  color: var(--bg-light);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+
+
+/* == BTN HEADER == */
+.btn-header {
+  background-color: var(--main-color);
+  color: var(--bg-dark);
+  padding: 8px 35px;
+  border: 2px solid var(--text-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-header:hover {
+  background-color: var(--main-dark-1);
+}
+
+
+
+
+
+
+/* 
+====================
+  HEADER
+====================
+*/
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: 15px 100px;
+  background-color: var(--bg-light);
+  color: var(--bg-dark);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  box-shadow: 0 4px 16px rgba(17, 17, 26, 0.05);
+}
+
+.header-main .logo h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.header-main nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.header-main nav ul li a {
+  color: var(--bg-dark);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.header-main nav ul li a:hover {
+  color: var(--main-dark-1);
+}
+
+
+
+
+
+
+/* 
+====================
+  SEÇÃO HERO (MAIN)
+====================
+*/
+.section-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  min-height: 900px;
+  background-color: var(--bg-light);
+}
+
+.section-main h1 {
+  width: 1200px;
+  font-size: 70px;
+  font-weight: 800;
+  color: var(--bg-dark);
+  margin-bottom: 20px;
+  margin-top: 140px;
+}
+
+.section-main p {
+  width: 950px;
+  font-size: 20px;
+  color: var(--text-line);
+  margin-bottom: 40px;
+  font-size: 23px;
+}
+
+.ver-mais-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  border: none;
+  /* remova a borda que estava antes */
+}
+
+.ver-mais-link p {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--text-line);
+  text-transform: uppercase;
+  font-weight: 400;
+  width: auto;
+  /* sobrescreve o width: 950px herdado de .section-main p */
+  margin: 0;
+}
+
+.ver-mais-link span {
+  font-size: 32px;
+  /* aumente esse valor */
+  color: var(--text-line);
+}
+
+
+
+
+
+/* 
+====================
+  SECTION EXPLICAÇÃO INICIAL DE SERVIÇOS DA EMPRESA
+====================
+*/
+.section-funcionamento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 500px;
+  height: 250px;
+  padding: 30px;
+  background-color: var(--bg-light);
+  border-radius: 20px;
+
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.icon-item {
+  background-color: var(--bg-dark);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
