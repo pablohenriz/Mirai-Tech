@@ -11,20 +11,22 @@
 <body>
     <!-- Header -->
     <header class="header-main">
-        <div class="logo">
-            <h1>Mirai Tech</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#orcamento">Orçamento</a></li>
-                <li><a href="#blog">Blog</a></li>
-            </ul>
-        </nav>
-        <div>
-            <button class="btn-header">Contato</button>
+        <div class="header-inner">
+            <div class="logo">
+                <h1>Mirai Tech</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#orcamento">Orçamento</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button class="btn-header">Contato</button>
+            </div>
         </div>
     </header>
 
@@ -34,16 +36,18 @@
          SECTION MAIN 
         =====================
          -->
-        <section class="section-main reveal">
+        <section class="section-main reveal" id="home">
             <h1>Construindo hoje a presença digital do seu amanhã</h1>
             <!-- texto alternativo  para o h1: Sites que impulsionam negócios e conectam marcas ao futuro -->
 
             <p>Nossa missão é criar experiências digitais que conectem marcas e consumidores de forma significativa.</p>
             <button class="btn-primary">Faça o seu orçamento</button>
-            <div class="ver-mais-link">
+
+            <!-- === TEXTO DE VER MAIS PROJETOS FEITOS === -->
+            <a href="#projeto" class="ver-mais-link">
                 <span style="font-size: 32px; color: #727272;">↓</span>
                 <p>CRIAMOS MAIS DE 200 SITES POR ANO.</p>
-            </div>
+            </a>
         </section>
 
 
@@ -57,31 +61,250 @@
          logo-item1,2,3
         =====================
         -->
-        <section class="section-funcionamento reveal">
-            <div class="service-item">
-                <div class="icon-item">
-                    <img src="">
-                </div>
-                <h2>Escolha um modelo de site</h2>
-                <p>Criação de sites personalizados, responsivos e otimizados para SEO, que impulsionam a presença online
-                    da sua marca.</p>
+        <section class="section-funcionamento" id="funcionamento">
+            <div class="funcionamento-title">
+                <h2 class="spanTitle">NOSSO PROCESSO</h2>
+                <h1>Como funciona o processo de criação de sites?</h1>
+                <p>Nosso processo de criação de sites é simples e eficiente, garantindo que seu projeto seja entregue
+                    com qualidade e dentro do prazo.</p>
             </div>
-            <div class="service-item">
-                <div class="icon-item">
-                    <img src="">
+            <div class="item-service-group reveal">
+                <div class="service-item">
+                    <div class="icon-item">
+                        <img src="">
+                    </div>
+                    <h2>Escolha um modelo de site</h2>
+                    <p>Criação de sites personalizados, responsivos e otimizados para SEO, que impulsionam a presença
+                        online
+                        da sua marca.</p>
                 </div>
-                <h2>Converse com a nossa equipe</h2>
-                <p>Fale com nossos especialistas e descubra como podemos ajudar a impulsionar o crescimento do seu
-                    negócio.</p>
-            </div>
-            <div class="service-item">
-                <div class="icon-item">
-                    <img src="">
+                <div class="service-item">
+                    <div class="icon-item">
+                        <img src="">
+                    </div>
+                    <h2>Converse com a nossa equipe</h2>
+                    <p>Fale com nossos especialistas e descubra como podemos ajudar a impulsionar o crescimento do seu
+                        negócio.</p>
                 </div>
-                <h2>Entrega e Funcionamento</h2>
-                <p>Entregamos seu site dentro do prazo acordado e garantimos seu funcionamento perfeito.</p>
+                <div class="service-item">
+                    <div class="icon-item">
+                        <img src="">
+                    </div>
+                    <h2>Entrega e Funcionamento</h2>
+                    <p>Entregamos seu site dentro do prazo acordado e garantimos seu funcionamento perfeito.</p>
+                </div>
             </div>
         </section>
+
+
+
+        <!-- 
+        ===================== 
+            SECTION PROJETOS FEITOS
+        =====================
+        -->
+
+        <section class="section-projetos bg-dark" id="projeto">
+            <div class="projetos-header reveal">
+                <div class="projetos-title">
+                    <h2>Portfólio</h2>
+                    <h1>Projetos que já realizamos</h1>
+                </div>
+                <div class="carrossel-nav">
+                    <button class="carrossel-btn" id="btnPrev">&#8592;</button>
+                    <div class="carrossel-counter">
+                        <span id="cntCur">01</span>
+                        <span class="counter-sep">•</span>
+                        <span id="cntTot">06</span>
+                    </div>
+                    <button class="carrossel-btn" id="btnNext">&#8594;</button>
+                </div>
+            </div>
+
+            <div class="carrossel-track-wrap reveal">
+                <div class="carrossel-track" id="carrosselTrack">
+                    <div class="projeto-item">
+                        <div class="projeto-mockup" style="background:#0d1b2a;">
+                            <div class="mockup-window">
+                                <div class="mockup-bar">
+                                    <span class="mockup-dot" style="background:#ff5f57"></span>
+                                    <span class="mockup-dot" style="background:#febc2e"></span>
+                                    <span class="mockup-dot" style="background:#28c840"></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-hero" style="background:#0d1b2a; color:#00f2fe;">INFLEET — Gestão
+                                        de
+                                        Frotas</div>
+                                    <div class="mockup-rows">
+                                        <div class="mockup-row" style="width:80%"></div>
+                                        <div class="mockup-row" style="width:60%"></div>
+                                        <div class="mockup-row" style="width:90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="projeto-footer">
+                            <div class="projeto-info">
+                                <h3>Infleet</h3>
+                                <p>Sistema de Gestão de Frotas</p>
+                            </div>
+                            <a href="#" class="projeto-link">Veja online ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-item">
+                        <div class="projeto-mockup" style="background:#1a0a2e;">
+                            <div class="mockup-window">
+                                <div class="mockup-bar">
+                                    <span class="mockup-dot" style="background:#ff5f57"></span>
+                                    <span class="mockup-dot" style="background:#febc2e"></span>
+                                    <span class="mockup-dot" style="background:#28c840"></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-hero" style="background:#1a0a2e; color:#b478ff;">ASKSUITE —
+                                        Hotelaria
+                                    </div>
+                                    <div class="mockup-rows">
+                                        <div class="mockup-row" style="width:70%"></div>
+                                        <div class="mockup-row" style="width:85%"></div>
+                                        <div class="mockup-row" style="width:55%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="projeto-footer">
+                            <div class="projeto-info">
+                                <h3>Asksuite</h3>
+                                <p>Plataforma de Hotelaria</p>
+                            </div>
+                            <a href="#" class="projeto-link">Veja online ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-item">
+                        <div class="projeto-mockup" style="background:#0a1f0a;">
+                            <div class="mockup-window">
+                                <div class="mockup-bar">
+                                    <span class="mockup-dot" style="background:#ff5f57"></span>
+                                    <span class="mockup-dot" style="background:#febc2e"></span>
+                                    <span class="mockup-dot" style="background:#28c840"></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-hero" style="background:#0a1f0a; color:#4ade80;">GREENBUY —
+                                        E-commerce
+                                    </div>
+                                    <div class="mockup-rows">
+                                        <div class="mockup-row" style="width:90%"></div>
+                                        <div class="mockup-row" style="width:65%"></div>
+                                        <div class="mockup-row" style="width:80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="projeto-footer">
+                            <div class="projeto-info">
+                                <h3>GreenBuy</h3>
+                                <p>E-commerce Sustentável</p>
+                            </div>
+                            <a href="#" class="projeto-link">Veja online ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-item">
+                        <div class="projeto-mockup" style="background:#1a0e00;">
+                            <div class="mockup-window">
+                                <div class="mockup-bar">
+                                    <span class="mockup-dot" style="background:#ff5f57"></span>
+                                    <span class="mockup-dot" style="background:#febc2e"></span>
+                                    <span class="mockup-dot" style="background:#28c840"></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-hero" style="background:#1a0e00; color:#f59e0b;">SOLARIS —
+                                        Energia Solar
+                                    </div>
+                                    <div class="mockup-rows">
+                                        <div class="mockup-row" style="width:75%"></div>
+                                        <div class="mockup-row" style="width:88%"></div>
+                                        <div class="mockup-row" style="width:60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="projeto-footer">
+                            <div class="projeto-info">
+                                <h3>Solaris</h3>
+                                <p>Energia Solar Residencial</p>
+                            </div>
+                            <a href="#" class="projeto-link">Veja online ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-item">
+                        <div class="projeto-mockup" style="background:#1a0a0a;">
+                            <div class="mockup-window">
+                                <div class="mockup-bar">
+                                    <span class="mockup-dot" style="background:#ff5f57"></span>
+                                    <span class="mockup-dot" style="background:#febc2e"></span>
+                                    <span class="mockup-dot" style="background:#28c840"></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-hero" style="background:#1a0a0a; color:#f87171;">CLINICA VITA —
+                                        Saúde
+                                    </div>
+                                    <div class="mockup-rows">
+                                        <div class="mockup-row" style="width:82%"></div>
+                                        <div class="mockup-row" style="width:58%"></div>
+                                        <div class="mockup-row" style="width:77%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="projeto-footer">
+                            <div class="projeto-info">
+                                <h3>Clínica Vita</h3>
+                                <p>Landing Page Médica</p>
+                            </div>
+                            <a href="#" class="projeto-link">Veja online ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-item">
+                        <div class="projeto-mockup" style="background:#0a0f1a;">
+                            <div class="mockup-window">
+                                <div class="mockup-bar">
+                                    <span class="mockup-dot" style="background:#ff5f57"></span>
+                                    <span class="mockup-dot" style="background:#febc2e"></span>
+                                    <span class="mockup-dot" style="background:#28c840"></span>
+                                </div>
+                                <div class="mockup-content">
+                                    <div class="mockup-hero" style="background:#0a0f1a; color:#60a5fa;">NEXUS — SaaS
+                                        Dashboard
+                                    </div>
+                                    <div class="mockup-rows">
+                                        <div class="mockup-row" style="width:88%"></div>
+                                        <div class="mockup-row" style="width:72%"></div>
+                                        <div class="mockup-row" style="width:50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="projeto-footer">
+                            <div class="projeto-info">
+                                <h3>Nexus</h3>
+                                <p>Dashboard SaaS</p>
+                            </div>
+                            <a href="#" class="projeto-link">Veja online ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carrossel-dots" id="carrosselDots"></div>
+        </section>
+
+
+
+
     </main>
 
     <script src="js/script.js"></script>
