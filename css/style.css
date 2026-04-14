@@ -12,6 +12,7 @@
   --bg-light-1: #eeeeee;
   --bg-dark: #0f0f0f;
   --bg-glow: #232526;
+  --bg-dark-blue: #0d1b2a;
 
 
   /* Cores de texto */
@@ -65,7 +66,7 @@ html {
 
 /* == COLOR BACKGROUND == */
 .bg-dark {
-  background-color: var(--bg-dark);
+  background-color: #0d1b2a;
 }
 
 
@@ -254,13 +255,17 @@ html {
   }
 
   50% {
-    transform: translateY(10px);
+    transform: translateY(5px);
   }
 }
 
 .ver-mais-link span {
   display: inline-block;
   animation: bounce 1.5s ease-in-out infinite;
+}
+
+.ver-mais-link span svg {
+  transform: rotate(90deg);
 }
 
 
@@ -273,7 +278,7 @@ html {
 ====================
 */
 .section-funcionamento {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-dark-blue);
   padding-top: 60px;
   border-radius: 50px 50px 0 0;
 }
@@ -296,7 +301,7 @@ html {
 }
 
 .funcionamento-title h1 {
-  font-size: 36px;
+  font-size: 52px;
   font-weight: 700;
   margin-bottom: 10px;
 }
