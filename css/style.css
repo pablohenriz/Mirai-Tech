@@ -359,6 +359,7 @@ html {
 
 
  
+
 /* 
 ====================
   SECTION PROJETOS
@@ -592,6 +593,8 @@ html {
 
 
 
+
+
 /* 
 ====================
   SECTION PROJETOS 2
@@ -698,6 +701,9 @@ html {
   margin: 0;
 }
 
+
+
+
 /* =========================
 ITEMS DO BLOG
 ========================= */
@@ -721,6 +727,10 @@ ITEMS DO BLOG
     gap: 25px;
 }
 
+
+
+
+
 /* =========================
 CARD
 ========================= */
@@ -740,6 +750,10 @@ CARD
     transform: translateY(-6px);
     box-shadow: rgba(0, 0, 0, 0.18) 0px 12px 25px;
 }
+
+
+
+
 
 /* =========================
 IMAGEM
@@ -761,6 +775,10 @@ IMAGEM
     transform: scale(1.05);
 }
 
+
+
+
+
 /* =========================
 CONTEÚDO
 ========================= */
@@ -772,6 +790,10 @@ CONTEÚDO
     flex: 1;
     gap: 10px;
 }
+
+
+
+
 
 /* =========================
 TAG
@@ -787,6 +809,9 @@ TAG
     border-radius: 20px;
     align-self: flex-start;
 }
+
+
+
 
 /* =========================
 TÍTULO
@@ -815,6 +840,10 @@ TÍTULO
     color: var(--main-dark);
 }
 
+
+
+
+
 /* =========================
 LINK
 ========================= */
@@ -829,6 +858,10 @@ LINK
 .blog-link:hover {
     color: var(--main-dark);
 }
+
+
+
+
 
 /* =========================
    SIDEBAR (a barra de filtro)
