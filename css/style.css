@@ -792,13 +792,23 @@ TAG
 TÍTULO
 ========================= */
 .blog-info h2 {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--bg-dark);
+  
+    font-size: 17px !important; /* coloquei pq n tava indo sem o important */
+    font-weight: 600 !important;
+    color: var(--bg-dark) !important;
     line-height: 1.4;
-    transition: color 0.3s ease;
-    flex: 1;                   
-     /*!!!!!!!! importante para alinhar os cards!!!!!!!!*/
+    margin: 0 0 10px 0;
+    padding: 0;
+    /* Alinhamento */
+    display: block;
+    text-align: left;
+    /* Os títulos que foremlongos n vão impactar o card*/
+    min-height: 48px; 
+}
+.blog-info h2 a {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: inherit !important;
 }
 
 .blog-card:hover h2 {
@@ -821,7 +831,7 @@ LINK
 }
 
 /* =========================
-   SIDEBAR
+   SIDEBAR (a barra de filtro)
    ========================= */
 
 .blog-sidebar {
