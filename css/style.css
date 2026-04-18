@@ -802,7 +802,7 @@ TÍTULO
     /* Alinhamento */
     display: block;
     text-align: left;
-    /* Os títulos que foremlongos n vão impactar o card*/
+    /* Os títulos que forem longos n vão impactar o card*/
     min-height: 48px; 
 }
 .blog-info h2 a {
