@@ -1,27 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    /* Cores base */
     --main-color: #00f2fe;
     --main-dark-1: #28d9dc;
     --main-dark: rgb(20, 208, 211);
     --blue-color: #008CFF;
 
-    /* Cores claras e simples para o texto */
     --bg-light: #ffffff;
     --bg-light-1: #eeeeee;
     --bg-dark: #0f0f0f;
     --bg-glow: #232526;
     --bg-dark-blue: #0d1b2a;
 
-
-    /* Cores de texto */
     --text-line: #727272;
     --text-light: #FFFFFF;
 }
-
-
-
 
 * {
     margin: 0;
@@ -32,7 +25,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/*ANIMAÇÃO PARA EFEITOS DE SCROLL*/
 html {
     scroll-behavior: smooth;
 }
@@ -41,18 +33,11 @@ body {
     background-color: var(--bg-dark-blue);
 }
 
-
-/* == ESPACAMENTO == */
 .reveal {
     margin-left: 100px;
     margin-right: 100px;
 }
 
-/* 
-====================
-  TITULOS E SPAN ESPECIAIS
-====================
-*/
 .spanTitle {
     font-size: 12px;
     font-weight: 600;
@@ -75,16 +60,12 @@ body {
     align-items: center;
     width: 60%;
     margin: 20px auto;
-    /* Adicione isso (o 20px é opcional para desgrudar do topo) */
-
     border-radius: 40px;
     padding: 15px 50px;
     background-color: var(--bg-light);
     color: var(--bg-dark);
-
     position: sticky;
     top: 20px;
-    /* Se ele é arredondado e centralizado, dar um pequeno espaço no topo fica visualmente melhor */
     z-index: 1000;
     box-shadow: 0 4px 16px rgba(17, 17, 26, 0.05);
 }
@@ -137,7 +118,6 @@ body {
 ====================
 */
 
-/* == BTN HEADER == */
 .btn-header {
     background-color: var(--main-color);
     color: var(--bg-dark);
@@ -155,7 +135,12 @@ body {
 }
 
 
-/* CARROSEL */
+/* 
+====================
+  CARROSEL
+====================
+*/
+
 .section-hero {
     padding: 60px 0 70px;
 }
@@ -386,6 +371,7 @@ body {
     gap: 10px;
     max-width: 900px;
     margin: 0 auto;
+    margin-bottom: 60px;
 }
 
 .item-Categoria {
@@ -414,4 +400,159 @@ body {
     background: var(--main-color);
     border-color: var(--main-color);
     font-weight: 700;
+}
+
+
+/* 
+====================
+  GRID DE PROJETOS
+====================
+*/
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    text-align: left;
+}
+
+
+/* 
+====================
+  CARD DE PROJETO
+====================
+*/
+
+.projeto-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bg-light);
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.projeto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 12px 25px;
+}
+
+.projeto-card:hover .projeto-link {
+    display: flex;
+}
+
+
+/* 
+====================
+  IMAGEM DO CARD
+====================
+*/
+
+.projeto-thumb {
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+}
+
+.projeto-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.projeto-card:hover .projeto-thumb img {
+    transform: scale(1.05);
+}
+
+
+/* 
+====================
+  CONTEÚDO DO CARD
+====================
+*/
+
+.projeto-info {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: 10px;
+}
+
+
+/* 
+====================
+  TAG DE CATEGORIA
+====================
+*/
+
+.projeto-tag {
+    background-color: var(--main-dark-1);
+    color: var(--bg-dark-blue);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    align-self: flex-start;
+}
+
+
+/* 
+====================
+  TÍTULO DO CARD
+====================
+*/
+
+.projeto-info h2 {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: var(--bg-dark) !important;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+    padding: 0;
+    display: block;
+    text-align: left;
+    min-height: 48px;
+}
+
+.projeto-info h2 a {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: inherit !important;
+}
+
+.projeto-card:hover h2 {
+
+}
+
+
+/* 
+====================
+  LINK DO CARD
+====================
+*/
+
+.projeto-link {
+    display: none;
+    align-items: center;
+    padding: 0 18px 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.projeto-link:hover {
+    color: var(--main-dark);
 }
