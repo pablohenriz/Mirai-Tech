@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --main-color: #00f2fe;
+    --main-dark-1: #28d9dc;
+    --main-dark: rgb(20, 208, 211);
+    --blue-color: #008CFF;
+
+    --bg-light: #ffffff;
+    --bg-light-1: #eeeeee;
+    --bg-dark: #0f0f0f;
+    --bg-glow: #232526;
+    --bg-dark-blue: #0d1b2a;
+
+    --text-line: #727272;
+    --text-light: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark-blue);
+}
+
+.reveal {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.spanTitle {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--main-color);
+    margin-bottom: 8px;
+}
+
+
+/* 
+====================
+  HEADER
+====================
+*/
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin: 20px auto;
+    border-radius: 40px;
+    padding: 15px 50px;
+    background-color: var(--bg-light);
+    color: var(--bg-dark);
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(17, 17, 26, 0.05);
+}
+
+.header-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-main .logo {
+    margin-right: 50px;
+}
+
+.header-main .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.header-main nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.header-main nav ul li a {
+    color: var(--bg-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.header-main nav ul li a:hover {
+    color: var(--main-dark-1);
+}
+
+
+/* 
+====================
+  BOTÕES
+====================
+*/
+
+.btn-header {
+    background-color: var(--main-color);
+    color: var(--bg-dark);
+    padding: 8px 35px;
+    border: 2px solid var(--text-light);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+    margin-left: 50px;
+}
+
+.btn-header:hover {
+    background-color: var(--main-dark-1);
+}
+
+
+/* 
+====================
+  CARROSEL
+====================
+*/
+
+.section-hero {
+    padding: 60px 0 70px;
+}
+
+.carrosel-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+}
+
+.nav-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(0, 242, 254, 0.35);
+    background: rgba(0, 242, 254, 0.07);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0 18px;
+    transition: background 0.22s, border-color 0.22s, transform 0.15s;
+}
+
+.nav-btn svg {
+    stroke: var(--main-color);
+    stroke-width: 2.2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 242, 254, 0.18);
+    border-color: rgba(0, 242, 254, 0.7);
+    transform: scale(1.08);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.carrosel-viewport {
+    width: 1300px;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.carrosel-track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.carrosel-item {
+    min-width: 1300px;
+    width: 1300px;
+    background: var(--bg-glow);
+    border-radius: 40px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.img-area {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    transition: transform 0.6s ease;
+}
+
+.carrosel-item:hover .img-area img {
+    transform: scale(1.03);
+}
+
+.overlay-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 242, 254, 0.12);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    color: var(--main-color);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 6px;
+}
+
+.desc-item-carrosel {
+    padding: 22px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-light);
+}
+
+.desc-left h3 {
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.desc-left h4 {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--main-color);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.desc-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.counter {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 600;
+}
+
+.counter span:first-child {
+    color: var(--main-color);
+}
+
+.btn-ver {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--main-color);
+    color: var(--bg-dark);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.btn-ver:hover {
+    opacity: 0.85;
+}
+
+.carrosel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.carrosel-dots .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(0, 242, 254, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.carrosel-dots .dot.active {
+    background: var(--main-color);
+    transform: scale(1.35);
+}
+
+
+/* 
+====================
+  MAIS PROJETOS
+====================
+*/
+
+.mais-projetos {
+    padding: 70px 60px 60px;
+    text-align: center;
+}
+
+.mais-projetos .spanTitle {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--main-color);
+    margin-bottom: 14px;
+}
+
+.mais-projetos h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+}
+
+.mais-projetos h2 span {
+    color: var(--main-color);
+}
+
+.mais-projetos p {
+    font-size: 16px;
+    color: var(--text-line);
+    font-weight: 300;
+    max-width: 400px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+}
+
+.categorias-itens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+
+.item-Categoria {
+    display: inline-flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.03);
+    text-decoration: none;
+    transition: color 0.22s, border-color 0.22s, background 0.22s;
+    user-select: none;
+}
+
+.item-Categoria:hover {
+    color: var(--main-color);
+    border-color: rgba(0, 242, 254, 0.4);
+    background: rgba(0, 242, 254, 0.06);
+}
+
+.item-Categoria.active {
+    color: var(--bg-dark);
+    background: var(--main-color);
+    border-color: var(--main-color);
+    font-weight: 700;
+}
+
+
+/* 
+====================
+  GRID DE PROJETOS
+====================
+*/
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    text-align: left;
+}
+
+
+/* 
+====================
+  CARD DE PROJETO
+====================
+*/
+
+.projeto-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bg-light);
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.projeto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 12px 25px;
+}
+
+.projeto-card:hover .projeto-link {
+    display: flex;
+}
+
+
+/* 
+====================
+  IMAGEM DO CARD
+====================
+*/
+
+.projeto-thumb {
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+}
+
+.projeto-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.projeto-card:hover .projeto-thumb img {
+    transform: scale(1.05);
+}
+
+
+/* 
+====================
+  CONTEÚDO DO CARD
+====================
+*/
+
+.projeto-info {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: 10px;
+}
+
+
+/* 
+====================
+  TAG DE CATEGORIA
+====================
+*/
+
+.projeto-tag {
+    background-color: var(--main-dark-1);
+    color: var(--bg-dark-blue);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    align-self: flex-start;
+}
+
+
+/* 
+====================
+  TÍTULO DO CARD
+====================
+*/
+
+.projeto-info h2 {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: var(--bg-dark) !important;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+    padding: 0;
+    display: block;
+    text-align: left;
+    min-height: 48px;
+}
+
+.projeto-info h2 a {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    color: inherit !important;
+}
+
+.projeto-card:hover h2 {
+
+}
+
+
+/* 
+====================
+  LINK DO CARD
+====================
+*/
+
+.projeto-link {
+    display: none;
+    align-items: center;
+    padding: 0 18px 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.projeto-link:hover {
+    color: var(--main-dark);
+}
