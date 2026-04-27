@@ -227,8 +227,8 @@ html {
 .box-1 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content:center ;
+  align-items:center;
+  justify-content:left;
   border: 2px solid;
   z-index: 1;
 }
@@ -287,9 +287,6 @@ html {
 .ver-mais-link span svg {
   transform: rotate(90deg);
 }
-
-
-
 
 
 /* 
