@@ -436,17 +436,18 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    margin-bottom: 20px;
 }
 
 .projeto-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-px);
     box-shadow: rgba(0, 0, 0, 0.18) 0px 12px 25px;
 }
 
-.projeto-card:hover .projeto-link {
+.projeto-card:hover .projeto-link{
     display: flex;
+    color: var(--main-color);
 }
-
 
 /* 
 ====================
@@ -543,14 +544,15 @@ body {
 */
 
 .projeto-link {
-    display: none;
+    display: flex;
     align-items: center;
     padding: 0 18px 4px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
-    color: var(--main-color);
+    color: var(--text-light);
     transition: all 0.3s ease;
     text-decoration: none;
+    margin-bottom: 20px;
 }
 
 .projeto-link:hover {
