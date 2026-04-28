@@ -37,6 +37,8 @@ html {
   scroll-behavior:smooth;
 }
 
+body
+
 /* 
 ====================
   TITULOS E SPAN ESPECIAIS
@@ -200,14 +202,17 @@ html {
   align-items: center;
   text-align: center;
   min-height: 850px;
-  background-color: var(--bg-light);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("/img/ChatGPT\ Image\ Apr\ 28\,\ 2026\,\ 02_42_21\ PM.png");
 }
 
 .section-main h1 {
   width: 1200px;
   font-size: 70px;
   font-weight: 800;
-  color: var(--bg-dark);
+  color: var(--bg-light);
   margin-bottom: 20px;
   margin-top: 140px;
 }
@@ -220,22 +225,13 @@ html {
   font-size: 23px;
 }
 
-.group-box-main {
-   display: flex;
-}
-
-.box-1 {
+.section-main .box-1 {
   display: flex;
   flex-direction: column;
-  align-items:center;
-  justify-content:left;
-  border: 2px solid;
-  z-index: 1;
-}
-
-.box-2 {
-  border: 2px solid;
-  z-index: 2;
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+  
 }
 
 .ver-mais-link {
@@ -287,8 +283,6 @@ html {
 .ver-mais-link span svg {
   transform: rotate(90deg);
 }
-
-
 /* 
 ====================
   SECTION EXPLICAÇÃO INICIAL DE SERVIÇOS DA EMPRESA
