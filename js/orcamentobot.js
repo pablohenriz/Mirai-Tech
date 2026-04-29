@@ -14,16 +14,27 @@ const questions = [
 let currentStep = 0;
 let userData = {};
 
-// Função auxiliar para criar o elemento da mascote
+// Função auxiliar para criar o elemento da mascote com imagem dinâmica
 function createMascotElement() {
     const container = document.createElement('div');
     container.className = 'mascot-container';
-    
+
     const img = document.createElement('img');
-    img.src = 'mascote.png'; // NOME DO SEU ARQUIVO DE IMAGEM
-    img.alt = 'O Tigrinho do Dinheiro';
-    img.className = 'mascot-image';
     
+    // VERIFICAÇÃO DINÂMICA DO PASSO
+    //questions.length - 1 é o índice da última pergunta ("Tudo pronto...")
+    if (currentStep >= questions.length - 1) {
+        // Se já fechamos o acordo (última mensagem), mostra com dinheiro
+        img.src = "./img/TigrinhoContrato.png";
+        img.alt = 'O Tigrinho Fechou Acordo';
+    } else {
+        // Para todas as outras etapas de cadastro, mostra com mãos vazias
+        img.src = "./img/TigrinhoPositivo.png";
+        img.alt = 'O Tigrinho Aguardando Dados';
+    }
+
+    img.className = 'mascot-image';
+
     container.appendChild(img);
     return container;
 }
@@ -33,18 +44,33 @@ function addMessage(text, type) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${type}`;
 
-    // Se for do bot, adiciona a mascote ao lado
+    // Cria o elemento da mascote apenas para o bot
     if (type === 'bot') {
         messageDiv.appendChild(createMascotElement());
     }
 
+    // Cria o balão de texto
     const bubbleDiv = document.createElement('div');
     bubbleDiv.className = 'bubble';
     bubbleDiv.innerText = text;
-    
     messageDiv.appendChild(bubbleDiv);
+
+    // ADICIONA A HORA
+    const now = new Date();
+    const timeString = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
+    
+    const timeSpan = document.createElement('span');
+    timeSpan.innerText = timeString;
+    timeSpan.style.fontSize = "11px";
+    timeSpan.style.color = "#999";
+    timeSpan.style.marginLeft = "8px";
+    timeSpan.style.alignSelf = "flex-end"; // Alinha na base do balão
+    timeSpan.style.marginBottom = "5px";
+
+    messageDiv.appendChild(timeSpan);
+
     chatLog.appendChild(messageDiv);
-    chatLog.scrollTop = chatLog.scrollHeight; // Scroll automático para baixo
+    chatLog.scrollTop = chatLog.scrollHeight;
 }
 
 // Função para simular o tempo de "digitação" do bot
