@@ -54,5 +54,16 @@ btnPrev.addEventListener('click', () => irPara(cur - 1));
 btnNext.addEventListener('click', () => irPara(cur + 1));
 
 
+const header = document.querySelector('.header-main');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+
 //  INICIALIZAÇÃO DA INTERFACE
 atualizarUI();

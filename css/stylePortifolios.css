@@ -53,21 +53,29 @@ body {
   HEADER
 ====================
 */
-
 .header-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 60%;
-    margin: 20px auto;
-    border-radius: 40px;
-    padding: 15px 50px;
-    background-color: var(--bg-light);
-    color: var(--bg-dark);
-    position: sticky;
-    top: 20px;
+
+    width: 100%;
+    padding: 15px;
+    color: var(--bg-light);
+
+    position: fixed;
+    /* mude de sticky para fixed */
+    top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 16px rgba(17, 17, 26, 0.05);
+
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.header-main.scrolled {
+    background-color: rgba(13, 27, 42, 0.92);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 .header-inner {
@@ -80,14 +88,11 @@ body {
     align-items: center;
 }
 
-.header-main .logo {
-    margin-right: 50px;
-}
-
 .header-main .logo h1 {
     margin: 0;
     font-size: 24px;
     font-weight: 700;
+    user-select: none;
 }
 
 .header-main nav ul {
@@ -97,6 +102,7 @@ body {
     gap: 30px;
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 
 .header-main nav ul li a {
@@ -105,12 +111,12 @@ body {
     font-weight: 500;
     font-size: 16px;
     transition: color 0.3s ease;
+    color: var(--bg-light);
 }
 
 .header-main nav ul li a:hover {
     color: var(--main-dark-1);
 }
-
 
 /* 
 ====================
@@ -122,7 +128,6 @@ body {
     background-color: var(--main-color);
     color: var(--bg-dark);
     padding: 8px 35px;
-    border: 2px solid var(--text-light);
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -143,6 +148,7 @@ body {
 
 .section-hero {
     padding: 60px 0 70px;
+    margin-top: 50px;
 }
 
 .carrosel-group {
@@ -557,4 +563,148 @@ body {
 
 .projeto-link:hover {
     color: var(--main-dark);
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+.footer-main {
+    background-color: var(--bg-dark-blue);
+    padding-top: 70px;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+/* Coluna brand */
+.footer-brand h2.footer-logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-light);
+    margin-bottom: 14px;
+}
+
+.footer-brand>p {
+    font-size: 14px;
+    color: var(--text-line);
+    line-height: 1.7;
+    margin-bottom: 22px;
+    width: auto;
+}
+
+.footer-tel,
+.footer-email {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-line);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: color 0.25s ease;
+}
+
+.footer-tel:hover,
+.footer-email:hover {
+    color: var(--main-color);
+}
+
+.footer-tel svg,
+.footer-email svg {
+    flex-shrink: 0;
+    color: var(--main-color);
+}
+
+/* Colunas de links */
+.footer-col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 18px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col ul li a {
+    font-size: 14px;
+    color: var(--text-line);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--main-color);
+}
+
+/* Barra inferior */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 24px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 100%;
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-line);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.footer-social a:hover {
+    border-color: var(--main-color);
+    color: var(--main-color);
+    background: rgba(0, 242, 254, 0.06);
+}
+
+.footer-address {
+    font-size: 13px;
+    color: var(--text-line);
+    text-align: center;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: var(--text-line);
+    opacity: 0.6;
+}
+
+.footer-copy a {
+    color: var(--text-line);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.footer-copy a:hover {
+    color: var(--main-color);
 }
