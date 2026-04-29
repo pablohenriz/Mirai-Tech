@@ -1,6 +1,26 @@
+:root {
+  /* Cores base */
+  --main-color: #00f2fe;
+  --main-dark-1: #28d9dc;
+  --main-dark: rgb(20, 208, 211);
+  --blue-color: #008CFF;
+
+  /* Cores claras e simples para o texto */
+  --bg-light: #ffffff;
+  --bg-light-1: #eeeeee;
+  --bg-dark: #0f0f0f;
+  --bg-glow: #232526;
+  --bg-dark-blue: #0d1b2a;
+
+
+  /* Cores de texto */
+  --text-line: #727272;
+  --text-light: #FFFFFF;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
+    background-color: #f0f2f5; /* Cor nova */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,16 +29,15 @@ body {
 }
 
 #chat-container {
-    width: 90%;
-    max-width: 450px;
-    height: 80vh;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Um pouco mais largo para caber as horas na lateral */
+    height: 90vh;
+    background: transparent; /* AQUI: Remove o fundo branco */
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 2px solid #ddd;
+    border: none; /* Remove a borda se houver */
+    box-shadow: none; /* Remove a sombra do quadrado */
 }
 
 #chat-log {
@@ -27,8 +46,8 @@ body {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    background-color: #f7f9fc;
+    gap: 20px; /* Espaço maior entre as mensagens como na referência */
+    background-color: transparent; /* Agora o fundo é o do body */
 }
 
 /* Estrutura da Mensagem */
@@ -51,49 +70,50 @@ body {
 /* O Balão de Fala */
 .bubble {
     padding: 12px 18px;
-    border-radius: 20px;
-    font-size: 14px;
-    line-height: 1.5;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.4;
     position: relative;
+    max-width: 100%;
 }
 
+/* Mensagem do BOT (Igual à referência: Fundo Branco) */
 .bot .bubble {
-    background-color: #e3f2fd;
-    /* Azul suave para o bot */
-    color: #1565c0;
-    border-top-left-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+    border-top-left-radius: 2px; /* Pontinha lateral */
 }
 
+/* Mensagem do USUÁRIO (Igual à referência: Verde) */
 .user .bubble {
-    background-color: #db0a5b;
-    /* Rosa igual à referência */
+    background-color: #00bfa5;
     color: white;
-    border-top-right-radius: 5px;
+    border-top-right-radius: 2px;
 }
 
-/* O Mascote */
+/* Ajuste de Tamanho da Mascote (Wider Crop) */
 .mascot-container {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
+    width: 70px;          /* Aumentamos um pouco o círculo na tela */
+    height: 70px;
+    border-radius: 60%;
+    overflow: hidden;     /* Continua cortando o que sobrar */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-}
+    background-color: rgb(255, 255, 255); /* Cor de fundo do círculo */
+    border: 1px solid #000000;
 
-.bot .mascot-container {
-    background-color: white;
-    padding: 3px;
 }
 
 .mascot-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    width: 130%;          /* A imagem preenche a largura do círculo */
+    height: auto;         /* Mantém a proporção */  
+    object-fit: contain;  /* Garante que a imagem caiba sem distorcer */
+    /* USAMOS TRANSLATEY PARA DESCER A IMAGEM DENTRO DO CÍRCULO */
+    /* Isso revela os braços e o corpo, focando menos no rosto */
+    transform: translateY(20%); 
 }
-
 /* Indicador de Carregamento (Três pontinhos) */
 .dot {
     height: 8px;
