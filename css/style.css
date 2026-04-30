@@ -1805,3 +1805,165 @@ LINK
 .footer-copy a:hover {
   color: var(--main-color);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.chat-btn img {
+  overflow: auto;
+  width: 100%;
+  border-radius: 50%;
+
+
+}
+
+.chat-box {
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 500px;
+  height: 390px;
+  background: #282c31;
+  border-radius: 10px;
+  display: none;
+  box-shadow: 0 0 10px rgba(105, 126, 130, 0.2);
+  overflow: hidden;
+
+}
+
+.chat-header {
+  background: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #4e939c;
+  border-bottom: 2px solid #4e939c;
+
+}
+
+.chat-body {
+  padding: 50px;
+  height:100%;
+  overflow-y: scroll;
+  color: #4e939c;
+  background: white;
+
+}
+
+.chat-body::-webkit-scrollbar {
+  display: none;
+}
+
+
+.chat-footer {
+  display: flex;
+
+}
+
+.chat-footer input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  background: #282c31;
+  color: #4e939c;
+}
+
+.chat-footer button {
+  border: none;
+  background: #282c31;
+  color: #4e939c;
+  padding: 10px;
+}
+
+.chat-footer input::placeholder {
+  color: #4e939c;
+  /* cinza suave */
+}
+
+.chat-body button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px;
+  border: none;
+  color: #4e939c;
+  background-color: #c8f7f4;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.chat-body button:hover {
+  background: #697e82;
+}
+
+.faq-titulo {
+  color: #4e939c;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.faq-item {
+  border: 1px solid #4e939c;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.faq-pergunta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  cursor: pointer;
+  color: #4e939c;
+  font-size: 13px;
+  gap: 8px;
+}
+
+.faq-pergunta:hover {
+  background: #2e3a3d;
+}
+
+.faq-seta {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-resposta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 14px;
+  color: #4e939c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.faq-item.aberto .faq-resposta {
+  padding: 0 14px 12px;
+}
