@@ -143,6 +143,7 @@ body {
   /* mude de sticky para fixed */
   top: 0;
   z-index: 1000;
+  user-select: none;
 
   background-color: transparent;
   backdrop-filter: blur(0px);
