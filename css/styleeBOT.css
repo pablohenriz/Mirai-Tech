@@ -12,7 +12,6 @@
     --mascot-border: #000;
 }
 
-<<<<<<< HEAD
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,40 +23,6 @@ body {
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg);
-=======
-.reveal {
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5; /* Cor nova */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    width: 100%;
-    text-align: center;
-}
-
-#chat-container {
-    width: 50%;
- /* Um pouco mais largo para caber as horas na lateral */
-    height: 100%;
-    background: transparent; /* AQUI: Remove o fundo branco */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: none; /* Remove a borda se houver */
-    box-shadow: none; /* Remove a sombra do quadrado */
-}
-
-#chat-log {
-    flex: 1;
-    padding: 20px;
->>>>>>> 8f13273486d22c97cec976341b05c8b746cfebca
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -90,13 +55,14 @@ html::-webkit-scrollbar-thumb:hover {
     gap: 0;
 }
 
-/* ── Barra do botão Voltar ── */
+/* ── Barra de ações (Voltar + Voltar ao Site) ── */
 #back-bar {
     max-width: 680px;
     margin: 0 auto;
     padding: 12px 20px 40px;
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
 }
 
 #back-btn {
