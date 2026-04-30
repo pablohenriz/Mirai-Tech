@@ -10,6 +10,24 @@
     --time-color: #aaa;
     --input-border: #e0e0e0;
     --mascot-border: #000;
+    /* Cores base */
+        --main-color: #00f2fe;
+        --main-dark-1: #28d9dc;
+        --main-dark: rgb(20, 208, 211);
+        --blue-color: #008CFF;
+    
+        /* Cores claras e simples para o texto */
+        --bg-light: #ffffff;
+        --bg-light-1: #eeeeee;
+        --bg-dark: #0f0f0f;
+        --bg-extra-dark: #000000;
+        --bg-glow: #232526;
+        --bg-dark-blue: #0d1b2a;
+    
+    
+        /* Cores de texto */
+        --text-line: #727272;
+        --text-light: #FFFFFF;
 }
 
 * {
@@ -78,6 +96,7 @@ html::-webkit-scrollbar-thumb:hover {
     display: flex;
     align-items: center;
     gap: 6px;
+    text-decoration: none;
 }
 
 #back-btn:hover {
@@ -85,6 +104,30 @@ html::-webkit-scrollbar-thumb:hover {
     color: #fff;
     transform: translateX(-3px);
 }
+/* 
+#site-btn {
+    background: var(--teal) ;
+    border: 2px solid var(--teal);
+    color: var(--bg-light);
+    border-radius: 30px;
+    padding: 8px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+#site-btn:hover {
+    background: transparent;
+    color: var(--teal);
+    border: 2px solid var(--teal);
+    border-radius: 30px;
+    transform: translateX(-3px);
+} */
 
 /* Esconde o botão quando estiver na primeira pergunta */
 #back-btn:disabled {
