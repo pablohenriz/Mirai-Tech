@@ -18,6 +18,11 @@
   --text-light: #FFFFFF;
 }
 
+.reveal {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5; /* Cor nova */
@@ -26,12 +31,14 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    width: 100%;
+    text-align: center;
 }
 
 #chat-container {
-    width: 100%;
-    max-width: 600px; /* Um pouco mais largo para caber as horas na lateral */
-    height: 90vh;
+    width: 50%;
+ /* Um pouco mais largo para caber as horas na lateral */
+    height: 100%;
     background: transparent; /* AQUI: Remove o fundo branco */
     display: flex;
     flex-direction: column;
