@@ -5,28 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento</title>
-
     <link rel="shortcut icon" href="./img/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="./css/styleeBOT.css">
+</head>
 
 <body>
 
-    <main id="chat-container">
-        <div id="chat-log">
-        </div>
+    <div id="chat-wrapper">
+        <!-- Mensagens são injetadas aqui pelo JS -->
+    </div>
 
-        <div id="input-area">
-            <input type="text" id="user-input" placeholder="Vamos faturar juntos? Me diga o seu nome..."
-                autocomplete="off">
-            <button id="send-btn">
-                <svg viewBox="0 0 24 24" width="28" height="28">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                </svg>
-            </button>
-        </div>
-    </main>
+    <!-- Botão Voltar fixo abaixo da conversa -->
+    <div id="back-bar">
+        <button id="back-btn" onclick="voltarPasso()">
+            ← Voltar
+        </button>
+    </div>
 
     <script src="./js/orcamentobot.js"></script>
+</body>
 
-</footer>
 </html>
