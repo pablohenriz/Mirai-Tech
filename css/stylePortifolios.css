@@ -74,10 +74,10 @@ body {
 
 .header-main.scrolled {
     background-color: rgba(13, 27, 42, 0.92);
+    /* mesmo valor do style.css */
     backdrop-filter: blur(14px);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
-
 .header-inner {
     max-width: 1440px;
     margin: 0 auto;
