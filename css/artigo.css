@@ -1,0 +1,250 @@
+/* ============================================================
+   MIRAI TECH — Estilos da página de artigo (artigo.css)
+   Importado apenas pelo artigo.html
+   ============================================================ */
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.artigo-hero {
+  min-height: 420px;
+  background: linear-gradient(135deg, #0d1b2a 0%, #0f2a3a 60%, #0d1b2a 100%);
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.artigo-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(0,242,254,0.08) 0%, transparent 70%);
+}
+
+.artigo-hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 120px 40px 60px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── BREADCRUMB ───────────────────────────────────────────── */
+.artigo-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #7a9ab5;
+  margin-bottom: 24px;
+}
+
+.artigo-breadcrumb a {
+  color: #7a9ab5;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.artigo-breadcrumb a:hover { color: var(--main-color); }
+.artigo-breadcrumb span   { color: #3a5a74; }
+
+/* ── TAG DE CATEGORIA ─────────────────────────────────────── */
+.artigo-tag {
+  display: inline-block;
+  background: rgba(0,242,254,0.12);
+  color: var(--main-color);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+/* ── TÍTULO DO HERO ───────────────────────────────────────── */
+.artigo-hero h1 {
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 740px;
+}
+
+/* ── META (autor, data, leitura) ──────────────────────────── */
+.artigo-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #7a9ab5;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.artigo-meta-sep { color: #2a4a64; }
+
+/* ── CORPO DO ARTIGO ──────────────────────────────────────── */
+.artigo-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+}
+
+.artigo-body p {
+  font-size: 16px;
+  color: #c8d8e8;
+  line-height: 1.85;
+  margin-bottom: 22px;
+}
+
+.artigo-body strong { color: #ffffff; }
+
+.artigo-body h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 48px 0 16px;
+  padding-left: 16px;
+  border-left: 3px solid var(--main-color);
+}
+
+.artigo-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e0eef8;
+  margin: 32px 0 12px;
+}
+
+/* ── LISTA ────────────────────────────────────────────────── */
+.artigo-body ul {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 22px;
+}
+
+.artigo-body ul li {
+  font-size: 16px;
+  color: #c8d8e8;
+  line-height: 1.7;
+  padding: 8px 0 8px 24px;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.artigo-body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--main-color);
+  opacity: 0.7;
+}
+
+/* ── CALLOUT ──────────────────────────────────────────────── */
+.artigo-callout {
+  background: rgba(0,242,254,0.05);
+  border: 1px solid rgba(0,242,254,0.2);
+  border-left: 4px solid var(--main-color);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 36px 0;
+}
+
+.artigo-callout p {
+  margin: 0;
+  font-size: 15px;
+  color: #a8cce0;
+}
+
+/* ── TABELA ───────────────────────────────────────────────── */
+.artigo-table-wrap {
+  overflow-x: auto;
+  margin: 32px 0;
+}
+
+.artigo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.artigo-table th {
+  background: rgba(0,242,254,0.08);
+  color: var(--main-color);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0,242,254,0.2);
+}
+
+.artigo-table td {
+  padding: 14px 20px;
+  color: #c8d8e8;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.artigo-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* ── CTA FINAL ────────────────────────────────────────────── */
+.artigo-cta {
+  background: linear-gradient(135deg, #0d1b2a, #0f2a38);
+  border: 1px solid rgba(0,242,254,0.15);
+  border-radius: 20px;
+  padding: 48px 40px;
+  text-align: center;
+  margin-top: 64px;
+}
+
+.artigo-cta h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.artigo-cta p {
+  color: #7a9ab5;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+/* ── LINK VOLTAR ──────────────────────────────────────────── */
+.artigo-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-color);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: gap .2s;
+}
+
+.artigo-voltar:hover { gap: 12px; }
+
+/* ── 404 ──────────────────────────────────────────────────── */
+.artigo-404 {
+  text-align: center;
+  padding: 120px 40px;
+  color: #7a9ab5;
+}
+
+.artigo-404 h2 {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.artigo-404 a {
+  color: var(--main-color);
+  text-decoration: none;
+}

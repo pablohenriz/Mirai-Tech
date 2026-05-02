@@ -1144,6 +1144,7 @@ LINK
    ============================ */
 .section-avaliacoes {
   padding: 80px 0 60px;
+
 }
 
 .avaliacoes-header {
@@ -1454,12 +1455,9 @@ LINK
    SEÇÃO PLANOS / PREÇOS
    ============================ */
 .section-planos {
-    background-color: #0a1520;
-    padding: 80px 0;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding: 80px 0;
-
-  background-color: var(--bg-light);
+  background-color: #0a1520;
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding: 80px 0;
 
 }
@@ -1471,16 +1469,12 @@ LINK
 
 .planos-header h2 {
 
-    font-size: 42px;
-    font-weight: 800;
-    color: var(--bg-light);
-    margin: 8px 0 12px;
-    text-transform: uppercase;
   font-size: 42px;
   font-weight: 800;
-  color: var(--bg-dark);
+  color: var(--bg-light);
   margin: 8px 0 12px;
   text-transform: uppercase;
+
 
 }
 
@@ -1879,7 +1873,7 @@ LINK
 
 .chat-body {
   padding: 50px;
-  height:100%;
+  height: 100%;
   overflow-y: scroll;
   color: #4e939c;
   background: white;
