@@ -2019,8 +2019,11 @@ button {
 }
 
 /* =============================================
-   RESPONSIVE
+   MOBILE RESPONSIVE — Mirai Tech
+   Cole no final do style.css (substitui o bloco @media existente)
    ============================================= */
+
+/* ── 1024px — tablets e laptops pequenos ── */
 @media (max-width: 1024px) {
   .steps-grid {
     flex-direction: column;
@@ -2070,8 +2073,10 @@ button {
   }
 }
 
+/* ── 768px — smartphones maiores ── */
 @media (max-width: 768px) {
 
+  /* Header */
   .header-main nav,
   .header-cta {
     display: none;
@@ -2081,65 +2086,376 @@ button {
     display: flex;
   }
 
+  .header-inner {
+    padding: 14px 20px;
+  }
+
+  /* Hero */
+  .section-main {
+    padding: 100px 20px 70px;
+    min-height: 100svh;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 9vw, 52px);
+    letter-spacing: -0.025em;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+    padding: 6px 14px;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
   .hero-stats {
     flex-direction: column;
-    gap: 16px;
-    padding: 24px;
+    gap: 0;
+    padding: 20px 24px;
+    max-width: 100%;
+  }
+
+  .hero-stats .stat-item {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .hero-stats .stat-item:last-child {
+    border-bottom: none;
+  }
+
+  .stat-item strong {
+    font-size: 26px;
   }
 
   .stat-divider {
-    width: 60px;
-    height: 1px;
+    display: none;
+  }
+
+  .hero-scroll {
+    bottom: 24px;
+  }
+
+  /* Como Funciona */
+  .section-funcionamento {
+    padding: 64px 0;
+    border-radius: 28px 28px 0 0;
+  }
+
+  .section-header {
+    padding: 0 20px;
+    margin-bottom: 40px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+
+  .steps-grid {
+    padding: 0 20px;
+    max-width: 100%;
+  }
+
+  .step-card {
+    padding: 28px 24px;
+  }
+
+  /* Portfólio Carrossel */
+  .section-projetos {
+    padding: 64px 0;
+  }
+
+  .projetos-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 32px;
   }
 
   .projeto-item {
-    min-width: 300px;
+    min-width: calc(85vw - 40px);
+  }
+
+  .projeto-mockup {
+    height: 200px;
+  }
+
+  .carrossel-nav {
+    align-self: flex-end;
+  }
+
+  .carrossel-dots {
+    padding: 20px 0 0;
+  }
+
+  /* Portfólio Grid */
+  .section-projetos2 {
+    padding: 0 0 64px;
   }
 
   .group-itens-project {
     flex-direction: column;
     align-items: center;
+    padding: 48px 20px 32px;
+    gap: 20px;
   }
 
   .item-proj {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
+  }
+
+  .item-proj img {
+    height: 180px;
+  }
+
+  /* Sobre a Agência */
+  .section-agencia {
+    padding: 64px 0;
+  }
+
+  .agencia-inner {
+    padding: 0 20px;
+    gap: 36px;
+  }
+
+  .agencia-title {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+
+  .agencia-visual {
+    max-width: 100%;
+  }
+
+  .agencia-mascote-wrap {
+    height: 260px;
+  }
+
+  .agencia-mascote {
+    width: 200px;
+  }
+
+  .agencia-chips {
+    gap: 8px;
+  }
+
+  .agencia-chip {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
+  /* Avaliações */
+  .section-avaliacoes {
+    padding: 64px 0 56px;
+  }
+
+  .avaliacoes-header {
+    margin-bottom: 36px;
+    padding: 0 20px;
+  }
+
+  .avaliacoes-header h2 {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+
+  .avaliacoes-track-wrap {
+    padding: 0 20px;
   }
 
   .avaliacao-card {
-    min-width: calc(100% - 0px);
+    min-width: 100%;
+    padding: 24px;
   }
 
   .google-selo {
     flex-direction: column;
     gap: 20px;
     text-align: center;
+    padding: 24px 20px;
+    margin-top: 40px;
   }
 
   .google-divider {
     display: none;
   }
 
+  .google-selo>p {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  /* Planos */
+  .section-planos {
+    padding: 64px 0;
+  }
+
+  .planos-header {
+    padding: 0 20px;
+    margin-bottom: 40px;
+  }
+
+  .planos-header h2 {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+
+  .planos-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  .plano-card {
+    padding: 28px 24px;
+    gap: 16px;
+  }
+
+  .plano-preco strong {
+    font-size: 30px;
+  }
+
+  .plano-destaque {
+    padding: 32px 20px;
+    order: -1;
+  }
+
+  /* Footer */
+  .footer-main {
+    padding-top: 56px;
+  }
+
   .footer-inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
+    padding: 0 20px 40px;
+    max-width: 100%;
   }
 
   .footer-bottom {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .footer-address {
+    order: 2;
+  }
+
+  .footer-copy {
+    order: 3;
+  }
+
+  /* Chat */
+  .chat-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 54px;
+    height: 54px;
   }
 
   .chat-box {
-    width: calc(100vw - 48px);
-    right: 24px;
+    width: calc(100vw - 32px);
+    right: 16px;
+    bottom: 84px;
+    max-height: 440px;
+    border-radius: 20px;
   }
 
-  .hero-actions {
-    flex-direction: column;
+  .chat-body {
+    max-height: 340px;
+    padding: 16px;
   }
 
-  .planos-grid {
-    padding: 0 24px;
+  /* Reveal margins */
+  .reveal {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+/* ── 480px — smartphones pequenos ── */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(28px, 9vw, 40px);
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .section-header h2,
+  .avaliacoes-header h2,
+  .planos-header h2,
+  .agencia-title {
+    font-size: 24px;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    font-size: 14px;
+    padding: 13px 22px;
+  }
+
+  .plano-card {
+    padding: 24px 20px;
+  }
+
+  .projeto-item {
+    min-width: calc(92vw - 40px);
+  }
+
+  .step-card {
+    padding: 24px 20px;
+  }
+
+  .step-number {
+    font-size: 36px;
+  }
+
+  .agencia-mascote-wrap {
+    height: 220px;
+  }
+
+  .agencia-mascote {
+    width: 170px;
+  }
+
+  .footer-col ul li a,
+  .footer-brand>p {
+    font-size: 14px;
+  }
+
+  .avaliacao-card {
+    padding: 20px;
+  }
+
+  .avaliacoes-track-wrap {
+    padding: 0 16px;
+  }
+
+  .group-itens-project {
+    padding: 40px 16px 28px;
   }
 }

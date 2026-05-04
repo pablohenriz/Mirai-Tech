@@ -32,22 +32,22 @@
       <div class="header-cta">
         <button class="btn-header">Fale conosco</button>
       </div>
-  
+
       <!-- Mobile hamburger -->
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-  
+
     <!-- Mobile nav -->
     <div class="mobile-nav" id="mobileNav">
       <ul>
-        <li><a href="#home" onclick="closeMobileNav()">Início</a></li>
-        <li><a href="#sobre" onclick="closeMobileNav()">Sobre</a></li>
+        <li><a href="/mirai.html" onclick="closeMobileNav()">Início</a></li>
+        <li><a href="/sobre.html" onclick="closeMobileNav()">Sobre</a></li>
         <li><a href="/projetos.html" onclick="closeMobileNav()">Serviços</a></li>
-        <li><a href="#orcamento" onclick="closeMobileNav()">Orçamento</a></li>
-        <li><a href="./blog.html" onclick="closeMobileNav()">Blog</a></li>
-        <li><a href="#" class="mobile-cta">Fale conosco</a></li>
+        <li><a href="/bot.html" onclick="closeMobileNav()">Orçamento</a></li>
+        <li><a href="/blog.html" onclick="closeMobileNav()">Blog</a></li>
+        <li><a href="/bot.html" class="mobile-cta">Fale conosco</a></li>
       </ul>
     </div>
   </header>
@@ -98,7 +98,7 @@
           <div class="blog-grid" id="blogGrid">
 
             <!-- CARD 1 -->
-            <article class="blog-card" data-category="wireframe de baixa e de alta">
+            <article class="blog-card" data-category="Wireframe" data-slug="wireframe-eficiente">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="Wireframe">
                 <span class="card-tag">Wireframe</span>
@@ -112,7 +112,7 @@
             </article>
 
             <!-- CARD 2 -->
-            <article class="blog-card" data-category="front-end e back-end">
+            <article class="blog-card" data-category="Front-End e Back-End" data-slug="frontend-vs-backend">
               <div class="blog-img">
                 <img src="./img/img blog/artigofronteback.png" alt="Front-End vs Back-End">
                 <span class="card-tag">Front-End &amp; Back-End</span>
@@ -126,7 +126,7 @@
             </article>
 
             <!-- CARD 3 -->
-            <article class="blog-card" data-category="desenvolvimento web">
+            <article class="blog-card" data-category="Desenvolvimento Web" data-slug="erros-site-profissional">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="Desenvolvimento Web">
                 <span class="card-tag">Desenvolvimento Web</span>
@@ -140,7 +140,7 @@
             </article>
 
             <!-- CARD 4 -->
-            <article class="blog-card" data-category="desenvolvimento web">
+            <article class="blog-card" data-category="Desenvolvimento Web" data-slug="seo-tecnico">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="SEO">
                 <span class="card-tag">Desenvolvimento Web</span>
@@ -154,7 +154,7 @@
             </article>
 
             <!-- CARD 5 -->
-            <article class="blog-card" data-category="e-commerce">
+            <article class="blog-card" data-category="E-commerce" data-slug="ecommerce-conversao">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="E-commerce">
                 <span class="card-tag">E-commerce</span>
@@ -168,7 +168,7 @@
             </article>
 
             <!-- CARD 6 -->
-            <article class="blog-card" data-category="marketing">
+            <article class="blog-card" data-category="Marketing" data-slug="landing-pages-que-convertem">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="Marketing Digital">
                 <span class="card-tag">Marketing</span>
@@ -182,7 +182,7 @@
             </article>
 
             <!-- CARD 7 -->
-            <article class="blog-card" data-category="negócios">
+            <article class="blog-card" data-category="Negócios" data-slug="site-profissional-investimento">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="Negócios">
                 <span class="card-tag">Negócios</span>
@@ -196,7 +196,7 @@
             </article>
 
             <!-- CARD 8 -->
-            <article class="blog-card" data-category="responsividade">
+            <article class="blog-card" data-category="Responsividade" data-slug="mobile-first">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="Responsividade">
                 <span class="card-tag">Responsividade</span>
@@ -210,7 +210,7 @@
             </article>
 
             <!-- CARD 9 -->
-            <article class="blog-card" data-category="segurança digital">
+            <article class="blog-card" data-category="Segurança Digital" data-slug="seguranca-digital-2026">
               <div class="blog-img">
                 <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="Segurança Digital">
                 <span class="card-tag">Segurança Digital</span>
@@ -307,97 +307,139 @@
   </main>
 
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer-main">
-    <div class="footer-inner">
 
-      <div class="footer-brand">
-        <div class="footer-logo-wrap">
-          <span class="logo-dot"></span>
-          <h2 class="footer-logo">Mirai Tech</h2>
-        </div>
-        <p>Agência de criação de sites profissionais em São Paulo, especializada em desenvolvimento e gestão de sites de
-          alto impacto para empresas.</p>
-        <a href="tel:11999999999" class="footer-tel">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
-          </svg>
-          (11) 9999-9999
-        </a>
-        <a href="mailto:contato@miraitech.digital" class="footer-email">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-            <polyline points="22,6 12,13 2,6" />
-          </svg>
-          contato@miraitech.digital
-        </a>
-      </div>
 
-      <div class="footer-col">
-        <h4>Institucional</h4>
-        <ul>
-          <li><a href="./mirai.html">Home</a></li>
-          <li><a href="./projetos.html">Portfólio</a></li>
-          <li><a href="./mirai.html#orcamento">Orçamento</a></li>
-          <li><a href="./blog.html">Blog</a></li>
-        </ul>
-      </div>
+    <script src="./js/blog.js"></script>
 
-      <div class="footer-col">
-        <h4>Serviços</h4>
-        <ul>
-          <li><a href="#">Site sob medida</a></li>
-          <li><a href="#">Criação de sites</a></li>
-          <li><a href="#">E-commerce</a></li>
-          <li><a href="#">Consultoria SEO</a></li>
-          <li><a href="#">Chatbot com IA</a></li>
-          <li><a href="#">WordPress</a></li>
-        </ul>
-      </div>
 
-      <div class="footer-col">
-        <h4>Segmentos</h4>
-        <ul>
-          <li><a href="#">Empresas de Tech</a></li>
-          <li><a href="#">Médicos</a></li>
-          <li><a href="#">Contabilidade</a></li>
-          <li><a href="#">Advogados</a></li>
-          <li><a href="#">Dentistas</a></li>
-        </ul>
-      </div>
 
-    </div>
 
-    <div class="footer-bottom">
-      <div class="footer-social">
-        <a href="#" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-          </svg>
-        </a>
-        <a href="#" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
-      </div>
-      <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
-      <p class="footer-copy">© 2026 Mirai Tech · <a href="#">Política de privacidade</a></p>
-    </div>
-  </footer>
-
-  <script src="./js/blog.js"></script>
 </body>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer-main">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <span class="logo-dot"></span>
+        <h2 class="footer-logo">Mirai Tech</h2>
+      </div>
+      <p>Agência de criação de sites profissionais em São Paulo, especializada em desenvolvimento e gestão de sites de
+        alto impacto para empresas.</p>
+      <a href="tel:11999999999" class="footer-tel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        (11) 9999-9999
+      </a>
+      <a href="mailto:contato@miraitech.digital" class="footer-email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
+        contato@miraitech.digital
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="./mirai.html">Home</a></li>
+        <li><a href="./projetos.html">Portfólio</a></li>
+        <li><a href="./mirai.html#orcamento">Orçamento</a></li>
+        <li><a href="./blog.html">Blog</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#">Site sob medida</a></li>
+        <li><a href="#">Criação de sites</a></li>
+        <li><a href="#">E-commerce</a></li>
+        <li><a href="#">Consultoria SEO</a></li>
+        <li><a href="#">Chatbot com IA</a></li>
+        <li><a href="#">WordPress</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Segmentos</h4>
+      <ul>
+        <li><a href="#">Empresas de Tech</a></li>
+        <li><a href="#">Médicos</a></li>
+        <li><a href="#">Contabilidade</a></li>
+        <li><a href="#">Advogados</a></li>
+        <li><a href="#">Dentistas</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      </a>
+      <a href="#" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      </a>
+    </div>
+    <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
+    <p class="footer-copy">© 2026 Mirai Tech · <a href="#">Política de privacidade</a></p>
+  </div>
+</footer>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById("chatBox");
+    chat.style.display = chat.style.display === "block" ? "none" : "block";
+  }
+
+  function toggleAcordeon(header) {
+    const item = header.parentElement;
+    const resposta = item.querySelector(".faq-resposta");
+    const seta = header.querySelector(".faq-seta");
+    const estaAberto = item.classList.contains("aberto");
+
+    document.querySelectorAll(".faq-item").forEach(i => {
+      i.classList.remove("aberto");
+      i.querySelector(".faq-resposta").style.maxHeight = null;
+      i.querySelector(".faq-seta").style.transform = "rotate(0deg)";
+    });
+
+    if (!estaAberto) {
+      item.classList.add("aberto");
+      resposta.style.maxHeight = resposta.scrollHeight + "px";
+      seta.style.transform = "rotate(180deg)";
+    }
+  }
+
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('active');
+  }
+
+  document.getElementById('hamburger').addEventListener('click', function () {
+    this.classList.toggle('active');
+    document.getElementById('mobileNav').classList.toggle('open');
+  });
+</script>
 
 </html>

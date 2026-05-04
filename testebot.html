@@ -1,1165 +1,261 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orçamento — Mirai</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap"
-        rel="stylesheet" />
-
-    <style>
-        /* ═══════════════════════════════════
-       TOKENS
-    ═══════════════════════════════════ */
-        :root {
-            --cyan: #00f2fe;
-            --cyan-dark: #14d0d3;
-            --cyan-dim: rgba(0, 242, 254, .10);
-            --cyan-glow: rgba(0, 242, 254, .06);
-
-            --d900: #020d18;
-            --d800: #061422;
-            --d700: #0d1b2a;
-            --d600: #122233;
-            --d500: #1a2f42;
-            --d400: #213748;
-
-            --white: #ffffff;
-            --muted: #6b8299;
-            --subtle: #3d5468;
-
-            --r-sm: 8px;
-            --r-md: 16px;
-            --r-lg: 22px;
-            --r-xl: 32px;
-
-            --ff-display: 'Syne', sans-serif;
-            --ff-body: 'Plus Jakarta Sans', sans-serif;
-            --ease: 0.28s cubic-bezier(.4, 0, .2, 1);
-        }
-
-        /* ═══════════════════════════════════
-       RESET
-    ═══════════════════════════════════ */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            height: 100%;
-        }
-
-        body {
-            font-family: var(--ff-body);
-            background: var(--d900);
-            color: var(--white);
-            min-height: 100%;
-            overflow-x: hidden;
-        }
-
-        /* subtle noise */
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ambient top glow */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -220px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 720px;
-            height: 520px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 242, 254, .055) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* scrollbar */
-        html::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        html::-webkit-scrollbar-track {
-            background: var(--d800);
-        }
-
-        html::-webkit-scrollbar-thumb {
-            background: var(--cyan-dark);
-            border-radius: 3px;
-        }
-
-        /* ═══════════════════════════════════
-       TOP BAR
-    ═══════════════════════════════════ */
-        #top-bar {
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            background: rgba(6, 20, 34, .93);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
-            border-bottom: 1px solid rgba(0, 242, 254, .09);
-            padding: 13px clamp(20px, 5vw, 52px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .brand-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--cyan);
-            box-shadow: 0 0 10px var(--cyan);
-            flex-shrink: 0;
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: .55;
-                transform: scale(1.35);
-            }
-        }
-
-        .brand h1 {
-            font-family: var(--ff-display);
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -.02em;
-        }
-
-        .bar-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-ghost-bar {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: transparent;
-            border: 1px solid rgba(0, 242, 254, .28);
-            color: var(--cyan);
-            border-radius: 40px;
-            padding: 8px 18px;
-            font: 600 13px/1 var(--ff-body);
-            cursor: pointer;
-            transition: var(--ease);
-            text-decoration: none;
-        }
-
-        .btn-ghost-bar:hover {
-            background: var(--cyan-dim);
-            border-color: var(--cyan);
-            transform: translateX(-2px);
-        }
-
-        .btn-ghost-bar:disabled {
-            opacity: .22;
-            cursor: default;
-            pointer-events: none;
-        }
-
-        .btn-solid-bar {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--cyan);
-            color: var(--d900);
-            border: none;
-            border-radius: 40px;
-            padding: 8px 18px;
-            font: 700 13px/1 var(--ff-body);
-            cursor: pointer;
-            transition: var(--ease);
-            text-decoration: none;
-            box-shadow: 0 4px 18px rgba(0, 242, 254, .22);
-        }
-
-        .btn-solid-bar:hover {
-            background: var(--cyan-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 26px rgba(0, 242, 254, .3);
-        }
-
-        /* progress bar */
-        #progress-wrap {
-            height: 2px;
-            background: rgba(255, 255, 255, .05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        #progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan-dark), var(--cyan));
-            transition: width .55s cubic-bezier(.4, 0, .2, 1);
-            box-shadow: 0 0 10px var(--cyan);
-            width: 0%;
-        }
-
-        /* ═══════════════════════════════════
-       STEP COUNTER
-    ═══════════════════════════════════ */
-        #step-counter {
-            max-width: 680px;
-            margin: 28px auto 0;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-pip {
-            width: 28px;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(255, 255, 255, .1);
-            transition: var(--ease);
-            flex-shrink: 0;
-        }
-
-        .step-pip.done {
-            background: var(--cyan-dark);
-        }
-
-        .step-pip.active {
-            background: var(--cyan);
-            box-shadow: 0 0 8px var(--cyan);
-        }
-
-        /* ═══════════════════════════════════
-       CHAT WRAPPER
-    ═══════════════════════════════════ */
-        #chat-wrapper {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 28px 20px 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ═══════════════════════════════════
-       MESSAGES
-    ═══════════════════════════════════ */
-        .message {
-            display: flex;
-            align-items: flex-end;
-            gap: 12px;
-            margin-bottom: 12px;
-            animation: msgIn .38s cubic-bezier(.34, 1.56, .64, 1) both;
-        }
-
-        @keyframes msgIn {
-            from {
-                opacity: 0;
-                transform: translateY(14px) scale(.97);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .bot {
-            align-self: flex-start;
-            flex-direction: row;
-        }
-
-        .user {
-            align-self: flex-end;
-            flex-direction: row-reverse;
-        }
-
-        /* avatar */
-        .mascot-container {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: var(--cyan-dim);
-            border: 1.5px solid rgba(0, 242, 254, .3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font: 700 11px/1 var(--ff-display);
-            color: var(--cyan);
-            letter-spacing: .04em;
-            flex-direction: column;
-        }
-
-        .mascot-container img {
-            width: 130%;
-            height: auto;
-            object-fit: contain;
-            transform: translateY(18%);
-        }
-
-        /* fallback icon when no img */
-        .mascot-icon {
-            font-size: 20px;
-            line-height: 1;
-        }
-
-        .bot-column {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 5px;
-            max-width: 78%;
-        }
-
-        .user-row {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 5px;
-            max-width: 68%;
-        }
-
-        /* bubbles */
-        .bubble {
-            padding: 14px 18px;
-            border-radius: 20px;
-            font-size: 14.5px;
-            line-height: 1.65;
-        }
-
-        .bot .bubble {
-            background: var(--d600);
-            color: rgba(255, 255, 255, .88);
-            border-bottom-left-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, .06);
-            box-shadow: 0 2px 14px rgba(0, 0, 0, .28);
-        }
-
-        .user .bubble {
-            background: var(--cyan);
-            color: var(--d900);
-            font-weight: 700;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 4px 22px rgba(0, 242, 254, .28);
-        }
-
-        .msg-time {
-            font-size: 10px;
-            color: var(--subtle);
-            padding: 0 4px;
-            letter-spacing: .04em;
-        }
-
-        /* ═══════════════════════════════════
-       BUBBLE WITH INPUT
-    ═══════════════════════════════════ */
-        .bubble-with-input {
-            background: var(--d600);
-            border: 1px solid rgba(255, 255, 255, .06);
-            border-radius: 20px;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 14px rgba(0, 0, 0, .28);
-            padding: 16px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            max-width: 100%;
-        }
-
-        .bubble-text {
-            font-size: 14.5px;
-            color: rgba(255, 255, 255, .88);
-            line-height: 1.65;
-        }
-
-        /* text input */
-        .inline-input-row {
-            display: flex;
-            align-items: center;
-            background: var(--d500);
-            border-radius: 12px;
-            border: 1.5px solid rgba(255, 255, 255, .08);
-            overflow: hidden;
-            transition: border-color var(--ease), box-shadow var(--ease);
-        }
-
-        .inline-input-row:focus-within {
-            border-color: var(--cyan);
-            box-shadow: 0 0 0 3px rgba(0, 242, 254, .08);
-        }
-
-        #user-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 12px 15px;
-            font: 400 14px/1 var(--ff-body);
-            color: var(--white);
-            outline: none;
-        }
-
-        #user-input::placeholder {
-            color: var(--subtle);
-        }
-
-        #send-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 9px 15px;
-            display: flex;
-            align-items: center;
-            color: var(--cyan);
-            transition: transform var(--ease);
-        }
-
-        #send-btn:hover {
-            transform: scale(1.18) translateX(2px);
-        }
-
-        #send-btn svg {
-            fill: var(--cyan);
-        }
-
-        /* options */
-        .options-label {
-            font: 700 10px/1 var(--ff-body);
-            letter-spacing: .14em;
-            color: var(--muted);
-            text-transform: uppercase;
-        }
-
-        .options-row {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .option-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            color: var(--cyan);
-            border: 1.5px solid rgba(0, 242, 254, .28);
-            border-radius: 40px;
-            padding: 12px 20px;
-            font: 600 13.5px/1 var(--ff-body);
-            cursor: pointer;
-            text-align: left;
-            transition: var(--ease);
-        }
-
-        .option-btn::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--cyan);
-            flex-shrink: 0;
-            opacity: .45;
-            transition: opacity var(--ease);
-        }
-
-        .option-btn:hover {
-            background: var(--cyan-dim);
-            border-color: var(--cyan);
-            transform: translateX(5px);
-        }
-
-        .option-btn:hover::before {
-            opacity: 1;
-        }
-
-        /* ═══════════════════════════════════
-       TYPING
-    ═══════════════════════════════════ */
-        .dot {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--cyan);
-            margin: 0 2px;
-            animation: bounce 1.4s infinite ease-in-out both;
-            opacity: .5;
-        }
-
-        .dot:nth-child(1) {
-            animation-delay: -.32s;
-        }
-
-        .dot:nth-child(2) {
-            animation-delay: -.16s;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            80%,
-            100% {
-                opacity: .2;
-                transform: scale(.8);
-            }
-
-            40% {
-                opacity: 1;
-                transform: scale(1.25);
-            }
-        }
-
-        /* ═══════════════════════════════════
-       FINAL CARD
-    ═══════════════════════════════════ */
-        .final-card {
-            background: linear-gradient(135deg, rgba(0, 242, 254, .06) 0%, rgba(20, 208, 211, .03) 100%);
-            border: 1px solid rgba(0, 242, 254, .2);
-            border-radius: 20px;
-            border-bottom-left-radius: 4px;
-            padding: 24px 22px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            box-shadow: 0 4px 28px rgba(0, 242, 254, .06);
-        }
-
-        .final-card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: var(--cyan-dim);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            border: 1px solid rgba(0, 242, 254, .2);
-        }
-
-        .final-card h3 {
-            font-family: var(--ff-display);
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -.01em;
-        }
-
-        .final-card p {
-            font-size: 14px;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .final-summary {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .summary-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            font-size: 13px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, .05);
-        }
-
-        .summary-row:last-child {
-            border-bottom: none;
-        }
-
-        .summary-label {
-            color: var(--muted);
-            font-weight: 500;
-        }
-
-        .summary-value {
-            color: var(--cyan);
-            font-weight: 700;
-        }
-
-        .btn-reiniciar {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            align-self: flex-start;
-            background: var(--cyan);
-            color: var(--d900);
-            border: none;
-            border-radius: 40px;
-            padding: 11px 22px;
-            font: 700 13px/1 var(--ff-body);
-            cursor: pointer;
-            transition: var(--ease);
-            box-shadow: 0 4px 18px rgba(0, 242, 254, .22);
-        }
-
-        .btn-reiniciar:hover {
-            background: var(--cyan-dark);
-            transform: translateY(-2px);
-        }
-
-        /* ═══════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════ */
-        @media(max-width:480px) {
-            .brand h1 {
-                font-size: 15px;
-            }
-
-            .btn-ghost-bar,
-            .btn-solid-bar {
-                padding: 7px 13px;
-                font-size: 12px;
-            }
-
-            .bot-column,
-            .user-row {
-                max-width: 90%;
-            }
-
-            .final-card h3 {
-                font-size: 16px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/logo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Blog - Mirai Tech</title>
 </head>
 
 <body>
 
-    <!-- ── Top bar ── -->
-    <div id="top-bar">
-        <a href="./mirai.html" class="brand">
-            <span class="brand-dot"></span>
-            <h1>Mirai</h1>
-        </a>
-        <div class="bar-actions">
-            <button class="btn-ghost-bar" id="back-btn" onclick="voltarPasso()">← Voltar</button>
-            <a href="./mirai.html" class="btn-solid-bar">🏠 Site</a>
+    <!-- HEADER -->
+    <header class="header-main">
+        <div class="header-inner">
+            <div class="logo">
+                <h1>Mirai Tech</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./mirai.html">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="/projetos.html">Serviços</a></li>
+                    <li><a href="#orcamento">Orçamento</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <button class="btn-header">Contato</button>
+        </div>
+    </header>
+
+    <!-- BLOG -->
+    <section class="blog-container reveal">
+
+        <!-- SIDEBAR -->
+        <aside class="blog-sidebar">
+            <div class="search-box">
+                <input type="text" placeholder="O que você procura?">
+            </div>
+
+            <div class="categories">
+                <h3>Categorias</h3>
+                <ul>
+                    <li class="active" data-filter="todos">Todos</li>
+                    <li data-filter="front-end e back-end">Front-End e Back-End</li>
+                    <li data-filter="desenvolvimento de software">Desenvolvimento de Software</li>
+                    <li data-filter="desenvolvimento web">Desenvolvimento Web</li>
+                    <li data-filter="e-commerce">E-commerce</li>
+                    <li data-filter="marketing">Marketing</li>
+                    <li data-filter="negócios">Negócios</li>
+                    <li data-filter="responsividade">Responsividade</li>
+                    <li data-filter="saúde">Saúde</li>
+                    <li data-filter="segurança digital">Segurança Digital</li>
+                    <li data-filter="wireframe de baixa e de alta">Wireframe de baixa e de alta</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- GRID DE POSTS -->
+        <div class="blog-grid">
+
+            <!-- CARD 1 -->
+            <div class="blog-card" data-category="wireframe de baixa e de alta" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-1">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Wireframe de baixa e de alta</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="blog-card" data-category="front-end e back-end" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/img blog/artigofronteback.png" alt="img-artigo-2">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Front-End e Back-End</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="blog-card" data-category="desenvolvimento web" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-3">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Desenvolvimento Web</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="blog-card" data-category="desenvolvimento web" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-4">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Desenvolvimento Web</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="blog-card" data-category="desenvolvimento web" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-5">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Desenvolvimento Web</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="blog-card" data-category="ferramentas" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-6">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Ferramentas</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 7 -->
+            <div class="blog-card" data-category="negócios" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-7">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Negócios</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 8 -->
+            <div class="blog-card" data-category="desenvolvimento web" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-8">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Desenvolvimento Web</span>
+                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, totam.</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+            <!-- CARD 9 -->
+            <div class="blog-card" data-category="software" data-slug="frontend-vs-backend">
+                <div class="blog-img">
+                    <img src="./img/random-image-generator_03_promo-showcase_01_2x.webp" alt="img-artigo-9">
+                </div>
+                <div class="blog-info">
+                    <span class="tag-categoria">Software</span>
+                    <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, quibusdam?</h2>
+                    <a href="./artigo-frontend-vs-backend.html" class="blog-link">Leia mais →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="./js/blog.js"></script>
+
+</body>
+
+<footer class="footer-main">
+    <div class="footer-inner reveal">
+        <div class="footer-brand">
+            <h2 class="footer-logo">Mirai Tech</h2>
+            <p>A Mirai Tech é uma agência de criação de sites profissionais em São Paulo, especializada em
+                desenvolvimento e gestão de sites de alto impacto para empresas.</p>
+            <a href="tel:1141303275" class="footer-tel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                (11) 9999-9999
+            </a>
+            <a href="mailto:contato@miraitech.digital" class="footer-email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                contato@miraitech.digital
+            </a>
+        </div>
+        <div class="footer-col">
+            <h4>Institucional</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="/projetos.html">Portfólio</a></li>
+                <li><a href="#orcamento">Orçamento</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Serviços</h4>
+            <ul>
+                <li><a href="#">Site sob medida</a></li>
+                <li><a href="#">Criação de sites</a></li>
+                <li><a href="#">Criação de E-commerce</a></li>
+                <li><a href="#">Consultoria SEO</a></li>
+                <li><a href="#">Criação de Chatbot</a></li>
+                <li><a href="#">Desenvolvimento WordPress</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Segmentos</h4>
+            <ul>
+                <li><a href="#">Site para Empresas de Tech</a></li>
+                <li><a href="#">Site para Médicos</a></li>
+                <li><a href="#">Site para Contabilidade</a></li>
+                <li><a href="#">Site para Advogados</a></li>
+                <li><a href="#">Site para Dentistas</a></li>
+            </ul>
         </div>
     </div>
-
-    <!-- ── Progress bar ── -->
-    <div id="progress-wrap">
-        <div id="progress-bar"></div>
+    <div class="footer-bottom">
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                    <circle cx="4" cy="4" r="2" />
+                </svg>
+            </a>
+        </div>
+        <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
+        <p class="footer-copy">© 2026 Todos os direitos reservados — Mirai Tech · <a href="#">Política de
+                privacidade</a></p>
     </div>
-
-    <!-- ── Step pips ── -->
-    <div id="step-counter"></div>
-
-    <!-- ── Chat ── -->
-    <div id="chat-wrapper"></div>
-
-    <script>
-        /* ══════════════════════════════════════════════
-           CONFIGURAÇÃO DO FLUXO
-        ══════════════════════════════════════════════ */
-        const questions = [
-            {
-                text: "Olá! 👋 Sou a Mirai, sua consultora digital. Vamos criar algo incrível juntos? Para começar, como posso te chamar?",
-                field: "nome",
-                placeholder: "Digite seu nome..."
-            },
-            {
-                text: "Prazer, {{nome}}! 🎯 Qual é o nome da sua empresa ou projeto?",
-                field: "empresa",
-                placeholder: "Nome da empresa ou projeto..."
-            },
-            {
-                text: "Excelente! E em qual segmento vocês atuam?",
-                field: "segmento",
-                placeholder: null,
-                options: ["Moda & Lifestyle", "Gastronomia", "Saúde & Bem-estar", "Tecnologia", "Serviços Profissionais", "Outro"]
-            },
-            {
-                text: "Perfeito! Que tipo de projeto está buscando?",
-                field: "servico",
-                placeholder: null,
-                options: ["Site Institucional", "Landing Page", "E-commerce", "Redesign / Refatoração", "Identidade Visual", "Pacote Completo"]
-            },
-            {
-                text: "Ótima escolha! E qual seria o prazo ideal para a entrega?",
-                field: "prazo",
-                placeholder: null,
-                options: ["Urgente (até 2 semanas)", "1 mês", "2–3 meses", "Sem pressa, quero qualidade"]
-            },
-            {
-                text: "Temos uma noção de orçamento para direcionar melhor nossa proposta?",
-                field: "orcamento",
-                placeholder: null,
-                options: ["Até R$ 3.000", "R$ 3.000 – R$ 8.000", "R$ 8.000 – R$ 20.000", "Acima de R$ 20.000", "Prefiro receber uma proposta"]
-            },
-            {
-                text: "Quase lá! Me passa seu melhor e-mail para enviarmos a proposta personalizada para {{nome}}. 📩",
-                field: "email",
-                placeholder: "seuemail@exemplo.com"
-            },
-            {
-                text: "E um WhatsApp para contato rápido? (opcional — pode deixar em branco)",
-                field: "whatsapp",
-                placeholder: "(11) 99999-9999"
-            },
-            {
-                text: "final",
-                field: "final",
-                placeholder: null
-            }
-        ];
-
-        /* ══════════════════════════════════════════════
-           ESTADO
-        ══════════════════════════════════════════════ */
-        let currentStep = parseInt(localStorage.getItem('bot_step') || '0');
-        let userData = JSON.parse(localStorage.getItem('bot_userData') || '{}');
-        let historyLog = JSON.parse(localStorage.getItem('bot_history') || '[]');
-
-        const wrapper = document.getElementById('chat-wrapper');
-        const backBtn = document.getElementById('back-btn');
-        const progBar = document.getElementById('progress-bar');
-        const stepCtr = document.getElementById('step-counter');
-
-        /* ══════════════════════════════════════════════
-           PERSISTÊNCIA
-        ══════════════════════════════════════════════ */
-        function saveState() {
-            localStorage.setItem('bot_step', currentStep);
-            localStorage.setItem('bot_userData', JSON.stringify(userData));
-            localStorage.setItem('bot_history', JSON.stringify(historyLog));
-        }
-        function clearState() {
-            localStorage.removeItem('bot_step');
-            localStorage.removeItem('bot_userData');
-            localStorage.removeItem('bot_history');
-        }
-
-        /* ══════════════════════════════════════════════
-           HELPERS
-        ══════════════════════════════════════════════ */
-        function getTime() {
-            const n = new Date();
-            return n.getHours() + ':' + n.getMinutes().toString().padStart(2, '0');
-        }
-        function fillTemplate(t) {
-            return t.replace(/\{\{(\w+)\}\}/g, (_, k) => userData[k] || '');
-        }
-        function scrollBot() {
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-        function removeActiveInput() {
-            const el = document.getElementById('active-input-block');
-            if (el) el.remove();
-        }
-
-        /* ── mascot ── */
-        function createMascot(stepIndex) {
-            const div = document.createElement('div');
-            div.className = 'mascot-container';
-
-            // try to use image; fallback to emoji
-            const img = new Image();
-            const isFinal = questions[stepIndex] && questions[stepIndex].field === 'final';
-            img.src = isFinal ? './img/TigrinhoContrato.png' : './img/TigrinhoPositivo.png';
-            img.alt = 'Mirai';
-            img.className = '';
-            img.style.cssText = 'width:130%;height:auto;object-fit:contain;transform:translateY(18%)';
-
-            img.onerror = () => {
-                div.innerHTML = '<span class="mascot-icon">🤖</span>';
-            };
-            img.onload = () => {
-                div.innerHTML = '';
-                div.appendChild(img);
-            };
-            // show emoji immediately while loading
-            div.innerHTML = '<span class="mascot-icon">🤖</span>';
-            return div;
-        }
-
-        /* ── progress & pips ── */
-        function updateProgress() {
-            const total = questions.length - 1; // exclude final
-            const current = Math.min(currentStep, total);
-            const pct = total > 0 ? (current / total) * 100 : 0;
-            progBar.style.width = pct + '%';
-
-            // pips
-            stepCtr.innerHTML = '';
-            for (let i = 0; i < total; i++) {
-                const pip = document.createElement('div');
-                pip.className = 'step-pip' +
-                    (i < current ? ' done' : '') +
-                    (i === current ? ' active' : '');
-                stepCtr.appendChild(pip);
-            }
-        }
-
-        function updateBackBtn() {
-            backBtn.disabled = currentStep <= 0;
-        }
-
-        /* ══════════════════════════════════════════════
-           RENDER — mensagem usuário
-        ══════════════════════════════════════════════ */
-        function renderUserMessage(text, time) {
-            const row = document.createElement('div');
-            row.className = 'message user';
-
-            const col = document.createElement('div');
-            col.className = 'user-row';
-
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            bubble.textContent = text;
-
-            const ts = document.createElement('span');
-            ts.className = 'msg-time';
-            ts.textContent = time;
-
-            col.appendChild(bubble);
-            col.appendChild(ts);
-            row.appendChild(col);
-            wrapper.appendChild(row);
-        }
-
-        /* ══════════════════════════════════════════════
-           RENDER — mensagem bot
-        ══════════════════════════════════════════════ */
-        function renderBotMessage(stepIndex, time, interactive) {
-            const q = questions[stepIndex];
-            if (!q) return;
-
-            const isFinal = q.field === 'final';
-            const row = document.createElement('div');
-            row.className = 'message bot';
-            if (interactive && !isFinal) row.id = 'active-input-block';
-
-            const col = document.createElement('div');
-            col.className = 'bot-column';
-
-            /* ── FINAL ── */
-            if (isFinal) {
-                const card = document.createElement('div');
-                card.className = 'final-card';
-
-                card.innerHTML = `
-      <div class="final-card-icon">🎉</div>
-      <div>
-        <h3>Proposta recebida, ${userData.nome || 'você'}!</h3>
-        <p>Em breve nossa equipe vai analisar suas informações e enviar uma proposta personalizada para <strong style="color:var(--cyan)">${userData.email || 'seu e-mail'}</strong>.</p>
-      </div>
-    `;
-
-                // summary
-                const summary = document.createElement('div');
-                summary.className = 'final-summary';
-                const fields = [
-                    { label: 'Nome', key: 'nome' },
-                    { label: 'Empresa', key: 'empresa' },
-                    { label: 'Segmento', key: 'segmento' },
-                    { label: 'Projeto', key: 'servico' },
-                    { label: 'Prazo', key: 'prazo' },
-                    { label: 'Orçamento', key: 'orcamento' },
-                    { label: 'E-mail', key: 'email' },
-                    { label: 'WhatsApp', key: 'whatsapp' },
-                ];
-                fields.forEach(f => {
-                    if (!userData[f.key]) return;
-                    const r = document.createElement('div');
-                    r.className = 'summary-row';
-                    r.innerHTML = `<span class="summary-label">${f.label}</span><span class="summary-value">${userData[f.key]}</span>`;
-                    summary.appendChild(r);
-                });
-                card.appendChild(summary);
-
-                // restart button
-                const restart = document.createElement('button');
-                restart.className = 'btn-reiniciar';
-                restart.innerHTML = '↺ Novo orçamento';
-                restart.addEventListener('click', reiniciar);
-                card.appendChild(restart);
-
-                const ts = document.createElement('span');
-                ts.className = 'msg-time';
-                ts.textContent = time;
-
-                col.appendChild(card);
-                col.appendChild(ts);
-
-                if (interactive) {
-                    console.log('📦 Dados do cliente:', userData);
-                    /* ── Aqui você pode chamar sua API / webhook ── */
-                    clearState();
-                }
-
-                /* ── OPÇÕES ── */
-            } else if (q.options) {
-                const bigBubble = document.createElement('div');
-                bigBubble.className = 'bubble-with-input';
-
-                const bt = document.createElement('p');
-                bt.className = 'bubble-text';
-                bt.textContent = fillTemplate(q.text);
-                bigBubble.appendChild(bt);
-
-                if (interactive) {
-                    const label = document.createElement('p');
-                    label.className = 'options-label';
-                    label.textContent = 'Escolha uma opção';
-                    bigBubble.appendChild(label);
-
-                    const optRow = document.createElement('div');
-                    optRow.className = 'options-row';
-                    q.options.forEach(opt => {
-                        const btn = document.createElement('button');
-                        btn.className = 'option-btn';
-                        btn.textContent = opt;
-                        btn.addEventListener('click', () => handleAnswer(opt));
-                        optRow.appendChild(btn);
-                    });
-                    bigBubble.appendChild(optRow);
-                }
-
-                const ts = document.createElement('span');
-                ts.className = 'msg-time';
-                ts.textContent = time;
-
-                col.appendChild(bigBubble);
-                col.appendChild(ts);
-
-                /* ── INPUT TEXTO ── */
-            } else {
-                const bigBubble = document.createElement('div');
-                bigBubble.className = 'bubble-with-input';
-
-                const bt = document.createElement('p');
-                bt.className = 'bubble-text';
-                bt.textContent = fillTemplate(q.text);
-                bigBubble.appendChild(bt);
-
-                if (interactive) {
-                    const inputRow = document.createElement('div');
-                    inputRow.className = 'inline-input-row';
-
-                    const input = document.createElement('input');
-                    input.type = 'text';
-                    input.id = 'user-input';
-                    input.placeholder = q.placeholder || 'Digite aqui...';
-                    input.autocomplete = 'off';
-
-                    const sendBtn = document.createElement('button');
-                    sendBtn.id = 'send-btn';
-                    sendBtn.innerHTML = `<svg viewBox="0 0 24 24" width="22" height="22"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>`;
-
-                    const submit = () => {
-                        const val = input.value.trim();
-                        // campo whatsapp pode ser pulado
-                        if (!val && q.field !== 'whatsapp') return;
-                        handleAnswer(val || '—');
-                    };
-
-                    sendBtn.addEventListener('click', submit);
-                    input.addEventListener('keypress', e => { if (e.key === 'Enter') submit(); });
-
-                    inputRow.appendChild(input);
-                    inputRow.appendChild(sendBtn);
-                    bigBubble.appendChild(inputRow);
-
-                    setTimeout(() => input.focus(), 120);
-                }
-
-                const ts = document.createElement('span');
-                ts.className = 'msg-time';
-                ts.textContent = time;
-
-                col.appendChild(bigBubble);
-                col.appendChild(ts);
-            }
-
-            row.appendChild(createMascot(stepIndex));
-            row.appendChild(col);
-            wrapper.appendChild(row);
-        }
-
-        /* ══════════════════════════════════════════════
-           TYPING INDICATOR
-        ══════════════════════════════════════════════ */
-        function showTyping(stepIndex, cb) {
-            const row = document.createElement('div');
-            row.className = 'message bot';
-            row.id = 'typing-indicator';
-
-            const col = document.createElement('div');
-            col.className = 'bot-column';
-
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            bubble.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-
-            col.appendChild(bubble);
-            row.appendChild(createMascot(stepIndex));
-            row.appendChild(col);
-            wrapper.appendChild(row);
-            scrollBot();
-
-            setTimeout(() => { row.remove(); cb(); }, 1100);
-        }
-
-        /* ══════════════════════════════════════════════
-           ADD MESSAGES
-        ══════════════════════════════════════════════ */
-        function addUserMessage(text) {
-            const time = getTime();
-            historyLog.push({ type: 'user', text, time });
-            saveState();
-            renderUserMessage(text, time);
-            scrollBot();
-        }
-
-        function addBotMessage(stepIndex) {
-            const time = getTime();
-            historyLog.push({ type: 'bot', stepIndex, time });
-            saveState();
-            renderBotMessage(stepIndex, time, true);
-            updateBackBtn();
-            updateProgress();
-            scrollBot();
-        }
-
-        /* ══════════════════════════════════════════════
-           HANDLE ANSWER
-        ══════════════════════════════════════════════ */
-        function handleAnswer(answer) {
-            const q = questions[currentStep];
-            if (currentStep < questions.length - 1) {
-                userData[q.field] = answer;
-            }
-
-            // freeze active block
-            const activeBlock = document.getElementById('active-input-block');
-            if (activeBlock) {
-                const si = currentStep;
-                const tsEl = activeBlock.querySelector('.msg-time');
-                const t = tsEl ? tsEl.textContent : getTime();
-                activeBlock.remove();
-                renderBotMessage(si, t, false);
-            }
-
-            addUserMessage(answer);
-            currentStep++;
-            saveState();
-            updateProgress();
-
-            if (currentStep < questions.length) {
-                showTyping(currentStep, () => addBotMessage(currentStep));
-            }
-        }
-
-        /* ══════════════════════════════════════════════
-           VOLTAR
-        ══════════════════════════════════════════════ */
-        function voltarPasso() {
-            if (currentStep <= 0) return;
-
-            removeActiveInput();
-
-            if (historyLog.length && historyLog[historyLog.length - 1].type === 'bot')
-                historyLog.pop();
-
-            if (historyLog.length && historyLog[historyLog.length - 1].type === 'user') {
-                historyLog.pop();
-                if (wrapper.lastChild) wrapper.removeChild(wrapper.lastChild);
-            }
-
-            if (wrapper.lastChild) wrapper.removeChild(wrapper.lastChild);
-
-            currentStep--;
-            const f = questions[currentStep].field;
-            delete userData[f];
-
-            saveState();
-            updateBackBtn();
-            updateProgress();
-
-            const last = historyLog[historyLog.length - 1];
-            if (last) renderBotMessage(last.stepIndex, last.time, true);
-            scrollBot();
-        }
-
-        /* ══════════════════════════════════════════════
-           REINICIAR
-        ══════════════════════════════════════════════ */
-        function reiniciar() {
-            clearState();
-            currentStep = 0;
-            userData = {};
-            historyLog = [];
-            wrapper.innerHTML = '';
-            updateProgress();
-            addBotMessage(0);
-        }
-
-        /* ══════════════════════════════════════════════
-           INIT
-        ══════════════════════════════════════════════ */
-        function init() {
-            updateProgress();
-            if (historyLog.length > 0) {
-                historyLog.forEach((entry, i) => {
-                    const isLast = i === historyLog.length - 1;
-                    if (entry.type === 'user') renderUserMessage(entry.text, entry.time);
-                    else renderBotMessage(entry.stepIndex, entry.time, isLast);
-                });
-                scrollBot();
-            } else {
-                currentStep = 0; userData = {};
-                addBotMessage(0);
-            }
-            updateBackBtn();
-        }
-
-        init();
-    </script>
-</body>
+</footer>
 
 </html>

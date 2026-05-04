@@ -12,12 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return window.innerWidth <= 768 ? 1 : 3;
   }
 
-  // ── AJUSTA LARGURA DOS CARDS DINAMICAMENTE ──
   function setCardWidths() {
     const gap = 24;
     const vis = visible();
     const totalGaps = gap * (vis - 1);
-    const cardWidth = (wrap.offsetWidth - totalGaps) / vis;
+
+    // Desconta padding real do wrap
+    const wrapStyle = window.getComputedStyle(wrap);
+    const paddingLeft = parseFloat(wrapStyle.paddingLeft) || 0;
+    const paddingRight = parseFloat(wrapStyle.paddingRight) || 0;
+    const availableWidth = wrap.offsetWidth - paddingLeft - paddingRight;
+
+    // Mobile: 92% da largura disponível para dar sensação de "há mais cards"
+    const cardWidth = vis === 1
+      ? availableWidth * 0.92
+      : (availableWidth - totalGaps) / vis;
 
     cards.forEach(card => {
       card.style.minWidth = cardWidth + 'px';
@@ -26,14 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function cardW() {
-    const gap = 24;
-    return cards[0].offsetWidth + gap;
+    return cards[0].offsetWidth + 24;
   }
 
-  // ── DOTS ──
   function buildDots() {
     dotsContainer.innerHTML = '';
-    const totalDots = total - visible() + 1;
+    const totalDots = Math.max(1, total - visible() + 1);
     for (let i = 0; i < totalDots; i++) {
       const dot = document.createElement('span');
       dot.classList.add('dot');
@@ -49,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── MOVER ──
   function goTo(i) {
     const max = total - visible();
     if (i < 0) i = max;
@@ -59,18 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDots();
   }
 
-  // ── BOTÕES ──
-  document.getElementById('btnAvalPrev').addEventListener('click', () => { goTo(cur - 1);  });
-  document.getElementById('btnAvalNext').addEventListener('click', () => { goTo(cur + 1);  });
+  document.getElementById('btnAvalPrev').addEventListener('click', () => { goTo(cur - 1); reset(); });
+  document.getElementById('btnAvalNext').addEventListener('click', () => { goTo(cur + 1); reset(); });
 
-  // ── AUTOPLAY ──
   function start() { timer = setInterval(() => goTo(cur + 1), 4000); }
-  function stop()  { clearInterval(timer); }
+  function stop() { clearInterval(timer); }
   function reset() { stop(); start(); }
 
-
-
-  // ── SWIPE ──
   let tx = 0;
   track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; stop(); }, { passive: true });
   track.addEventListener('touchend', e => {
@@ -79,42 +80,38 @@ document.addEventListener('DOMContentLoaded', () => {
     start();
   }, { passive: true });
 
-  // ── RESIZE ──
   window.addEventListener('resize', () => {
     setCardWidths();
     buildDots();
     goTo(0);
   });
 
-    // ── MODAL: ABRE ──
   cards.forEach(card => {
     card.addEventListener('click', () => {
-      document.getElementById('modal-texto').textContent   = card.querySelector('p').textContent;
-      document.getElementById('modal-nome').textContent    = card.querySelector('strong').textContent;
+      document.getElementById('modal-texto').textContent = card.querySelector('p').textContent;
+      document.getElementById('modal-nome').textContent = card.querySelector('strong').textContent;
       document.getElementById('modal-empresa').textContent = card.querySelector('.avaliacao-autor span').textContent;
-      document.getElementById('modal-avatar').textContent  = card.querySelector('.avaliacao-avatar').textContent;
+      document.getElementById('modal-avatar').textContent = card.querySelector('.avaliacao-avatar').textContent;
       modal.style.display = 'flex';
       stop();
     });
   });
 
-  // ── MODAL: FECHA ──
   document.getElementById('avaliacao-modal-close').addEventListener('click', () => {
     modal.style.display = 'none';
     start();
   });
-
   modal.addEventListener('click', e => {
     if (e.target === modal) { modal.style.display = 'none'; start(); }
   });
-
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && modal.style.display === 'flex') { modal.style.display = 'none'; start(); }
   });
 
-  // ── INIT ──
+  // Init
   setCardWidths();
   buildDots();
-  
+  goTo(0);
+  start();
 
 });
