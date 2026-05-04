@@ -4,42 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/stylePortifolios.css">
+    <title>Portfólio — Mirai Tech | Criação de Sites Profissionais</title>
     <link rel="shortcut icon" href="./img/logo.jpeg" type="image/x-icon">
-    <title>Criação de Sites no menor preço com a Mirai Tech</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Syne:wght@700;800&display=swap">
+    <link rel="stylesheet" href="css/stylePortifolios.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="header-main">
+    <header class="header-main" id="header">
         <div class="header-inner">
             <div class="logo">
+                <span class="logo-dot"></span>
                 <h1>Mirai Tech</h1>
             </div>
             <nav>
                 <ul>
                     <li><a href="/mirai.html">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="/sobre.html">Sobre</a></li>
                     <li><a href="/projetos.html">Serviços</a></li>
-                    <li><a href="#orcamento">Orçamento</a></li>
+                    <li><a href="/bot.html">Orçamento</a></li>
                     <li><a href="./blog.html">Blog</a></li>
                 </ul>
             </nav>
-            <div>
-                <button class="btn-header">Contato</button>
+            <div class="header-cta">
+                <button class="btn-header">Fale conosco</button>
             </div>
+    
+            <!-- Mobile hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    
+        <!-- Mobile nav -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home" onclick="closeMobileNav()">Início</a></li>
+                <li><a href="#sobre" onclick="closeMobileNav()">Sobre</a></li>
+                <li><a href="/projetos.html" onclick="closeMobileNav()">Serviços</a></li>
+                <li><a href="#orcamento" onclick="closeMobileNav()">Orçamento</a></li>
+                <li><a href="./blog.html" onclick="closeMobileNav()">Blog</a></li>
+                <li><a href="#" class="mobile-cta">Fale conosco</a></li>
+            </ul>
         </div>
     </header>
 
     <main>
 
-        <!-- Carrosel em destaque -->
-        <section class="section-hero">
-            <div class="carrosel-group reveal">
+        <!-- ===================== HERO PORTFÓLIO ===================== -->
+        <section class="port-hero">
+            <div class="hero-noise"></div>
+            <div class="hero-glow"></div>
+            <div class="port-hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Nossos projetos
+                </div>
+                <h1 class="port-hero-title">
+                    Portfólio <em>Mirai</em>
+                </h1>
+                <p class="port-hero-sub">
+                    Projetos desenvolvidos com tecnologia de ponta e design que converte.<br>
+                    Cada site é construído para gerar resultado real.
+                </p>
+            </div>
+        </section>
 
-                <button class="nav-btn" id="prev">
-                    <svg viewBox="0 0 24 24" width="20" height="20">
+
+        <!-- ===================== CARROSEL EM DESTAQUE ===================== -->
+        <section class="section-carrosel">
+            <div class="carrosel-wrap reveal">
+
+                <button class="carrosel-nav-btn" id="prev" aria-label="Anterior">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M15 18l-6-6 6-6" />
                     </svg>
                 </button>
@@ -48,18 +88,20 @@
                     <div class="carrosel-track" id="carroselTrack">
 
                         <div class="carrosel-item">
-                            <div class="img-area">
+                            <div class="carrosel-img">
                                 <img src="/img/img portifolio/Captura de tela 2026-03-26 164146.png" alt="Mirai Tech">
-                                <span class="overlay-tag">Site Institucional</span>
+                                <span class="carrosel-tag">Site Institucional</span>
                             </div>
-                            <div class="desc-item-carrosel">
-                                <div class="desc-left">
-                                    <h3>Mirai Tech</h3>
-                                    <h4>Empresa de Tecnologia</h4>
+                            <div class="carrosel-desc">
+                                <div class="carrosel-desc-left">
+                                    <h3>LPS Gravatas</h3>
+                                    <p>Empresa de vendas de gravatas e itens masculinos</p>
                                 </div>
-                                <div class="desc-right">
-                                    <span class="counter">
-                                        <span id="carroselCur">01</span> / <span id="carroselTot">03</span>
+                                <div class="carrosel-desc-right">
+                                    <span class="carrosel-counter">
+                                        <span id="carroselCur">01</span>
+                                        <span class="counter-sep">/</span>
+                                        <span id="carroselTot">03</span>
                                     </span>
                                     <a href="#" class="btn-ver">Ver online ↗</a>
                                 </div>
@@ -67,32 +109,32 @@
                         </div>
 
                         <div class="carrosel-item">
-                            <div class="img-area">
+                            <div class="carrosel-img">
                                 <img src="/img/img portifolio/image copy 3.png" alt="Loja Virtual">
-                                <span class="overlay-tag">E-commerce</span>
+                                <span class="carrosel-tag">E-commerce</span>
                             </div>
-                            <div class="desc-item-carrosel">
-                                <div class="desc-left">
-                                    <h3>Loja Virtual</h3>
-                                    <h4>Plataforma de Vendas Online</h4>
+                            <div class="carrosel-desc">
+                                <div class="carrosel-desc-left">
+                                    <h3>Apple</h3>
+                                    <p>Venda de celulares</p>
                                 </div>
-                                <div class="desc-right">
+                                <div class="carrosel-desc-right">
                                     <a href="#" class="btn-ver">Ver online ↗</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="carrosel-item">
-                            <div class="img-area">
+                            <div class="carrosel-img">
                                 <img src="/img/img portifolio/Captura de tela 2026-03-26 164515.png" alt="Dashboard">
-                                <span class="overlay-tag">Dashboard</span>
+                                <span class="carrosel-tag">Dashboard</span>
                             </div>
-                            <div class="desc-item-carrosel">
-                                <div class="desc-left">
-                                    <h3>Painel Administrativo</h3>
-                                    <h4>Sistema de Gestão Web</h4>
+                            <div class="carrosel-desc">
+                                <div class="carrosel-desc-left">
+                                    <h3>Prime FIT</h3>
+                                    <p>Site de academia</p>
                                 </div>
-                                <div class="desc-right">
+                                <div class="carrosel-desc-right">
                                     <a href="#" class="btn-ver">Ver online ↗</a>
                                 </div>
                             </div>
@@ -101,8 +143,9 @@
                     </div>
                 </div>
 
-                <button class="nav-btn" id="next">
-                    <svg viewBox="0 0 24 24" width="20" height="20">
+                <button class="carrosel-nav-btn" id="next" aria-label="Próximo">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M9 18l6-6-6-6" />
                     </svg>
                 </button>
@@ -111,235 +154,282 @@
             <div class="carrosel-dots" id="carroselDots"></div>
         </section>
 
-        <!-- Grid de projetos -->
-        <section class="mais-projetos reveal">
-            <span class="spanTitle">Criação de Sites Profissionais</span>
-            <h2>Portfólio <span>Mirai</span></h2>
-            <p>Projetos desenvolvidos com tecnologia de ponta e design que converte.</p>
 
-            <div class="categorias-itens">
-                <a href="#" class="item-Categoria active">Todos</a>
-                <a href="#" class="item-Categoria">Comunicação</a>
-                <a href="#" class="item-Categoria">Serviços</a>
-                <a href="#" class="item-Categoria">Financeiro</a>
-                <a href="#" class="item-Categoria">E-commerce</a>
-                <a href="#" class="item-Categoria">Portal de Notícias</a>
-                <a href="#" class="item-Categoria">Tecnologia</a>
-                <a href="#" class="item-Categoria">Industrial</a>
-                <a href="#" class="item-Categoria">Startup</a>
+        <!-- ===================== GRID DE PROJETOS ===================== -->
+        <section class="section-projetos bg-dark">
+
+            <div class="projetos-header reveal">
+                <div>
+                    <span class="section-label light">Criação de Sites Profissionais</span>
+                    <h2>Todos os <em>Projetos</em></h2>
+                    <p>Explore o portfólio completo por categoria.</p>
+                </div>
+            </div>
+
+            <!-- Filtro de categorias -->
+            <div class="categorias-wrap reveal">
+                <div class="categorias-itens" id="categoriasFiltro">
+                    <button class="item-Categoria active" data-filter="todos">Todos</button>
+                    <button class="item-Categoria" data-filter="comunicação">Comunicação</button>
+                    <button class="item-Categoria" data-filter="serviços">Serviços</button>
+                    <button class="item-Categoria" data-filter="financeiro">Financeiro</button>
+                    <button class="item-Categoria" data-filter="e-commerce">E-commerce</button>
+                    <button class="item-Categoria" data-filter="portal">Portal de Notícias</button>
+                    <button class="item-Categoria" data-filter="tecnologia">Tecnologia</button>
+                    <button class="item-Categoria" data-filter="industrial">Industrial</button>
+                    <button class="item-Categoria" data-filter="startup">Startup</button>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="projetos-grid" id="projetosGrid">
+
+                <article class="projeto-card" data-categoria="tecnologia">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/Captura de tela 2026-03-26 164146.png" alt="Projeto 1">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Tecnologia</span>
+                        <h3>LPS Gravatas</h3>
+                        <p>E-commerce· 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="tecnologia">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/Captura de tela 2026-03-26 164309.png" alt="Projeto 2">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Tecnologia</span>
+                        <h3>Dev Studio</h3>
+                        <p>Front-End e Back-End · 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="serviços">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/Captura de tela 2026-03-26 164358.png" alt="Projeto 3">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Serviços</span>
+                        <h3>Consultoria Pro</h3>
+                        <p>Desenvolvimento Web · 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="startup">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/Captura de tela 2026-03-26 164515.png" alt="Projeto 4">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Startup</span>
+                        <h3>Painel Admin</h3>
+                        <p>Dashboard · 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="serviços">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/Captura de tela 2026-03-26 164643.png" alt="Projeto 5">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Serviços</span>
+                        <h3>Portal Corporativo</h3>
+                        <p>Desenvolvimento Web · 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="financeiro">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/image copy 2.png" alt="Projeto 6">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Financeiro</span>
+                        <h3>Real Tax Contabilidade</h3>
+                        <p>Site institucional · 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="e-commerce">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/image copy 3.png" alt="Projeto 7">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">E-commerce</span>
+                        <h3>MindSelf</h3>
+                        <p>Loja Virtual · 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="comunicação">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/image copy.png" alt="Projeto 8">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Comunicação</span>
+                        <h3>Essential Idiomas</h3>
+                        <p>Landing page · 2026</p>
+                    </div>
+                </article>
+
+                <article class="projeto-card" data-categoria="startup">
+                    <div class="projeto-thumb">
+                        <img src="./img/img portifolio/image.png" alt="Projeto 9">
+                        <div class="projeto-overlay">
+                            <a href="#" class="overlay-link">Ver Projeto ↗</a>
+                        </div>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="projeto-tag">Startup</span>
+                        <h3>SaaS Platform</h3>
+                        <p>Software · 2026</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Estado vazio (quando nenhum card bate no filtro) -->
+            <div class="projetos-empty" id="projetosEmpty" style="display:none;">
+                <p>Nenhum projeto encontrado nessa categoria ainda.</p>
+                <button class="btn-primary" id="btnLimparFiltro">Ver todos</button>
+            </div>
+
+        </section>
+
+
+        <!-- ===================== CTA FINAL ===================== -->
+        <section class="section-cta">
+            <div class="cta-inner reveal">
+                <span class="section-label">Vamos começar?</span>
+                <h2>Seu próximo site pode<br>estar aqui também</h2>
+                <p>Entre em contato e receba uma proposta personalizada para o seu negócio.</p>
+                <div class="cta-actions">
+                    <a href="/mirai.html#orcamento" class="btn-primary">Faça seu orçamento</a>
+                    <a href="/mirai.html#sobre" class="btn-ghost">Conhecer a agência →</a>
+                </div>
             </div>
         </section>
 
-        <!-- Cards dos projetos -->
-        <div class="projetos-grid">
-
-            <!-- CARD 1 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/Captura de tela 2026-03-26 164146.png" alt="img-projeto-1">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Wireframe de baixa e de alta</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/Captura de tela 2026-03-26 164309.png" alt="img-projeto-2">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Front-End e Back-End</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/Captura de tela 2026-03-26 164358.png" alt="img-projeto-3">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Desenvolvimento Web</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/Captura de tela 2026-03-26 164515.png" alt="img-projeto-4">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Desenvolvimento Web</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 5 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/Captura de tela 2026-03-26 164643.png" alt="img-projeto-5">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Desenvolvimento Web</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 6 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/image copy 2.png" alt="img-projeto-6">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Ferramentas</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 7 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/image copy 3.png" alt="img-projeto-7">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Negócios</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 8 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/image copy.png" alt="img-projeto-8">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Desenvolvimento Web</span>
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, totam.</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-            <!-- CARD 9 -->
-            <div class="projeto-card">
-                <div class="projeto-thumb">
-                    <img src="./img/img portifolio/image.png" alt="img-projeto-9">
-                </div>
-                <div class="projeto-info">
-                    <span class="projeto-tag">Software</span>
-                    <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, quibusdam?</h2>
-                </div>
-                <a href="#" class="projeto-link">Ver Projeto ↗</a>
-            </div>
-
-        </div>
-        <script src="/js/carrosel-projetos.js"></script>
-        <script src="/js/script.js"></script>
     </main>
+
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer-main">
+        <div class="footer-inner reveal">
+
+            <div class="footer-brand">
+                <div class="footer-logo-wrap">
+                    <span class="logo-dot"></span>
+                    <h2 class="footer-logo">Mirai Tech</h2>
+                </div>
+                <p>Agência de criação de sites profissionais em São Paulo, especializada em desenvolvimento e gestão de
+                    sites de
+                    alto impacto para empresas.</p>
+                <a href="tel:11999999999" class="footer-tel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    (11) 9999-9999
+                </a>
+                <a href="mailto:contato@miraitech.digital" class="footer-email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    contato@miraitech.digital
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="/mirai.html">Home</a></li>
+                    <li><a href="/projetos.html">Portfólio</a></li>
+                    <li><a href="/mirai.html#orcamento">Orçamento</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#">Site sob medida</a></li>
+                    <li><a href="#">Criação de sites</a></li>
+                    <li><a href="#">E-commerce</a></li>
+                    <li><a href="#">Consultoria SEO</a></li>
+                    <li><a href="#">Chatbot com IA</a></li>
+                    <li><a href="#">WordPress</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Segmentos</h4>
+                <ul>
+                    <li><a href="#">Empresas de Tech</a></li>
+                    <li><a href="#">Médicos</a></li>
+                    <li><a href="#">Contabilidade</a></li>
+                    <li><a href="#">Advogados</a></li>
+                    <li><a href="#">Dentistas</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
+            <p class="footer-copy">© 2026 Mirai Tech · <a href="#">Política de privacidade</a></p>
+        </div>
+    </footer>
+
+    <script src="js/carrosel-projetos.js"></script>
 </body>
-<footer class="footer-main">
-    <div class="footer-inner reveal">
-
-        <!-- Coluna 1 (logo e informação) -->
-        <div class="footer-brand">
-            <h2 class="footer-logo">Mirai Tech</h2>
-            <p>A Mirai Tech é uma agência de criação de sites profissionais em São Paulo, especializada em
-                desenvolvimento e gestão de sites de alto impacto para empresas.</p>
-            <a href="tel:1141303275" class="footer-tel">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
-                (11) 9999-9999
-            </a>
-            <a href="mailto:contato@miraitech.digital" class="footer-email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                </svg>
-                contato@miraitech.digital
-            </a>
-        </div>
-
-        <!-- Col 2: Institucional -->
-        <div class="footer-col">
-            <h4>Institucional</h4>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="/projetos.html">Portfólio</a></li>
-                <li><a href="#orcamento">Orçamento</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-
-            </ul>
-        </div>
-
-        <!-- Col 3: Serviços -->
-        <div class="footer-col">
-            <h4>Serviços</h4>
-            <ul>
-                <li><a href="#">Site sob medida</a></li>
-                <li><a href="#">Criação de sites</a></li>
-                <li><a href="#">Criação de E-commerce</a></li>
-                <li><a href="#">Consultoria SEO</a></li>
-                <li><a href="#">Criação de Chatbot</a></li>
-                <li><a href="#">Desenvolvimento WordPress</a></li>
-            </ul>
-        </div>
-
-        <!-- Col 4: Segmentos -->
-        <div class="footer-col">
-            <h4>Segmentos</h4>
-            <ul>
-                <li><a href="#">Site para Empresas de Tech</a></li>
-                <li><a href="#">Site para Médicos</a></li>
-                <li><a href="#">Site para Contabilidade</a></li>
-                <li><a href="#">Site para Advogados</a></li>
-                <li><a href="#">Site para Dentistas</a></li>
-            </ul>
-        </div>
-
-    </div>
-
-    <!-- Bottom bar -->
-    <div class="footer-bottom">
-        <div class="footer-social">
-            <a href="#" aria-label="Facebook">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-            </a>
-            <a href="#" aria-label="Instagram">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                </svg>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
-                    <circle cx="4" cy="4" r="2" />
-                </svg>
-            </a>
-        </div>
-        <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
-        <p class="footer-copy">© 2026 Todos os direitos reservados — Mirai Tech · <a href="#">Política de
-                privacidade</a></p>
-    </div>
-
-</footer>
-
 
 </html>

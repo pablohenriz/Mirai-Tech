@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre — Mirai Tech | Agência de Sites Profissionais em São Paulo</title>
+    <meta name="description"
+        content="Conheça a Mirai Tech: nossa história, missão, equipe e os valores que guiam a criação de sites profissionais de alto impacto." />
+    <link rel="shortcut icon" href="./img/logo.jpeg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        /* ══════════════════════════════════════
+       PAGE-LEVEL EXTRAS (sobre.html only)
+    ══════════════════════════════════════ */
+
+        /* noise overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── HERO ────────────────────────────── */
+        .sobre-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 100px;
+            overflow: hidden;
+            background: var(--dark-900);
+        }
+
+        .sobre-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 900px 600px at 50% 0%, rgba(0, 242, 254, .07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* animated grid lines */
+        .sobre-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 242, 254, .04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, .04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+        }
+
+        .sobre-hero .section-label {
+            margin-bottom: 20px;
+        }
+
+        .sobre-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(44px, 6vw, 80px);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            margin-bottom: 28px;
+        }
+
+        .sobre-hero-title .highlight {
+            position: relative;
+            color: var(--cyan);
+            display: inline-block;
+        }
+
+        .sobre-hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+            border-radius: 2px;
+        }
+
+        .sobre-hero-sub {
+            font-size: clamp(16px, 1.8vw, 19px);
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.75;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .hero-chips {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .1);
+            color: rgba(255, 255, 255, .65);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 9px 18px;
+            border-radius: 40px;
+        }
+
+        .hero-chip span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            flex-shrink: 0;
+            box-shadow: 0 0 8px var(--cyan);
+        }
+
+        /* scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, .3);
+            font-size: 10px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint-line {
+            width: 1px;
+            height: 44px;
+            background: linear-gradient(to bottom, var(--cyan), transparent);
+            animation: scrollLine 2.2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0% {
+                opacity: 0;
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+
+            50% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+
+        /* ── NUMBERS BAR ─────────────────────── */
+        .numbers-bar {
+            background: var(--dark-700);
+            border-top: 1px solid rgba(255, 255, 255, .05);
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            padding: 0;
+        }
+
+        .numbers-inner {
+            display: flex;
+            align-items: stretch;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .num-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 52px 24px;
+            border-right: 1px solid rgba(255, 255, 255, .05);
+            gap: 6px;
+            transition: background .3s;
+        }
+
+        .num-item:last-child {
+            border-right: none;
+        }
+
+        .num-item:hover {
+            background: rgba(0, 242, 254, .03);
+        }
+
+        .num-value {
+            font-family: var(--font-display);
+            font-size: clamp(38px, 4vw, 56px);
+            font-weight: 800;
+            color: var(--cyan);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .num-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            text-align: center;
+        }
+
+        /* ── MANIFESTO ───────────────────────── */
+        .section-manifesto {
+            padding: 120px 0;
+            background: var(--dark-900);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-manifesto::before {
+            content: '';
+            position: absolute;
+            right: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, .05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .manifesto-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 6vw, 100px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .manifesto-left {
+            position: relative;
+        }
+
+        .manifesto-quote {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3vw, 44px);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.18;
+            letter-spacing: -0.025em;
+            margin-bottom: 32px;
+        }
+
+        .manifesto-quote em {
+            font-style: normal;
+            color: var(--cyan);
+        }
+
+        .manifesto-body {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .manifesto-signature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .sig-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--cyan-dim);
+            border: 2px solid rgba(0, 242, 254, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--cyan);
+            flex-shrink: 0;
+        }
+
+        .sig-info strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .sig-info span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* right side: visual card stack */
+        .manifesto-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mcard {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 20px;
+            padding: 28px 28px;
+            transition: var(--transition);
+        }
+
+        .mcard:hover {
+            background: rgba(0, 242, 254, .04);
+            border-color: rgba(0, 242, 254, .18);
+            transform: translateX(6px);
+        }
+
+        .mcard-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--cyan-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan);
+            margin-bottom: 14px;
+        }
+
+        .mcard h4 {
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: -.01em;
+        }
+
+        .mcard p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ── TIMELINE ────────────────────────── */
+        .section-timeline {
+            padding: 120px 0;
+            background: var(--dark-700);
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 0 24px;
+        }
+
+        .timeline-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 800;
+            color: var(--white);
+            margin: 10px 0 14px;
+            letter-spacing: -0.025em;
+        }
+
+        .timeline-header p {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .timeline-wrap {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 6vw, 60px);
+            position: relative;
+        }
+
+        /* vertical line */
+        .timeline-wrap::before {
+            content: '';
+            position: absolute;
+            left: clamp(24px, 6vw, 60px);
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 242, 254, .3) 10%, rgba(0, 242, 254, .3) 90%, transparent);
+            transform: translateX(28px);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 56px;
+            position: relative;
+            align-items: flex-start;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tl-dot-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tl-dot {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--dark-700);
+            border: 2px solid rgba(0, 242, 254, .25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--cyan);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .tl-dot {
+            background: var(--cyan-dim);
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 6px rgba(0, 242, 254, .06);
+        }
+
+        .tl-body {
+            padding-top: 12px;
+            flex: 1;
+        }
+
+        .tl-body h3 {
+            font-family: var(--font-display);
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .tl-body p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        .tl-tag {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: var(--cyan-dim);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* ── VALORES ─────────────────────────── */
+        .section-valores {
+            padding: 120px 0;
+            background: var(--dark-900);
+        }
+
+        .valores-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 6vw, 100px);
+        }
+
+        .valores-header {
+            margin-bottom: 64px;
+        }
+
+        .valores-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 800;
+            color: var(--white);
+            margin: 10px 0 0;
+            letter-spacing: -0.025em;
+            max-width: 500px;
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .valor-card {
+            background: rgba(255, 255, 255, .025);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 20px;
+            padding: 36px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .valor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .valor-card:hover {
+            background: rgba(0, 242, 254, .04);
+            border-color: rgba(0, 242, 254, .2);
+            transform: translateY(-6px);
+        }
+
+        .valor-card:hover::before {
+            opacity: 1;
+        }
+
+        .valor-num {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 800;
+            color: rgba(0, 242, 254, .06);
+            line-height: 1;
+            margin-bottom: 12px;
+            transition: color .3s;
+        }
+
+        .valor-card:hover .valor-num {
+            color: rgba(0, 242, 254, .12);
+        }
+
+        .valor-card h3 {
+            font-family: var(--font-display);
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .valor-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        /* ── EQUIPE ──────────────────────────── */
+        .section-equipe {
+            padding: 120px 0;
+            background: var(--dark-700);
+        }
+
+        .equipe-header {
+            text-align: center;
+            margin-bottom: 72px;
+            padding: 0 24px;
+        }
+
+        .equipe-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 800;
+            color: var(--white);
+            margin: 10px 0 12px;
+            letter-spacing: -0.025em;
+        }
+
+        .equipe-header p {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 6vw, 100px);
+        }
+
+        .membro-card {
+            background: var(--dark-800);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .membro-card:hover {
+            border-color: rgba(0, 242, 254, .2);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .4);
+        }
+
+        .membro-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--dark-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .membro-initials {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 800;
+            color: rgba(0, 242, 254, .15);
+            transition: color .3s;
+        }
+
+        .membro-card:hover .membro-initials {
+            color: rgba(0, 242, 254, .3);
+        }
+
+        .membro-avatar-glow {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, .12), transparent 70%);
+            transition: var(--transition);
+        }
+
+        .membro-card:hover .membro-avatar-glow {
+            opacity: 1.5;
+        }
+
+        .membro-info {
+            padding: 22px 22px 26px;
+        }
+
+        .membro-info h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .membro-role {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .membro-bio {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ── TECH STACK ──────────────────────── */
+        .section-stack {
+            padding: 100px 0;
+            background: var(--dark-800);
+            overflow: hidden;
+        }
+
+        .stack-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .stack-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(24px, 3vw, 38px);
+            font-weight: 800;
+            color: var(--white);
+            margin: 10px 0 0;
+            letter-spacing: -0.02em;
+        }
+
+        /* infinite scroll belt */
+        .stack-belt-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stack-belt-wrap::before,
+        .stack-belt-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .stack-belt-wrap::before {
+            left: 0;
+            background: linear-gradient(to right, var(--dark-800), transparent);
+        }
+
+        .stack-belt-wrap::after {
+            right: 0;
+            background: linear-gradient(to left, var(--dark-800), transparent);
+        }
+
+        .stack-belt {
+            display: flex;
+            gap: 16px;
+            animation: beltScroll 28s linear infinite;
+            width: max-content;
+        }
+
+        .stack-belt:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes beltScroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .stack-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 40px;
+            padding: 12px 22px;
+            white-space: nowrap;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .7);
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .stack-pill:hover {
+            background: var(--cyan-dim);
+            border-color: rgba(0, 242, 254, .3);
+            color: var(--white);
+        }
+
+        .stack-pill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            flex-shrink: 0;
+        }
+
+        /* ── CTA FINAL ───────────────────────── */
+        .section-cta {
+            padding: 120px 24px;
+            background: var(--dark-900);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-cta::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, .06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--cyan-dim);
+            border: 1px solid rgba(0, 242, 254, .2);
+            color: var(--cyan);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            padding: 7px 18px;
+            border-radius: 40px;
+            margin-bottom: 28px;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4.5vw, 60px);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .cta-title em {
+            font-style: normal;
+            color: var(--cyan);
+        }
+
+        .cta-sub {
+            font-size: 16px;
+            color: rgba(255, 255, 255, .5);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ── RESPONSIVE ──────────────────────── */
+        @media (max-width: 1024px) {
+            .manifesto-inner {
+                grid-template-columns: 1fr;
+                gap: 56px;
+            }
+
+            .equipe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .valores-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .numbers-inner {
+                flex-wrap: wrap;
+            }
+
+            .num-item {
+                flex: 1 1 50%;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, .05);
+            }
+
+            .num-item:nth-child(odd) {
+                border-right: 1px solid rgba(255, 255, 255, .05);
+            }
+
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .equipe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline-wrap::before {
+                display: none;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .equipe-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            .hero-chips {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* ── REVEAL ANIMATION ────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s cubic-bezier(.4, 0, .2, 1), transform .7s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .fade-up:nth-child(2) {
+            transition-delay: .12s;
+        }
+
+        .fade-up:nth-child(3) {
+            transition-delay: .22s;
+        }
+
+        .fade-up:nth-child(4) {
+            transition-delay: .32s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="header-main" id="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-dot"></span>
+                <h1>Mirai Tech</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/mirai.html">Início</a></li>
+                    <li><a href="/sobre.html">Sobre</a></li>
+                    <li><a href="/projetos.html">Serviços</a></li>
+                    <li><a href="/bot.html">Orçamento</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta">
+                <button class="btn-header">Fale conosco</button>
+            </div>
+    
+            <!-- Mobile hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    
+        <!-- Mobile nav -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home" onclick="closeMobileNav()">Início</a></li>
+                <li><a href="#sobre" onclick="closeMobileNav()">Sobre</a></li>
+                <li><a href="/projetos.html" onclick="closeMobileNav()">Serviços</a></li>
+                <li><a href="#orcamento" onclick="closeMobileNav()">Orçamento</a></li>
+                <li><a href="./blog.html" onclick="closeMobileNav()">Blog</a></li>
+                <li><a href="#" class="mobile-cta">Fale conosco</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ══════════════ HERO ══════════════ -->
+        <section class="sobre-hero">
+            <div class="hero-inner">
+                <span class="section-label">Quem somos</span>
+                <h1 class="sobre-hero-title">
+                    Construímos o <span class="highlight">futuro digital</span><br>das empresas brasileiras
+                </h1>
+                <p class="sobre-hero-sub">
+                    Somos uma agência de tecnologia especializada em criação de sites profissionais — movida pela
+                    obsessão com resultado, design e performance.
+                </p>
+                <div class="hero-chips">
+                    <div class="hero-chip"><span></span> Fundada em São Paulo</div>
+                    <div class="hero-chip"><span></span> 200+ projetos entregues</div>
+                    <div class="hero-chip"><span></span> Equipe multidisciplinar</div>
+                    <div class="hero-chip"><span></span> Suporte contínuo</div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <div class="scroll-hint-line"></div>
+                Role para descobrir
+            </div>
+        </section>
+
+
+        <!-- ══════════════ NÚMEROS ══════════════ -->
+        <div class="numbers-bar">
+            <div class="numbers-inner">
+                <div class="num-item fade-up">
+                    <div class="num-value">200+</div>
+                    <div class="num-label">Sites entregues</div>
+                </div>
+                <div class="num-item fade-up">
+                    <div class="num-value">4.9★</div>
+                    <div class="num-label">Avaliação Google</div>
+                </div>
+                <div class="num-item fade-up">
+                    <div class="num-value">5 dias</div>
+                    <div class="num-label">Entrega express</div>
+                </div>
+                <div class="num-item fade-up">
+                    <div class="num-value">100%</div>
+                    <div class="num-label">Clientes satisfeitos</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ══════════════ MANIFESTO ══════════════ -->
+        <section class="section-manifesto">
+            <div class="manifesto-inner">
+
+                <div class="manifesto-left fade-up">
+                    <span class="section-label">Nossa visão</span>
+                    <h2 class="manifesto-quote">
+                        Presença digital não é luxo —<br>é <em>necessidade estratégica</em>.
+                    </h2>
+                    <p class="manifesto-body">
+                        A Mirai Tech nasceu com um propósito claro: democratizar o acesso a sites profissionais de alto
+                        impacto para empresas brasileiras de todos os tamanhos. Acreditamos que todo negócio merece uma
+                        presença digital que inspire confiança, gere leads e converta.
+                    </p>
+                    <p class="manifesto-body">
+                        Combinamos design estratégico, tecnologia de ponta e uma metodologia ágil que garante entregas
+                        no prazo — sem abrir mão da qualidade que nossos clientes esperam e merecem.
+                    </p>
+                    <div class="manifesto-signature">
+                        <div class="sig-avatar">MT</div>
+                        <div class="sig-info">
+                            <strong>Equipe Mirai Tech</strong>
+                            <span>São Paulo, Brasil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="manifesto-right fade-up">
+                    <div class="mcard">
+                        <div class="mcard-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <h4>Nossa missão</h4>
+                        <p>Criar experiências digitais que conectem marcas e consumidores de forma significativa — com
+                            design estratégico e tecnologia de ponta, a um custo justo.</p>
+                    </div>
+
+                    <div class="mcard">
+                        <div class="mcard-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                        </div>
+                        <h4>Nossa visão</h4>
+                        <p>Ser a agência de referência em criação de sites profissionais no Brasil, reconhecida pela
+                            excelência, inovação e pelos resultados concretos que entregamos aos nossos clientes.</p>
+                    </div>
+
+                    <div class="mcard">
+                        <div class="mcard-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                            </svg>
+                        </div>
+                        <h4>Nossa entrega</h4>
+                        <p>Sites de alta performance, com SEO técnico de fábrica, design responsivo e painel de gestão
+                            intuitivo — entregues no prazo com suporte completo incluso.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ══════════════ TIMELINE ══════════════ -->
+        <section class="section-timeline">
+            <div class="timeline-header fade-up">
+                <span class="section-label">Nossa trajetória</span>
+                <h2>Como chegamos até aqui</h2>
+                <p>Uma jornada de crescimento, aprendizado e muitos sites incríveis entregues.</p>
+            </div>
+
+            <div class="timeline-wrap">
+
+                <div class="timeline-item fade-up">
+                    <div class="tl-dot-wrap">
+                        <div class="tl-dot">2021</div>
+                    </div>
+                    <div class="tl-body">
+                        <h3>O começo</h3>
+                        <p>A Mirai Tech foi fundada em São Paulo por um grupo de desenvolvedores e designers
+                            insatisfeitos com a qualidade dos sites disponíveis no mercado brasileiro. A missão era
+                            clara: entregar sites profissionais com o padrão de qualidade das grandes agências, a um
+                            preço acessível.</p>
+                        <span class="tl-tag">Fundação</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-up">
+                    <div class="tl-dot-wrap">
+                        <div class="tl-dot">2022</div>
+                    </div>
+                    <div class="tl-body">
+                        <h3>Primeiros 50 projetos</h3>
+                        <p>Com um pipeline de metodologia ágil consolidado, atingimos a marca de 50 projetos entregues e
+                            zeramos os prazos perdidos. Neste ano lançamos nosso painel de gestão de conteúdo exclusivo,
+                            que permite ao cliente atualizar o site de forma autônoma.</p>
+                        <span class="tl-tag">Crescimento</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-up">
+                    <div class="tl-dot-wrap">
+                        <div class="tl-dot">2023</div>
+                    </div>
+                    <div class="tl-body">
+                        <h3>Reconhecimento e expansão</h3>
+                        <p>Conquistamos a avaliação 4.9 ★ no Google e expandimos o time. A Mirai Tech passou a atender
+                            clientes em todo o Brasil, com foco em setores como saúde, educação, tecnologia e serviços
+                            profissionais.</p>
+                        <span class="tl-tag">Expansão</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-up">
+                    <div class="tl-dot-wrap">
+                        <div class="tl-dot">2024</div>
+                    </div>
+                    <div class="tl-body">
+                        <h3>200+ projetos e IA</h3>
+                        <p>Cruzamos a marca de 200 projetos entregues e integramos inteligência artificial ao nosso
+                            processo criativo — acelerando entregas sem perder a personalização. Lançamos o chatbot
+                            Mirai, que automatiza o processo de captação de orçamentos.</p>
+                        <span class="tl-tag">Inovação</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-up">
+                    <div class="tl-dot-wrap">
+                        <div class="tl-dot">2025</div>
+                    </div>
+                    <div class="tl-body">
+                        <h3>Referência em SP</h3>
+                        <p>Hoje somos uma das agências mais bem avaliadas de São Paulo, com mais de 310 avaliações
+                            verificadas no Google e uma equipe multidisciplinar dedicada a construir o futuro digital
+                            das empresas brasileiras.</p>
+                        <span class="tl-tag">Presente</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ══════════════ VALORES ══════════════ -->
+        <section class="section-valores">
+            <div class="valores-inner">
+                <div class="valores-header fade-up">
+                    <span class="section-label">Cultura & valores</span>
+                    <h2>O que nos move<br>todos os dias</h2>
+                </div>
+
+                <div class="valores-grid">
+
+                    <div class="valor-card fade-up">
+                        <div class="valor-num">01</div>
+                        <h3>Resultado acima de tudo</h3>
+                        <p>Não entregamos apenas um site bonito — entregamos uma ferramenta de crescimento. Cada decisão
+                            de design e tecnologia é tomada com foco nos resultados do cliente.</p>
+                    </div>
+
+                    <div class="valor-card fade-up">
+                        <div class="valor-num">02</div>
+                        <h3>Transparência total</h3>
+                        <p>Prazos claros, preços justos e comunicação sem ruído. O cliente sempre sabe exatamente em que
+                            fase está o projeto e o que acontece a seguir.</p>
+                    </div>
+
+                    <div class="valor-card fade-up">
+                        <div class="valor-num">03</div>
+                        <h3>Excelência técnica</h3>
+                        <p>Código limpo, SEO técnico, performance otimizada e acessibilidade. A qualidade não é
+                            negociável — independentemente do tamanho do projeto.</p>
+                    </div>
+
+                    <div class="valor-card fade-up">
+                        <div class="valor-num">04</div>
+                        <h3>Parceria de longo prazo</h3>
+                        <p>Não somos fornecedores: somos parceiros. Nosso suporte não acaba na entrega — evoluímos junto
+                            com o negócio do cliente.</p>
+                    </div>
+
+                    <div class="valor-card fade-up">
+                        <div class="valor-num">05</div>
+                        <h3>Inovação constante</h3>
+                        <p>O mundo digital muda rápido. Mantemos nossa equipe em constante atualização para trazer as
+                            melhores soluções de design, tecnologia e performance para cada projeto.</p>
+                    </div>
+
+                    <div class="valor-card fade-up">
+                        <div class="valor-num">06</div>
+                        <h3>Autonomia para o cliente</h3>
+                        <p>Sites gerenciáveis, treinamentos completos e painéis intuitivos. O cliente não pode depender
+                            de ninguém para atualizar o próprio site.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ══════════════ EQUIPE ══════════════ -->
+        <section class="section-equipe">
+            <div class="equipe-header fade-up">
+                <span class="section-label">Nosso time</span>
+                <h2>As pessoas por trás dos projetos</h2>
+                <p>Uma equipe multidisciplinar apaixonada por criar experiências digitais que fazem a diferença.</p>
+            </div>
+
+            <div class="equipe-grid">
+
+                <div class="membro-card fade-up">
+                    <div class="membro-avatar">
+                        <div class="membro-initials">RS</div>
+                        <div class="membro-avatar-glow"></div>
+                    </div>
+                    <div class="membro-info">
+                        <h3>Rafael Souza</h3>
+                        <span class="membro-role">CEO & Fundador</span>
+                        <p class="membro-bio">Desenvolvedor full-stack com 10+ anos de experiência. Apaixonado por
+                            produto e obsecado com performance.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card fade-up">
+                    <div class="membro-avatar">
+                        <div class="membro-initials">LC</div>
+                        <div class="membro-avatar-glow"></div>
+                    </div>
+                    <div class="membro-info">
+                        <h3>Larissa Costa</h3>
+                        <span class="membro-role">Head de Design</span>
+                        <p class="membro-bio">UI/UX designer com foco em conversão. Acredita que o bom design resolve
+                            problemas reais das pessoas.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card fade-up">
+                    <div class="membro-avatar">
+                        <div class="membro-initials">GM</div>
+                        <div class="membro-avatar-glow"></div>
+                    </div>
+                    <div class="membro-info">
+                        <h3>Gabriel Melo</h3>
+                        <span class="membro-role">Lead Developer</span>
+                        <p class="membro-bio">Especialista em front-end e SEO técnico. Responsável pela performance e
+                            escalabilidade dos projetos.</p>
+                    </div>
+                </div>
+
+                <div class="membro-card fade-up">
+                    <div class="membro-avatar">
+                        <div class="membro-initials">AP</div>
+                        <div class="membro-avatar-glow"></div>
+                    </div>
+                    <div class="membro-info">
+                        <h3>Ana Paula Reis</h3>
+                        <span class="membro-role">Gestora de Projetos</span>
+                        <p class="membro-bio">Garante que cada entrega aconteça no prazo certo, com a qualidade esperada
+                            e o cliente sempre informado.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ══════════════ TECH STACK ══════════════ -->
+        <section class="section-stack">
+            <div class="stack-header fade-up">
+                <span class="section-label">Tecnologia</span>
+                <h2>As ferramentas que usamos</h2>
+            </div>
+
+            <div class="stack-belt-wrap">
+                <div class="stack-belt" id="stackBelt">
+                    <!-- duplicated for seamless loop -->
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>HTML5 & CSS3</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>JavaScript ES2024</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>React</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>WordPress</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Node.js</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Figma</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Google Analytics</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>SEO On-Page</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Core Web Vitals</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Next.js</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Webflow</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Vercel</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Cloudflare</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>LGPD Compliance</div>
+                    <!-- duplicate -->
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>HTML5 & CSS3</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>JavaScript ES2024</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>React</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>WordPress</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Node.js</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Figma</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Google Analytics</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>SEO On-Page</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Core Web Vitals</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Next.js</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Webflow</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Vercel</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>Cloudflare</div>
+                    <div class="stack-pill"><span class="stack-pill-dot"></span>LGPD Compliance</div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ══════════════ CTA FINAL ══════════════ -->
+        <section class="section-cta">
+            <div class="cta-inner fade-up">
+                <div class="cta-badge">
+                    <span
+                        style="width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);display:inline-block;flex-shrink:0;"></span>
+                    Pronto para começar?
+                </div>
+                <h2 class="cta-title">
+                    Vamos construir<br><em>seu próximo projeto</em>?
+                </h2>
+                <p class="cta-sub">
+                    Conte com uma equipe que entende de negócio, design e tecnologia. Solicite um orçamento gratuito e
+                    sem compromisso.
+                </p>
+                <div class="cta-actions">
+                    <a href="./bot.html" class="btn-primary">Solicitar orçamento grátis</a>
+                    <a href="./index.html#projeto" class="btn-ghost">Ver portfólio →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="footer-main">
+        <div class="footer-inner reveal">
+            <div class="footer-brand">
+                <div class="footer-logo-wrap">
+                    <span class="logo-dot"></span>
+                    <h2 class="footer-logo">Mirai Tech</h2>
+                </div>
+                <p>Agência de criação de sites profissionais em São Paulo, especializada em desenvolvimento e gestão de
+                    sites de alto impacto para empresas.</p>
+                <a href="tel:11999999999" class="footer-tel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    (11) 9999-9999
+                </a>
+                <a href="mailto:contato@miraitech.digital" class="footer-email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    contato@miraitech.digital
+                </a>
+            </div>
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./sobre.html">Sobre</a></li>
+                    <li><a href="/projetos.html">Portfólio</a></li>
+                    <li><a href="./index.html#orcamento">Orçamento</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#">Site sob medida</a></li>
+                    <li><a href="#">Criação de sites</a></li>
+                    <li><a href="#">E-commerce</a></li>
+                    <li><a href="#">Consultoria SEO</a></li>
+                    <li><a href="#">Chatbot com IA</a></li>
+                    <li><a href="#">WordPress</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Segmentos</h4>
+                <ul>
+                    <li><a href="#">Empresas de Tech</a></li>
+                    <li><a href="#">Médicos</a></li>
+                    <li><a href="#">Contabilidade</a></li>
+                    <li><a href="#">Advogados</a></li>
+                    <li><a href="#">Dentistas</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
+            <p class="footer-copy">© 2026 Mirai Tech · <a href="#">Política de privacidade</a></p>
+        </div>
+    </footer>
+
+
+    <!-- ══════════════ SCRIPTS ══════════════ -->
+    <script>
+        /* ── Header scroll ── */
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        /* ── Mobile nav ── */
+        document.getElementById('hamburger').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.getElementById('mobileNav').classList.toggle('open');
+        });
+
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('active');
+        }
+
+        /* ── Reveal on scroll ── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        /* ── Animated counter ── */
+        function animateCounter(el, target, suffix = '') {
+            const isDecimal = target % 1 !== 0;
+            let start = 0;
+            const duration = 1800;
+            const step = timestamp => {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = isDecimal
+                    ? (ease * target).toFixed(1)
+                    : Math.floor(ease * target);
+                el.textContent = current + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        }
+
+        const numObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const vals = e.currentTarget.querySelectorAll('.num-value');
+                    const data = [
+                        { target: 200, suffix: '+' },
+                        { target: 4.9, suffix: '★' },
+                        { target: 5, suffix: ' dias' },
+                        { target: 100, suffix: '%' },
+                    ];
+                    vals.forEach((v, i) => {
+                        if (data[i]) animateCounter(v, data[i].target, data[i].suffix);
+                    });
+                    numObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.4 });
+
+        const numbersBar = document.querySelector('.numbers-bar');
+        if (numbersBar) numObserver.observe(numbersBar);
+    </script>
+
+</body>
+
+</html>

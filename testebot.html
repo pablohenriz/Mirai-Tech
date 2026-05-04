@@ -236,9 +236,25 @@
         /* ═══════════════════════════════════
        STEP COUNTER
     ═══════════════════════════════════ */
+        #step-counter {
+            max-width: 680px;
+            margin: 28px auto 0;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
 
-
-
+        .step-pip {
+            width: 28px;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, .1);
+            transition: var(--ease);
+            flex-shrink: 0;
+        }
 
         .step-pip.done {
             background: var(--cyan-dark);
@@ -412,16 +428,6 @@
             box-shadow: 0 0 0 3px rgba(0, 242, 254, .08);
         }
 
-        .inline-input-row.error {
-            border-color: #ff4d6d;
-            box-shadow: 0 0 0 3px rgba(255, 77, 109, .10);
-        }
-
-        .inline-input-row.warning {
-            border-color: #f4c542;
-            box-shadow: 0 0 0 3px rgba(244, 197, 66, .10);
-        }
-
         #user-input {
             flex: 1;
             border: none;
@@ -453,63 +459,6 @@
 
         #send-btn svg {
             fill: var(--cyan);
-        }
-
-        /* ── validation feedback ── */
-        .input-feedback {
-            font-size: 12px;
-            font-weight: 600;
-            padding: 2px 4px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            animation: msgIn .22s ease both;
-        }
-
-        .input-feedback.error {
-            color: #ff4d6d;
-        }
-
-        .input-feedback.warning {
-            color: #f4c542;
-        }
-
-        /* confirm row for non-gmail */
-        .confirm-row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .btn-confirm {
-            flex: 1;
-            padding: 9px 14px;
-            border-radius: 40px;
-            font: 700 12.5px/1 var(--ff-body);
-            cursor: pointer;
-            border: none;
-            transition: var(--ease);
-        }
-
-        .btn-confirm.yes {
-            background: rgba(244, 197, 66, .18);
-            color: #f4c542;
-            border: 1.5px solid rgba(244, 197, 66, .4);
-        }
-
-        .btn-confirm.yes:hover {
-            background: rgba(244, 197, 66, .28);
-        }
-
-        .btn-confirm.no {
-            background: var(--cyan-dim);
-            color: var(--cyan);
-            border: 1.5px solid rgba(0, 242, 254, .28);
-        }
-
-        .btn-confirm.no:hover {
-            background: rgba(0, 242, 254, .18);
         }
 
         /* options */
@@ -847,10 +796,12 @@
             const div = document.createElement('div');
             div.className = 'mascot-container';
 
+            // try to use image; fallback to emoji
             const img = new Image();
             const isFinal = questions[stepIndex] && questions[stepIndex].field === 'final';
             img.src = isFinal ? './img/TigrinhoContrato.png' : './img/TigrinhoPositivo.png';
             img.alt = 'Mirai';
+            img.className = '';
             img.style.cssText = 'width:130%;height:auto;object-fit:contain;transform:translateY(18%)';
 
             img.onerror = () => {
@@ -860,17 +811,19 @@
                 div.innerHTML = '';
                 div.appendChild(img);
             };
+            // show emoji immediately while loading
             div.innerHTML = '<span class="mascot-icon">🤖</span>';
             return div;
         }
 
         /* ── progress & pips ── */
         function updateProgress() {
-            const total = questions.length - 1;
+            const total = questions.length - 1; // exclude final
             const current = Math.min(currentStep, total);
             const pct = total > 0 ? (current / total) * 100 : 0;
             progBar.style.width = pct + '%';
 
+            // pips
             stepCtr.innerHTML = '';
             for (let i = 0; i < total; i++) {
                 const pip = document.createElement('div');
@@ -883,83 +836,6 @@
 
         function updateBackBtn() {
             backBtn.disabled = currentStep <= 0;
-        }
-
-        /* ══════════════════════════════════════════════
-           VALIDAÇÃO DE E-MAIL
-        ══════════════════════════════════════════════ */
-
-        /** Mostra erro (e-mail inválido) no campo */
-        function showInputError(input, msg) {
-            const inputRow = input.closest('.inline-input-row');
-            inputRow.classList.add('error');
-            inputRow.classList.remove('warning');
-
-            // remove feedback anterior
-            const prev = inputRow.parentElement.querySelector('.input-feedback');
-            if (prev) prev.remove();
-
-            const fb = document.createElement('p');
-            fb.className = 'input-feedback error';
-            fb.textContent = '✖ ' + msg;
-            inputRow.insertAdjacentElement('afterend', fb);
-
-            // shake
-            input.style.animation = 'none';
-            setTimeout(() => { input.style.animation = ''; }, 10);
-
-            setTimeout(() => {
-                inputRow.classList.remove('error');
-                if (fb.parentElement) fb.remove();
-            }, 3000);
-        }
-
-        /** Mostra aviso (não é Gmail) com botões de confirmação */
-        function showInputWarning(input, msg, emailValue) {
-            const inputRow = input.closest('.inline-input-row');
-            inputRow.classList.add('warning');
-            inputRow.classList.remove('error');
-
-            // remove feedback anterior
-            const prev = inputRow.parentElement.querySelector('.input-feedback');
-            if (prev) prev.remove();
-            const prevConfirm = inputRow.parentElement.querySelector('.confirm-row');
-            if (prevConfirm) prevConfirm.remove();
-
-            const fb = document.createElement('p');
-            fb.className = 'input-feedback warning';
-            fb.textContent = msg;
-            inputRow.insertAdjacentElement('afterend', fb);
-
-            const confirmRow = document.createElement('div');
-            confirmRow.className = 'confirm-row';
-
-            const btnYes = document.createElement('button');
-            btnYes.className = 'btn-confirm yes';
-            btnYes.textContent = '✔ Sim, usar este e-mail';
-            btnYes.addEventListener('click', () => {
-                // limpa avisos e prossegue
-                inputRow.classList.remove('warning');
-                fb.remove();
-                confirmRow.remove();
-                handleAnswer(emailValue);
-            });
-
-            const btnNo = document.createElement('button');
-            btnNo.className = 'btn-confirm no';
-            btnNo.textContent = '✎ Corrigir e-mail';
-            btnNo.addEventListener('click', () => {
-                inputRow.classList.remove('warning');
-                fb.remove();
-                confirmRow.remove();
-                input.value = '';
-                input.focus();
-            });
-
-            confirmRow.appendChild(btnYes);
-            confirmRow.appendChild(btnNo);
-            fb.insertAdjacentElement('afterend', confirmRow);
-            scrollBot();
         }
 
         /* ══════════════════════════════════════════════
@@ -1014,6 +890,7 @@
       </div>
     `;
 
+                // summary
                 const summary = document.createElement('div');
                 summary.className = 'final-summary';
                 const fields = [
@@ -1035,6 +912,7 @@
                 });
                 card.appendChild(summary);
 
+                // restart button
                 const restart = document.createElement('button');
                 restart.className = 'btn-reiniciar';
                 restart.innerHTML = '↺ Novo orçamento';
@@ -1050,6 +928,7 @@
 
                 if (interactive) {
                     console.log('📦 Dados do cliente:', userData);
+                    /* ── Aqui você pode chamar sua API / webhook ── */
                     clearState();
                 }
 
@@ -1114,27 +993,8 @@
 
                     const submit = () => {
                         const val = input.value.trim();
-
                         // campo whatsapp pode ser pulado
                         if (!val && q.field !== 'whatsapp') return;
-
-                        // ── Validação de e-mail ──
-                        if (q.field === 'email') {
-                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                            if (!emailRegex.test(val)) {
-                                showInputError(input, 'Por favor, insira um e-mail válido.');
-                                return;
-                            }
-                            if (!val.toLowerCase().endsWith('@gmail.com')) {
-                                showInputWarning(
-                                    input,
-                                    '⚠️ Esse não é um Gmail. Deseja continuar mesmo assim?',
-                                    val
-                                );
-                                return;
-                            }
-                        }
-
                         handleAnswer(val || '—');
                     };
 
@@ -1215,6 +1075,7 @@
                 userData[q.field] = answer;
             }
 
+            // freeze active block
             const activeBlock = document.getElementById('active-input-block');
             if (activeBlock) {
                 const si = currentStep;

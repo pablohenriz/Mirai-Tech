@@ -4,229 +4,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mirai Tech</title>
+    <title>Mirai Tech — Criação de Sites Profissionais</title>
     <link rel="shortcut icon" href="./img/logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header-main">
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="header-main" id="header">
         <div class="header-inner">
             <div class="logo">
+                <span class="logo-dot"></span>
                 <h1>Mirai Tech</h1>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="/sobre.html">Sobre</a></li>
                     <li><a href="/projetos.html">Serviços</a></li>
-                    <li><a href="#orcamento">Orçamento</a></li>
+                    <li><a href="/bot.html">Orçamento</a></li>
                     <li><a href="./blog.html">Blog</a></li>
                 </ul>
             </nav>
-            <div>
-                <button class="btn-header">Contato</button>
+            <div class="header-cta">
+                <button class="btn-header">Fale conosco</button>
             </div>
+
+            <!-- Mobile hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <!-- Mobile nav -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home" onclick="closeMobileNav()">Início</a></li>
+                <li><a href="#sobre" onclick="closeMobileNav()">Sobre</a></li>
+                <li><a href="/projetos.html" onclick="closeMobileNav()">Serviços</a></li>
+                <li><a href="#orcamento" onclick="closeMobileNav()">Orçamento</a></li>
+                <li><a href="./blog.html" onclick="closeMobileNav()">Blog</a></li>
+                <li><a href="#" class="mobile-cta">Fale conosco</a></li>
+            </ul>
         </div>
     </header>
 
-    <main>
-        <!-- 
-        ===================== 
-         SECTION MAIN 
-        =====================
-         -->
-        <section class="section-main" id="home">
-            <div class="group-box-main">
-                <div class="box-1">
-                    <h1>Construindo hoje a presença digital do seu amanhã</h1>
-                    <!-- texto alternativo  para o h1: Sites que impulsionam negócios e conectam marcas ao futuro -->
 
-                    <p>Nossa missão é criar experiências digitais que conectem marcas e consumidores de forma
-                        significativa.</p>
-                    <button class="btn-primary">Faça o seu orçamento</button>
+    <main>
+
+        <!-- ===================== HERO ===================== -->
+        <section class="section-main" id="home">
+            <div class="hero-noise"></div>
+            <div class="hero-glow"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Mais de 200 sites entregues por ano
+                </div>
+
+                <h1 class="hero-title">
+                    Construindo hoje<br>
+                    <em>a presença digital</em><br>
+                    do seu amanhã
+                </h1>
+
+                <p class="hero-subtitle">
+                    Nossa missão é criar experiências digitais que conectem marcas e consumidores de forma significativa
+                    — com design estratégico e tecnologia de ponta.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#orcamento" class="btn-primary">Faça seu orçamento</a>
+                    <a href="#projeto" class="btn-ghost">Ver projetos →</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <strong>200+</strong>
+                        <span>Sites entregues</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <strong>4.9★</strong>
+                        <span>Avaliação Google</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <strong>5 dias</strong>
+                        <span>Entrega express</span>
+                    </div>
                 </div>
             </div>
 
-            <a href="#projeto" class="ver-mais-link">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                    fill="#727272">
-                    <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-                </svg>
-                <p>CRIAMOS MAIS DE 200 SITES POR ANO.</p>
-            </a>
+            <div class="hero-scroll">
+                <span></span>
+                <p>Role para descobrir</p>
+            </div>
         </section>
 
 
-        <!-- 
-        ===================== 
-         SECTION EXPLICAÇÃO INICIAL DE SERVIÇOS DA EMPRESA 
-
-         logo-item1,2,3
-        =====================
-        -->
+        <!-- ===================== COMO FUNCIONA ===================== -->
         <section class="section-funcionamento" id="funcionamento">
-            <div class="funcionamento-title">
-                <h2 class="spanTitle">NOSSO PROCESS</h2>
-                <h1>Como funciona o processo de criação de sites?</h1>
-                <p>Nosso processo de criação de sites é simples e eficiente, garantindo que seu projeto seja entregue
-                    com qualidade e dentro do prazo.</p>
+            <div class="section-header">
+                <span class="section-label">Nosso Processo</span>
+                <h2>Como funciona a criação do seu site?</h2>
+                <p>Um processo simples, transparente e eficiente — do primeiro contato à entrega final.</p>
             </div>
-            <div class="item-service-group reveal">
-                <div class="service-item">
-                    <div class="icon-item">
-                        <img src="">
+
+            <div class="steps-grid reveal">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#000000">
+                            fill="currentColor">
                             <path
                                 d="M240-120v-80l40-40H160q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H680l40 40v80H240Zm-80-200h640v-440H160v440Zm0 0v-440 440Z" />
                         </svg>
                     </div>
-                    <h2>Escolha um modelo de site</h2>
-                    <p>Criação de sites personalizados, responsivos e otimizados para SEO, que impulsionam a presença
-                        online
-                        da sua marca.</p>
+                    <h3>Escolha um modelo</h3>
+                    <p>Selecione entre nossos modelos de alta performance ou opte por um layout 100% personalizado para
+                        sua marca.</p>
+                    <div class="step-tag">Design</div>
                 </div>
-                <div class="service-item">
-                    <div class="icon-item">
-                        <img src="">
+
+                <div class="step-connector">→</div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#000000">
+                            fill="currentColor">
                             <path
                                 d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z" />
                         </svg>
                     </div>
-                    <h2>Converse com a nossa equipe</h2>
-                    <p>Fale com nossos especialistas e descubra como podemos ajudar a impulsionar o crescimento do seu
-                        negócio.</p>
+                    <h3>Converse com nossa equipe</h3>
+                    <p>Nossos especialistas entendem seu negócio e constroem a estratégia digital ideal para seus
+                        objetivos.</p>
+                    <div class="step-tag">Estratégia</div>
                 </div>
-                <div class="service-item">
-                    <div class="icon-item">
-                        <img src="">
+
+                <div class="step-connector">→</div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#000000">
+                            fill="currentColor">
                             <path
                                 d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l136-136 56 56-135 136q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l136-135 56 56-135 136q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l136-135 56 56-136 136q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l232-231 131 131q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-9 9-15 21t-8 24q-2 12 0 24.5t8 23.5l-58 58q-17-23-25-50.5T40-590q2-28 14-54.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-99-560Z" />
                         </svg>
                     </div>
-                    <h2>Entrega e Funcionamento</h2>
-                    <p>Entregamos seu site dentro do prazo acordado e garantimos seu funcionamento perfeito.</p>
+                    <h3>Entrega e lançamento</h3>
+                    <p>Seu site vai ao ar no prazo acordado, com suporte completo, treinamento e garantia de
+                        funcionamento.</p>
+                    <div class="step-tag">Entrega</div>
                 </div>
             </div>
         </section>
 
 
-
-        <!-- 
-        ===================== 
-            SECTION PROJETOS FEITOS
-        =====================
-        -->
-
+        <!-- ===================== PORTFÓLIO CARROSSEL ===================== -->
         <section class="section-projetos bg-dark" id="projeto">
             <div class="projetos-header reveal">
                 <div class="projetos-title">
-                    <h2>Portfólio</h2>
-                    <h1>Projetos que já realizamos</h1>
+                    <span class="section-label light">Portfólio</span>
+                    <h2>Projetos que já realizamos</h2>
                 </div>
                 <div class="carrossel-nav">
-                    <button class="carrossel-btn" id="btnPrev">&#8592;</button>
+                    <button class="carrossel-btn" id="btnPrev" aria-label="Anterior">&#8592;</button>
                     <div class="carrossel-counter">
                         <span id="cntCur">01</span>
-                        <span class="counter-sep">•</span>
+                        <span class="counter-sep">/</span>
                         <span id="cntTot">06</span>
                     </div>
-                    <button class="carrossel-btn" id="btnNext">&#8594;</button>
+                    <button class="carrossel-btn" id="btnNext" aria-label="Próximo">&#8594;</button>
                 </div>
             </div>
 
             <div class="carrossel-track-wrap reveal">
                 <div class="carrossel-track" id="carrosselTrack">
+
                     <div class="projeto-item">
-                        <div class="projeto-mockup" style="background: #0d1b2a; padding: 0;">
-                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164146.png" alt="Nome do Projeto"
-                                style="width: 100%; height: 300px; object-fit: cover; display: block;">
+                        <div class="projeto-mockup">
+                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164146.png" alt="Projeto 1">
                         </div>
                         <div class="projeto-footer">
                             <div class="projeto-info">
                                 <h3>Nome do Projeto</h3>
-                                <p>Descrição</p>
+                                <p>Descrição · Website</p>
                             </div>
-                            <a href="#" class="projeto-link">Veja online ↗</a>
+                            <a href="#" class="projeto-link">Ver online ↗</a>
                         </div>
                     </div>
 
                     <div class="projeto-item">
-                        <div class="projeto-mockup" style="background: #0d1b2a; padding: 0;">
-                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164309.png" alt="Nome do Projeto"
-                                style="width: 100%; height: 300px; object-fit: cover; display: block;">
+                        <div class="projeto-mockup">
+                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164309.png" alt="Projeto 2">
                         </div>
                         <div class="projeto-footer">
                             <div class="projeto-info">
                                 <h3>Nome do Projeto</h3>
-                                <p>Descrição</p>
+                                <p>Descrição · Website</p>
                             </div>
-                            <a href="#" class="projeto-link">Veja online ↗</a>
-                        </div>
-                    </div>
-                    <div class="projeto-item">
-                        <div class="projeto-mockup" style="background: #0d1b2a; padding: 0;">
-                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164358.png" alt="Nome do Projeto"
-                                style="width: 100%; height: 300px; object-fit: cover; display: block;">
-                        </div>
-                        <div class="projeto-footer">
-                            <div class="projeto-info">
-                                <h3>Nome do Projeto</h3>
-                                <p>Descrição</p>
-                            </div>
-                            <a href="#" class="projeto-link">Veja online ↗</a>
+                            <a href="#" class="projeto-link">Ver online ↗</a>
                         </div>
                     </div>
 
                     <div class="projeto-item">
-                        <div class="projeto-mockup" style="background: #0d1b2a; padding: 0;">
-                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164515.png" alt="Nome do Projeto"
-                                style="width: 100%; height: 300px; object-fit: cover; display: block;">
+                        <div class="projeto-mockup">
+                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164358.png" alt="Projeto 3">
                         </div>
                         <div class="projeto-footer">
                             <div class="projeto-info">
                                 <h3>Nome do Projeto</h3>
-                                <p>Descrição</p>
+                                <p>Descrição · Website</p>
                             </div>
-                            <a href="#" class="projeto-link">Veja online ↗</a>
+                            <a href="#" class="projeto-link">Ver online ↗</a>
                         </div>
                     </div>
 
                     <div class="projeto-item">
-                        <div class="projeto-mockup" style="background: #0d1b2a; padding: 0;">
-                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164643.png" alt="Nome do Projeto"
-                                style="width: 100%; height: 300px; object-fit: cover; display: block;">
+                        <div class="projeto-mockup">
+                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164515.png" alt="Projeto 4">
                         </div>
                         <div class="projeto-footer">
                             <div class="projeto-info">
                                 <h3>Nome do Projeto</h3>
-                                <p>Descrição</p>
+                                <p>Descrição · Website</p>
                             </div>
-                            <a href="#" class="projeto-link">Veja online ↗</a>
+                            <a href="#" class="projeto-link">Ver online ↗</a>
                         </div>
                     </div>
 
                     <div class="projeto-item">
-                        <div class="projeto-mockup" style="background: #0d1b2a; padding: 0;">
-                            <img src="/img/img portifolio/image.png" alt="Nome do Projeto"
-                                style="width: 100%; height: 300px; object-fit: cover; display: block;">
+                        <div class="projeto-mockup">
+                            <img src="/img/img portifolio/Captura de tela 2026-03-26 164643.png" alt="Projeto 5">
                         </div>
                         <div class="projeto-footer">
                             <div class="projeto-info">
                                 <h3>Nome do Projeto</h3>
-                                <p>Descrição</p>
+                                <p>Descrição · Website</p>
                             </div>
-                            <a href="#" class="projeto-link">Veja online ↗</a>
+                            <a href="#" class="projeto-link">Ver online ↗</a>
                         </div>
                     </div>
-                    
 
+                    <div class="projeto-item">
+                        <div class="projeto-mockup">
+                            <img src="/img/img portifolio/image.png" alt="Projeto 6">
+                        </div>
+                        <div class="projeto-footer">
+                            <div class="projeto-info">
+                                <h3>Nome do Projeto</h3>
+                                <p>Descrição · Website</p>
+                            </div>
+                            <a href="#" class="projeto-link">Ver online ↗</a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -234,72 +271,81 @@
             <div class="carrossel-dots" id="carrosselDots"></div>
         </section>
 
+
+        <!-- ===================== PORTFÓLIO GRID ===================== -->
         <section class="section-projetos2">
             <div class="group-itens-project reveal">
-
                 <article class="item-proj">
                     <div class="item-proj-img">
-                        <img src="/img/img portifolio/image copy 2.png"
-                            alt="Real Tax Contabilidade">
+                        <img src="/img/img portifolio/image copy 2.png" alt="Real Tax Contabilidade">
+                        <div class="item-proj-overlay">
+                            <a href="#" class="overlay-link">Ver projeto ↗</a>
+                        </div>
                     </div>
                     <div class="desc-item-proj">
                         <span class="tag-categoria">Financeiro</span>
-                        <p class="proj-subtitulo">Projeto Financeiro</p>
-                        <h2 class="proj-titulo">Real Tax Contabilidade</h2>
+                        <h3 class="proj-titulo">Real Tax Contabilidade</h3>
+                        <p class="proj-subtitulo">Site institucional · 2026</p>
                     </div>
                 </article>
 
                 <article class="item-proj">
                     <div class="item-proj-img">
-                        <img src="/img/img portifolio/image copy.png"
-                            alt="Real Tax Contabilidade">
+                        <img src="/img/img portifolio/image copy.png" alt="Projeto 2">
+                        <div class="item-proj-overlay">
+                            <a href="#" class="overlay-link">Ver projeto ↗</a>
+                        </div>
                     </div>
                     <div class="desc-item-proj">
-                        <span class="tag-categoria">Financeiro</span>
-                        <p class="proj-subtitulo">Projeto Financeiro</p>
-                        <h2 class="proj-titulo">Real Tax Contabilidade</h2>
+                        <span class="tag-categoria">Educação</span>
+                        <h3 class="proj-titulo">Essential Idiomas</h3>
+                        <p class="proj-subtitulo">Landing page · 2026</p>
                     </div>
                 </article>
+
                 <article class="item-proj">
                     <div class="item-proj-img">
-                        <img src="/img/img portifolio/image copy 3.png"
-                            alt="Real Tax Contabilidade">
+                        <img src="/img/img portifolio/image copy 3.png" alt="Projeto 3">
+                        <div class="item-proj-overlay">
+                            <a href="#" class="overlay-link">Ver projeto ↗</a>
+                        </div>
                     </div>
                     <div class="desc-item-proj">
-                        <span class="tag-categoria">Financeiro</span>
-                        <p class="proj-subtitulo">Projeto Financeiro</p>
-                        <h2 class="proj-titulo">Real Tax Contabilidade</h2>
+                        <span class="tag-categoria">Saúde</span>
+                        <h3 class="proj-titulo">MindSelf</h3>
+                        <p class="proj-subtitulo">Site institucional · 2026</p>
                     </div>
                 </article>
             </div>
+
             <div class="ver-mais-project">
-                <a href="/projetos.html" class="btn-primary">Veja mais projetos</a>
+                <a href="/projetos.html" class="btn-primary">Ver todos os projetos</a>
             </div>
         </section>
 
+
+        <!-- ===================== SOBRE A AGÊNCIA ===================== -->
         <section class="section-agencia" id="sobre">
             <div class="agencia-inner">
 
-                <!-- LADO ESQUERDO: Texto -->
                 <div class="agencia-content">
-                    <p class="agencia-eyebrow">Criação de Sites SP</p>
+                    <span class="section-label">Criação de Sites SP</span>
                     <h2 class="agencia-title">Agência de Criação de Sites Profissionais</h2>
 
                     <p class="agencia-body">
-                        Na Mirai Tech, desenvolvemos sites profissionais e gerenciáveis, que permitem que você tenha
-                        total
-                        controle sobre o conteúdo da sua página. Isso significa que você mesmo poderá fazer atualizações
-                        sempre que quiser, sem depender de ninguém.
+                        Na Mirai Tech, desenvolvemos sites profissionais e gerenciáveis, com total controle para você.
+                        Atualize textos, imagens e páginas quando quiser — sem depender de ninguém.
                     </p>
                     <p class="agencia-body">
-                        Nosso painel administrativo intuitivo permite adicionar ou editar textos, imagens, vídeos e até
-                        criar novas páginas, de forma simples e rápida.
+                        Nosso painel intuitivo permite adicionar conteúdo de forma simples e rápida, com treinamento
+                        completo incluso.
                     </p>
+
                     <p class="agencia-body agencia-body--label">Você mesmo poderá alimentar o site com:</p>
 
                     <div class="agencia-chips">
                         <div class="agencia-chip">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="3" width="18" height="18" rx="2" />
                                 <circle cx="8.5" cy="8.5" r="1.5" />
@@ -308,7 +354,7 @@
                             Fotos
                         </div>
                         <div class="agencia-chip">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2">
                                 <polygon points="23 7 16 12 23 17 23 7" />
                                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
@@ -316,7 +362,7 @@
                             Vídeos
                         </div>
                         <div class="agencia-chip">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                                 <polyline points="14 2 14 8 20 8" />
@@ -326,7 +372,7 @@
                             Textos
                         </div>
                         <div class="agencia-chip">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="18" cy="5" r="3" />
                                 <circle cx="6" cy="12" r="3" />
@@ -338,17 +384,33 @@
                         </div>
                     </div>
 
-                    <a href="./bot.html" class="btn-primary agencia-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5">
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
-                        Peça um Orçamento
-                    </a>
+                    <div class="agencia-trust">
+                        <div class="trust-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Entrega garantida no prazo
+                        </div>
+                        <div class="trust-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Suporte contínuo incluso
+                        </div>
+                        <div class="trust-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            SEO otimizado de fábrica
+                        </div>
+                    </div>
+
+                    <a href="./bot.html" class="btn-primary agencia-btn">Peça um Orçamento Grátis</a>
                 </div>
 
-                <!-- LADO DIREITO: Mascote + Callout -->
                 <div class="agencia-visual">
                     <div class="agencia-mascote-wrap">
                         <img src="./img/TigrinhoPositivo.png" alt="Mascote Mirai Tech" class="agencia-mascote" />
@@ -362,9 +424,8 @@
                             </svg>
                         </div>
                         <div class="agencia-callout-text">
-                            <strong>Criação de Sites Profissionais é a nossa missão.</strong>
-                            <span>Somos mais do que uma agência de criação de sites — somos o seu braço direito no mundo
-                                digital!</span>
+                            <strong>Somos seu braço direito digital.</strong>
+                            <span>Mais do que uma agência — somos parceiros no crescimento do seu negócio.</span>
                         </div>
                     </div>
                 </div>
@@ -373,92 +434,78 @@
         </section>
 
 
-
-
-
-        <!-- =====================================================
-         SECTION AVALIAÇÕES DE CLIENTES 
-    ====================================================== -->
+        <!-- ===================== AVALIAÇÕES ===================== -->
         <section class="section-avaliacoes bg-dark" id="avaliacoes">
             <div class="avaliacoes-header">
-                <span class="spanTitle">NOSSOS CLIENTES</span>
-                <h2>Clientes e Avaliações</h2>
-                <p>Temos clientes satisfeitos espalhados pelo Brasil inteiro.</p>
+                <span class="section-label light">Nossos Clientes</span>
+                <h2>O que dizem sobre nós</h2>
+                <p>Clientes satisfeitos espalhados pelo Brasil inteiro.</p>
             </div>
 
             <div class="avaliacoes-track-wrap">
                 <div class="avaliacoes-track" id="avaliacoesTrack">
 
                     <div class="avaliacao-card">
-                        <span class="avaliacao-aspas">"</span>
-                        <p>Com a Mirai Tech tivemos um upgrade incrível no nosso site. Todo o processo de
-                            desenvolvimento foi
-                            extremamente simplificado, mas sem deixar de atender a todas as nossas demandas. Recomendo a
-                            todos!</p>
+                        <div class="avaliacao-stars">★★★★★</div>
+                        <p>"Com a Mirai Tech tivemos um upgrade incrível no nosso site. Todo o processo foi extremamente
+                            simplificado, mas sem deixar de atender a todas as nossas demandas. Recomendo a todos!"</p>
                         <div class="avaliacao-autor">
                             <div class="avaliacao-avatar">DN</div>
                             <div>
                                 <strong>Daniel Novais</strong>
-                                <span>ALDANTH</span>
+                                <span>Aldanth</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="avaliacao-card">
-                        <span class="avaliacao-aspas">"</span>
-                        <p>Estamos muito satisfeitos com todo o processo de desenvolvimento. A equipe foi sempre muito
-                            atenciosa, com bons insights e muito dispostos a nos atender. O resultado final ficou
-                            excelente
-                            tanto em performance quanto em SEO.</p>
+                        <div class="avaliacao-stars">★★★★★</div>
+                        <p>"A equipe foi sempre muito atenciosa, com bons insights e muito dispostos a nos atender. O
+                            resultado final ficou excelente tanto em performance quanto em SEO."</p>
                         <div class="avaliacao-autor">
-                            <div class="avaliacao-avatar">JL</div>
+                            <div class="avaliacao-avatar">GL</div>
                             <div>
                                 <strong>Guilherme Landucci</strong>
-                                <span>ESSENTIAL IDIOMAS</span>
+                                <span>Essential Idiomas</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="avaliacao-card">
-                        <span class="avaliacao-aspas">"</span>
-                        <p>A experiência de trabalhar com o time da Mirai Tech foi muito boa. Superou minhas
-                            expectativas e
-                            as de toda a empresa. Tem ferramentas excelentes e o custo-benefício foi perfeito.
-                            Certamente
-                            recomendo a equipe.</p>
+                        <div class="avaliacao-stars">★★★★★</div>
+                        <p>"Superou minhas expectativas e as de toda a empresa. Ferramentas excelentes e custo-benefício
+                            perfeito. Certamente recomendo a equipe da Mirai Tech."</p>
                         <div class="avaliacao-autor">
                             <div class="avaliacao-avatar">AM</div>
                             <div>
                                 <strong>Alexandre de Morais</strong>
-                                <span>MINDSELF</span>
+                                <span>MindSelf</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="avaliacao-card">
-                        <span class="avaliacao-aspas">"</span>
-                        <p>Profissionalismo do início ao fim. O site ficou muito acima do esperado e o suporte
-                            pós-entrega é
-                            exemplar. Qualquer dúvida é resolvida rapidamente. Parceria que pretendo manter por muito
-                            tempo.</p>
+                        <div class="avaliacao-stars">★★★★★</div>
+                        <p>"Profissionalismo do início ao fim. O site ficou muito acima do esperado e o suporte
+                            pós-entrega é exemplar. Qualquer dúvida é resolvida rapidamente."</p>
                         <div class="avaliacao-autor">
                             <div class="avaliacao-avatar">RL</div>
                             <div>
                                 <strong>Ricardo Lima</strong>
-                                <span>TECHSTART</span>
+                                <span>TechStart</span>
                             </div>
                         </div>
                     </div>
+
                     <div class="avaliacao-card">
-                        <span class="avaliacao-aspas">"</span>
-                        <p>A parceria com a Mirai Tech trouxe um upgrade extraordinário. O desenvolvimento foi
-                            simplificado e transparente, atendendo demandas complexas com performance impecável. O
-                            resultado superou as expectativas. Recomendo a todos!</p>
+                        <div class="avaliacao-stars">★★★★★</div>
+                        <p>"O desenvolvimento foi simplificado e transparente, atendendo demandas complexas com
+                            performance impecável. O resultado superou as expectativas. Recomendo!"</p>
                         <div class="avaliacao-autor">
                             <div class="avaliacao-avatar">LB</div>
                             <div>
                                 <strong>Luis Bianchi</strong>
-                                <span>STELLAR LOGISTIC</span>
+                                <span>Stellar Logistic</span>
                             </div>
                         </div>
                     </div>
@@ -466,17 +513,15 @@
                 </div>
             </div>
 
-            <!-- Navegação das avaliações -->
             <div class="avaliacoes-nav">
-                <button class="carrossel-btn" id="btnAvalPrev">&#8592;</button>
+                <button class="carrossel-btn" id="btnAvalPrev" aria-label="Anterior">&#8592;</button>
                 <div class="avaliacoes-dots" id="avaliacoesDots"></div>
-                <button class="carrossel-btn" id="btnAvalNext">&#8594;</button>
+                <button class="carrossel-btn" id="btnAvalNext" aria-label="Próximo">&#8594;</button>
             </div>
 
-            <!-- Selo Google -->
             <div class="google-selo reveal">
                 <div class="google-selo-inner">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
+                    <svg width="28" height="28" viewBox="0 0 24 24">
                         <path fill="#4285F4"
                             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                         <path fill="#34A853"
@@ -487,123 +532,126 @@
                             d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                     </svg>
                     <div class="google-info">
-                        <strong>TOP #1 no Google</strong>
+                        <strong>Avaliação Google</strong>
                         <div class="stars">★★★★★ <span>4.9</span></div>
-                        <small>310+ avaliações</small>
+                        <small>310+ avaliações verificadas</small>
                     </div>
                 </div>
-                <p>A Mirai Tech é uma agência de criação de sites em São Paulo com clientes satisfeitos espalhados pelo
+                <div class="google-divider"></div>
+                <p>A Mirai Tech é referência em criação de sites profissionais em São Paulo, com clientes em todo o
                     Brasil.</p>
             </div>
         </section>
 
 
-
-
-        <!-- =====================================================
-         SEÇÃO PLANOS / PREÇOS — adaptada da UpSites
-    ====================================================== -->
+        <!-- ===================== PLANOS ===================== -->
         <section class="section-planos" id="orcamento">
             <div class="planos-header">
-                <span class="spanTitle">DESENVOLVIMENTO DE SITES</span>
+                <span class="section-label">Desenvolvimento de Sites</span>
                 <h2>Contrate um Site Profissional</h2>
                 <p>Escolha o plano ideal para o seu negócio e comece hoje mesmo.</p>
             </div>
 
             <div class="planos-grid reveal">
 
-                <!-- Plano 1: Site Expresso -->
                 <div class="plano-card">
-                    <div class="plano-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                            <line x1="8" y1="21" x2="16" y2="21" />
-                            <line x1="12" y1="17" x2="12" y2="21" />
-                        </svg>
+                    <div class="plano-top">
+                        <div class="plano-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                            </svg>
+                        </div>
+                        <div class="plano-badge-entrega">⚡ 5 dias</div>
                     </div>
                     <h3>Site Expresso</h3>
-                    <p class="plano-desc">Site entregue em até 5 dias, feito a partir de um modelo de site.</p>
+                    <p class="plano-desc">Site entregue em até 5 dias, feito a partir de um modelo de alta qualidade.
+                    </p>
                     <div class="plano-preco">
-                        <span class="plano-label">A PARTIR DE</span>
+                        <span class="plano-label">A partir de</span>
                         <strong>R$609</strong>
                         <span class="plano-obs">+ hospedagem e suporte mensal</span>
                     </div>
                     <ul class="plano-features">
-                        <li>✓ Criação de site com modelo de layout</li>
-                        <li>✓ Sites responsivos (desktop, tablet, celular)</li>
-                        <li>✓ One page ou Multipage</li>
-                        <li>✓ Editor visual de arrasta e solta</li>
-                        <li>✓ Google friendly</li>
-                        <li>✓ Botões para gerar leads</li>
-                        <li>✓ Formulários simples</li>
-                        <li>✓ Integração com redes sociais</li>
-                        <li>✓ Vídeos tutoriais para gestão do site</li>
-                        <li>✓ Conformidade com a LGPD</li>
+                        <li><span class="check">✓</span> Layout com modelo profissional</li>
+                        <li><span class="check">✓</span> Responsivo (desktop, tablet, celular)</li>
+                        <li><span class="check">✓</span> One page ou Multipage</li>
+                        <li><span class="check">✓</span> Editor visual sem precisar programar</li>
+                        <li><span class="check">✓</span> Otimizado para Google (SEO)</li>
+                        <li><span class="check">✓</span> Formulários e botões de lead</li>
+                        <li><span class="check">✓</span> Integração com redes sociais</li>
+                        <li><span class="check">✓</span> Vídeos tutoriais de gestão</li>
+                        <li><span class="check">✓</span> Conformidade com a LGPD</li>
                     </ul>
-                    <a href="./bot.html" class="btn-primary" style="display:inline-block; text-align:center;">Peça um
-                        Orçamento</a>
+                    <a href="./bot.html" class="btn-plano">Peça um Orçamento</a>
                 </div>
 
-                <!-- Card central: CTA -->
                 <div class="plano-destaque">
                     <div class="plano-destaque-inner">
                         <div class="plano-destaque-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="1.5">
                                 <polyline points="16 18 22 12 16 6" />
                                 <polyline points="8 6 2 12 8 18" />
                             </svg>
                         </div>
-                        <p>Em caso de dúvida, entre em contato com nossa central de atendimento.</p>
+                        <h4>Ainda tem dúvidas?</h4>
+                        <p>Fale agora com nossa equipe e receba uma proposta personalizada para o seu negócio.</p>
                         <a href="tel:1141303275" class="plano-tel">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2">
                                 <path
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
                             (11) 3333-3333
                         </a>
+                        <div class="plano-destaque-tags">
+                            <span>Sem compromisso</span>
+                            <span>Resposta rápida</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Plano 2: Sob Medida -->
                 <div class="plano-card plano-card--destaque">
-                    <div class="plano-icon plano-icon--cyan">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3" />
-                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
-                        </svg>
+                    <div class="plano-top">
+                        <div class="plano-icon plano-icon--cyan">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3" />
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
+                            </svg>
+                        </div>
+                        <div class="plano-badge-popular">Mais escolhido</div>
                     </div>
                     <h3>Site Sob Medida</h3>
-                    <p class="plano-desc">Site feito de forma artesanal, com layout do zero e gestor de projeto
-                        exclusivo.
-                    </p>
+                    <p class="plano-desc">Layout exclusivo criado do zero, com gestor de projeto dedicado ao seu
+                        negócio.</p>
                     <div class="plano-preco plano-preco--cyan">
-                        <span class="plano-label">PREÇO</span>
+                        <span class="plano-label">Preço</span>
                         <strong>Sob Orçamento</strong>
                         <span class="plano-obs">pagamento único</span>
                     </div>
                     <ul class="plano-features">
-                        <li>✓ Criação de site com layout sob medida</li>
-                        <li>✓ Site responsivo (desktop, tablet, celular)</li>
-                        <li>✓ Todos os tipos de sites</li>
-                        <li>✓ Integrações customizadas</li>
-                        <li>✓ Otimização SEO para Google</li>
-                        <li>✓ Botões para gerar leads</li>
-                        <li>✓ Formulários inteligentes</li>
-                        <li>✓ Integração com redes sociais</li>
-                        <li>✓ Treinamento para uso do site</li>
-                        <li>✓ Conformidade com a LGPD</li>
+                        <li><span class="check cyan">✓</span> Layout 100% exclusivo</li>
+                        <li><span class="check cyan">✓</span> Responsivo (desktop, tablet, celular)</li>
+                        <li><span class="check cyan">✓</span> Todos os tipos de sites</li>
+                        <li><span class="check cyan">✓</span> Integrações customizadas</li>
+                        <li><span class="check cyan">✓</span> SEO avançado para Google</li>
+                        <li><span class="check cyan">✓</span> Formulários inteligentes</li>
+                        <li><span class="check cyan">✓</span> Integração com redes sociais</li>
+                        <li><span class="check cyan">✓</span> Treinamento completo incluso</li>
+                        <li><span class="check cyan">✓</span> Conformidade com a LGPD</li>
                     </ul>
-                    <a href="./bot.html" class="btn-primary" style="display:block; text-align:center;">Peça um
-                        Orçamento</a>
+                    <a href="./bot.html" class="btn-plano btn-plano--cyan">Peça um Orçamento</a>
                 </div>
 
             </div>
         </section>
-        <!-- MODAL -->
+
+
+        <!-- MODAL AVALIAÇÕES -->
         <div id="avaliacao-modal">
             <div id="avaliacao-modal-inner">
                 <button id="avaliacao-modal-close">&times;</button>
@@ -618,218 +666,223 @@
                 </div>
             </div>
         </div>
+
         <script src="./js/avaliaçoes.js"></script>
-
-
         <script src="js/script.js"></script>
 
+    </main>
 
-        <!-- =====================================================
-         FOOTER 
-        ================================================== -->
-        <footer class="footer-main">
-            <div class="footer-inner reveal">
 
-                <!-- Coluna 1 (logo e informação) -->
-                <div class="footer-brand">
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer-main">
+        <div class="footer-inner reveal">
+
+            <div class="footer-brand">
+                <div class="footer-logo-wrap">
+                    <span class="logo-dot"></span>
                     <h2 class="footer-logo">Mirai Tech</h2>
-                    <p>A Mirai Tech é uma agência de criação de sites profissionais em São Paulo, especializada em
-                        desenvolvimento e gestão de sites de alto impacto para empresas.</p>
-                    <a href="tel:1141303275" class="footer-tel">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                        (11) 9999-9999
-                    </a>
-                    <a href="mailto:contato@miraitech.digital" class="footer-email">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                            <polyline points="22,6 12,13 2,6" />
-                        </svg>
-                        contato@miraitech.digital
-                    </a>
                 </div>
-
-                <!-- Col 2: Institucional -->
-                <div class="footer-col">
-                    <h4>Institucional</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="/projetos.html">Portfólio</a></li>
-                        <li><a href="#orcamento">Orçamento</a></li>
-                        <li><a href="./blog.html">Blog</a></li>
-
-                    </ul>
-                </div>
-
-                <!-- Col 3: Serviços -->
-                <div class="footer-col">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#">Site sob medida</a></li>
-                        <li><a href="#">Criação de sites</a></li>
-                        <li><a href="#">Criação de E-commerce</a></li>
-                        <li><a href="#">Consultoria SEO</a></li>
-                        <li><a href="#">Criação de Chatbot</a></li>
-                        <li><a href="#">Desenvolvimento WordPress</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 4: Segmentos -->
-                <div class="footer-col">
-                    <h4>Segmentos</h4>
-                    <ul>
-                        <li><a href="#">Site para Empresas de Tech</a></li>
-                        <li><a href="#">Site para Médicos</a></li>
-                        <li><a href="#">Site para Contabilidade</a></li>
-                        <li><a href="#">Site para Advogados</a></li>
-                        <li><a href="#">Site para Dentistas</a></li>
-                    </ul>
-                </div>
-
+                <p>Agência de criação de sites profissionais em São Paulo, especializada em desenvolvimento e gestão de
+                    sites de alto impacto para empresas.</p>
+                <a href="tel:11999999999" class="footer-tel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    (11) 9999-9999
+                </a>
+                <a href="mailto:contato@miraitech.digital" class="footer-email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    contato@miraitech.digital
+                </a>
             </div>
 
-            <!-- Bottom bar -->
-            <div class="footer-bottom">
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
-                            <circle cx="4" cy="4" r="2" />
-                        </svg>
-                    </a>
-                </div>
-                <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
-                <p class="footer-copy">© 2026 Todos os direitos reservados — Mirai Tech · <a href="#">Política de
-                        privacidade</a></p>
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="/projetos.html">Portfólio</a></li>
+                    <li><a href="#orcamento">Orçamento</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                </ul>
             </div>
 
-        </footer>
-        <div class="chat-btn">
-            <img src="./img/logo.jpeg" alt="logo" onclick="toggleChat()" />
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#">Site sob medida</a></li>
+                    <li><a href="#">Criação de sites</a></li>
+                    <li><a href="#">E-commerce</a></li>
+                    <li><a href="#">Consultoria SEO</a></li>
+                    <li><a href="#">Chatbot com IA</a></li>
+                    <li><a href="#">WordPress</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Segmentos</h4>
+                <ul>
+                    <li><a href="#">Empresas de Tech</a></li>
+                    <li><a href="#">Médicos</a></li>
+                    <li><a href="#">Contabilidade</a></li>
+                    <li><a href="#">Advogados</a></li>
+                    <li><a href="#">Dentistas</a></li>
+                </ul>
+            </div>
+
         </div>
-        <!-- CHAT -->
-        <div class="chat-box" id="chatBox">
-            <div class="chat-header">
-                Suporte
-                <span style="cursor: pointer" onclick="toggleChat()">✖</span>
+
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-address">Rua Professor Ernest Marcus, 67 · Pacaembu, São Paulo · SP</p>
+            <p class="footer-copy">© 2026 Mirai Tech · <a href="#">Política de privacidade</a></p>
+        </div>
+    </footer>
+
+
+    <!-- ===================== CHAT ===================== -->
+    <div class="chat-btn" onclick="toggleChat()" aria-label="Abrir chat">
+        <img src="./img/logo.jpeg" alt="Mirai Tech Suporte" />
+        <span class="chat-pulse"></span>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar-sm">MT</div>
+                <div>
+                    <strong>Mirai Tech</strong>
+                    <small>Online agora</small>
+                </div>
+            </div>
+            <span onclick="toggleChat()" aria-label="Fechar">✖</span>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+            <div class="chat-welcome">
+                <p>👋 Olá! Tire suas dúvidas ou peça um orçamento.</p>
             </div>
 
-            <div class="chat-body" id="chatBody">
-                <p class="faq-titulo">Dúvidas Frequentes:</p>
+            <p class="faq-titulo">Perguntas frequentes:</p>
 
-                <div class="faq-item">
-                    <div class="faq-pergunta" onclick="toggleAcordeon(this)">
-                        <span>Qual a diferença entre site profissional e site comum?</span>
-                        <span class="faq-seta">&#8744;</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Um site profissional é desenvolvido com foco em estratégia, desempenho e geração de
-                            resultados. Ele é pensado para atrair visitantes qualificados, oferecer uma boa experiência
-                            de navegação e facilitar a conversão em clientes.</p>
-                        <p>Já um site comum geralmente utiliza modelos prontos, com pouca personalização e sem uma
-                            estrutura otimizada para SEO.</p>
-                        <p>Na prática, a principal diferença está no resultado: enquanto um site comum apenas marca
-                            presença online, um site profissional atua como uma ferramenta ativa de crescimento.</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-pergunta" onclick="toggleAcordeon(this)">
+                    <span>Qual a diferença entre site profissional e site comum?</span>
+                    <span class="faq-seta">&#8744;</span>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-pergunta" onclick="toggleAcordeon(this)">
-                        <span>Quanto tempo leva para um site aparecer no Google?</span>
-                        <span class="faq-seta">&#8744;</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>O tempo varia conforme concorrência, qualidade da estrutura do site e estratégia de SEO
-                            aplicada. Em geral, um site profissional bem desenvolvido começa a ser indexado rapidamente,
-                            mas resultados consistentes no Google costumam aparecer ao longo dos primeiros meses.</p>
-                    </div>
+                <div class="faq-resposta">
+                    <p>Um site profissional é desenvolvido com foco em estratégia, desempenho e geração de resultados —
+                        pensado para atrair visitantes qualificados e converter em clientes. Um site comum usa modelos
+                        prontos sem SEO e sem estratégia.</p>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-pergunta" onclick="toggleAcordeon(this)">
-                        <span>Preciso saber programar para gerenciar meu site?</span>
-                        <span class="faq-seta">&#8744;</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Não. Após a entrega, você poderá editar textos, imagens e páginas com facilidade, sem
-                            precisar programar. A complexidade técnica fica nos bastidores, enquanto você mantém total
-                            autonomia no uso do site.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-pergunta" onclick="toggleAcordeon(this)">
-                        <span>Posso hospedar meu site em qualquer servidor de hospedagem?</span>
-                        <span class="faq-seta">&#8744;</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Para o site expresso, o site é hospedado em nossos servidores.</p>
-                        <p>Se optar por um site sob medida, oferecemos flexibilidade na escolha do servidor: pode ser o
-                            nosso ou um de sua preferência. Recomendamos nossa hospedagem durante o primeiro ano para
-                            aproveitar nosso suporte constante.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-pergunta" onclick="toggleAcordeon(this)">
-                        <span>Gostaria de mais opções</span>
-                        <span class="faq-seta">&#8744;</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Para mais perguntas clique no link abaixo:</p>
-                        <a href="https://www.mirai.com.br/duvidas-frequentes" target="_blank"
-                            style="color: #4e939c;">Dúvidas Frequentes</a>
-                    </div>
-                </div>
-
             </div>
 
+            <div class="faq-item">
+                <div class="faq-pergunta" onclick="toggleAcordeon(this)">
+                    <span>Quanto tempo leva para aparecer no Google?</span>
+                    <span class="faq-seta">&#8744;</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Sites bem desenvolvidos são indexados rapidamente. Resultados consistentes no Google aparecem ao
+                        longo dos primeiros meses com uma boa estratégia de SEO.</p>
+                </div>
+            </div>
 
-            <script>
-                function toggleChat() {
-                    let chat = document.getElementById("chatBox");
-                    chat.style.display = chat.style.display === "block" ? "none" : "block";
-                }
+            <div class="faq-item">
+                <div class="faq-pergunta" onclick="toggleAcordeon(this)">
+                    <span>Preciso saber programar para gerenciar?</span>
+                    <span class="faq-seta">&#8744;</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>Não. Você edita textos, imagens e páginas com facilidade, sem programar. Incluímos treinamento
+                        completo na entrega.</p>
+                </div>
+            </div>
 
-                function toggleAcordeon(header) {
-                    const item = header.parentElement;
-                    const resposta = item.querySelector(".faq-resposta");
-                    const seta = header.querySelector(".faq-seta");
-                    const estaAberto = item.classList.contains("aberto");
+            <div class="faq-item">
+                <div class="faq-pergunta" onclick="toggleAcordeon(this)">
+                    <span>Posso escolher meu servidor de hospedagem?</span>
+                    <span class="faq-seta">&#8744;</span>
+                </div>
+                <div class="faq-resposta">
+                    <p>No Site Expresso, hospedamos em nossos servidores. No Sob Medida, você pode escolher qualquer
+                        servidor. Recomendamos o nosso no primeiro ano pelo suporte dedicado.</p>
+                </div>
+            </div>
 
-                    // fecha todos
-                    document.querySelectorAll(".faq-item").forEach(i => {
-                        i.classList.remove("aberto");
-                        i.querySelector(".faq-resposta").style.maxHeight = null;
-                        i.querySelector(".faq-seta").style.transform = "rotate(0deg)";
-                    });
+            <div class="faq-item">
+                <div class="faq-pergunta" onclick="toggleAcordeon(this)">
+                    <span>Mais perguntas</span>
+                    <span class="faq-seta">&#8744;</span>
+                </div>
+                <div class="faq-resposta">
+                    <a href="https://www.mirai.com.br/duvidas-frequentes" target="_blank">Ver todas as dúvidas
+                        frequentes →</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    // abre o clicado (se estava fechado)
-                    if (!estaAberto) {
-                        item.classList.add("aberto");
-                        resposta.style.maxHeight = resposta.scrollHeight + "px";
-                        seta.style.transform = "rotate(180deg)";
-                    }
-                }
-            </script>
+    <script>
+        function toggleChat() {
+            const chat = document.getElementById("chatBox");
+            chat.style.display = chat.style.display === "block" ? "none" : "block";
+        }
+
+        function toggleAcordeon(header) {
+            const item = header.parentElement;
+            const resposta = item.querySelector(".faq-resposta");
+            const seta = header.querySelector(".faq-seta");
+            const estaAberto = item.classList.contains("aberto");
+
+            document.querySelectorAll(".faq-item").forEach(i => {
+                i.classList.remove("aberto");
+                i.querySelector(".faq-resposta").style.maxHeight = null;
+                i.querySelector(".faq-seta").style.transform = "rotate(0deg)";
+            });
+
+            if (!estaAberto) {
+                item.classList.add("aberto");
+                resposta.style.maxHeight = resposta.scrollHeight + "px";
+                seta.style.transform = "rotate(180deg)";
+            }
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('active');
+        }
+
+        document.getElementById('hamburger').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.getElementById('mobileNav').classList.toggle('open');
+        });
+    </script>
 
 </body>
 
