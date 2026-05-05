@@ -10,20 +10,41 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header-main scrolled">
+<header class="header-main" id="header">
   <div class="header-inner">
-    <div class="logo"><h1>Mirai Tech</h1></div>
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <h1>Mirai Tech</h1>
+    </div>
     <nav>
       <ul>
-        <li><a href="./mirai.html">Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="/mirai.html">Início</a></li>
+        <li><a href="/mirai.html#sobre">Sobre</a></li>
         <li><a href="/projetos.html">Serviços</a></li>
-        <li><a href="#orcamento">Orçamento</a></li>
+        <li><a href="/bot.html">Orçamento</a></li>
         <li><a href="./blog.html">Blog</a></li>
       </ul>
     </nav>
-    <button class="btn-header">Contato</button>
+    <div class="header-cta">
+      <a class="btn-header" href="/bot.html">Fale conosco</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="/mirai.html" onclick="closeMobileNav()">Início</a></li>
+      <li><a href="/sobre.html" onclick="closeMobileNav()">Sobre</a></li>
+      <li><a href="/projetos.html" onclick="closeMobileNav()">Serviços</a></li>
+      <li><a href="/bot.html" onclick="closeMobileNav()">Orçamento</a></li>
+      <li><a href="/blog.html" onclick="closeMobileNav()">Blog</a></li>
+      <li><a href="/bot.html" class="mobile-cta">Fale conosco</a></li>
+    </ul>
   </div>
 </header>
 
@@ -89,6 +110,6 @@
 <!-- 1º array de artigos, 2º o roteador -->
 <script src="/js/artigos.js"></script>
 <script src="/js/artigo.js"></script>
-
+<script src="js/carrosel-projetos.js"></script> 
 </body>
 </html>

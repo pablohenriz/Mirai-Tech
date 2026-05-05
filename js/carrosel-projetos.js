@@ -99,10 +99,38 @@
 
         // touch / swipe
         let touchStartX = 0;
-        track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; stopAuto(); }, { passive: true });
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+
+        track.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            currentTranslate = -cur * getItemWidth();
+            stopAuto();
+        }, { passive: true });
+
+        track.addEventListener('touchmove', e => {
+            if (!isDragging) return;
+            const currentX = e.touches[0].clientX;
+            const diff = currentX - startX;
+            const newTranslate = currentTranslate + diff;
+            track.style.transform = `translateX(${newTranslate}px)`;
+            e.preventDefault(); // Prevent scrolling
+        }, { passive: false });
+
         track.addEventListener('touchend', e => {
-            const dx = e.changedTouches[0].clientX - touchStartX;
-            if (Math.abs(dx) > 40) goTo(cur + (dx < 0 ? 1 : -1));
+            if (!isDragging) return;
+            isDragging = false;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            const threshold = getItemWidth() * 0.3; // 30% of item width
+            if (Math.abs(diff) > threshold) {
+                goTo(cur + (diff > 0 ? 1 : -1));
+            } else {
+                goTo(cur); // Snap back
+            }
             startAuto();
         }, { passive: true });
 

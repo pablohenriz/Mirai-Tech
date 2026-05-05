@@ -98,10 +98,41 @@ btnNext.addEventListener('click', () => irPara(cur + 1));
 
 // ── Swipe ──
 let projTx = 0;
-track.addEventListener('touchstart', e => { projTx = e.touches[0].clientX; }, { passive: true });
+let isDragging = false;
+let startX = 0;
+let currentTranslate = 0;
+
+track.addEventListener('touchstart', e => {
+  projTx = e.touches[0].clientX;
+  startX = e.touches[0].clientX;
+  isDragging = true;
+  currentTranslate = -cur * projetoCardW();
+}, { passive: true });
+
+track.addEventListener('touchmove', e => {
+  if (!isDragging) return;
+  const currentX = e.touches[0].clientX;
+  const diff = currentX - startX;
+  const newTranslate = currentTranslate + diff;
+  track.style.transform = `translateX(${newTranslate}px)`;
+  e.preventDefault(); // Prevent scrolling
+}, { passive: false });
+
 track.addEventListener('touchend', e => {
-  const d = projTx - e.changedTouches[0].clientX;
-  if (Math.abs(d) > 40) irPara(cur + (d > 0 ? 1 : -1));
+  if (!isDragging) return;
+  isDragging = false;
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+  const threshold = projetoCardW() * 0.3; // 30% of card width to trigger slide change
+  if (Math.abs(diff) > threshold) {
+    if (diff > 0) {
+      irPara(cur + 1); // Swipe left, next
+    } else {
+      irPara(cur - 1); // Swipe right, previous
+    }
+  } else {
+    atualizarUI(); // Snap back
+  }
 }, { passive: true });
 
 // ── Resize ──

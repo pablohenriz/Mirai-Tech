@@ -73,10 +73,38 @@ document.addEventListener('DOMContentLoaded', () => {
   function reset() { stop(); start(); }
 
   let tx = 0;
-  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; stop(); }, { passive: true });
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+
+  track.addEventListener('touchstart', e => {
+    tx = e.touches[0].clientX;
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    currentTranslate = -cur * cardW();
+    stop();
+  }, { passive: true });
+
+  track.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    const newTranslate = currentTranslate + diff;
+    track.style.transform = `translateX(${newTranslate}px)`;
+    e.preventDefault(); // Prevent scrolling
+  }, { passive: false });
+
   track.addEventListener('touchend', e => {
-    const d = tx - e.changedTouches[0].clientX;
-    if (Math.abs(d) > 40) goTo(cur + (d > 0 ? 1 : -1));
+    if (!isDragging) return;
+    isDragging = false;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    const threshold = cardW() * 0.3; // 30% of card width
+    if (Math.abs(diff) > threshold) {
+      goTo(cur + (diff > 0 ? 1 : -1));
+    } else {
+      goTo(cur); // Snap back
+    }
     start();
   }, { passive: true });
 

@@ -4,58 +4,88 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const cards       = document.querySelectorAll('.blog-card');
-  const catItems    = document.querySelectorAll('.categories ul li');
-  const searchInput = document.querySelector('.search-box input');
-  const grid        = document.querySelector('.blog-grid');
+  const cards = document.querySelectorAll('.blog-card');
+  const catItems = document.querySelectorAll('#categoriasList li');
+  const searchInput = document.getElementById('searchInput');
+  const selectMobile = document.getElementById('selectCategoria');
+  const blogGrid = document.getElementById('blogGrid');
+  const blogEmpty = document.getElementById('blogEmpty');
+  const btnLimpar = document.getElementById('btnLimparFiltro');
 
   let activeCategory = 'todos';
-  let searchQuery    = '';
+  let searchQuery = '';
 
-  // ── Filtros ──────────────────────────────────────────────
+  // ── Aplica filtros ───────────────────────────────────────
   function applyFilters() {
     let anyVisible = false;
 
     cards.forEach(card => {
-      const cardCat   = (card.dataset.category || '').toLowerCase();
+      const cardCat = (card.dataset.category || '').toLowerCase().trim();
       const cardTitle = (card.querySelector('h2')?.textContent || '').toLowerCase();
-      const cardTag   = (card.querySelector('.tag-categoria')?.textContent || '').toLowerCase();
+      const cardExcerpt = (card.querySelector('.blog-excerpt')?.textContent || '').toLowerCase();
+      const cardTag = (card.querySelector('.card-tag')?.textContent || '').toLowerCase();
 
-      const matchCat    = activeCategory === 'todos' || cardCat === activeCategory;
-      const matchSearch = !searchQuery || cardTitle.includes(searchQuery) || cardTag.includes(searchQuery);
+      const matchCat = activeCategory === 'todos' || cardCat === activeCategory;
+      const matchSearch = !searchQuery
+        || cardTitle.includes(searchQuery)
+        || cardExcerpt.includes(searchQuery)
+        || cardTag.includes(searchQuery);
 
       const show = matchCat && matchSearch;
       card.style.display = show ? '' : 'none';
       if (show) anyVisible = true;
     });
 
-    let empty = grid.querySelector('.blog-empty');
-    if (!anyVisible) {
-      if (!empty) {
-        empty = document.createElement('p');
-        empty.className = 'blog-empty';
-        empty.textContent = 'Nenhum artigo encontrado para essa busca.';
-        empty.style.cssText = 'grid-column:1/-1;text-align:center;color:#727272;padding:60px 0;font-size:15px;';
-        grid.appendChild(empty);
-      }
-    } else {
-      empty?.remove();
+    // Estado vazio
+    if (blogEmpty) {
+      blogEmpty.style.display = anyVisible ? 'none' : 'block';
     }
   }
 
-  // ── Categorias ───────────────────────────────────────────
+  // ── Filtro por categoria (sidebar desktop) ───────────────
   catItems.forEach(li => {
     li.addEventListener('click', () => {
       catItems.forEach(i => i.classList.remove('active'));
       li.classList.add('active');
-      activeCategory = (li.dataset.filter || li.textContent.trim()).toLowerCase();
+      activeCategory = (li.dataset.filter || '').toLowerCase().trim();
+
+      // Sincroniza o select mobile
+      if (selectMobile) selectMobile.value = activeCategory;
+
       applyFilters();
     });
   });
 
-  // ── Busca ────────────────────────────────────────────────
+  // ── Filtro por categoria (select mobile) ─────────────────
+  selectMobile?.addEventListener('change', () => {
+    activeCategory = selectMobile.value.toLowerCase().trim();
+
+    // Sincroniza os itens da sidebar
+    catItems.forEach(li => {
+      li.classList.toggle('active', li.dataset.filter === activeCategory);
+    });
+
+    applyFilters();
+  });
+
+  // ── Busca em tempo real ──────────────────────────────────
   searchInput?.addEventListener('input', () => {
     searchQuery = searchInput.value.trim().toLowerCase();
+    applyFilters();
+  });
+
+  // ── Limpar filtro (botão do estado vazio) ────────────────
+  btnLimpar?.addEventListener('click', () => {
+    activeCategory = 'todos';
+    searchQuery = '';
+
+    if (searchInput) searchInput.value = '';
+    if (selectMobile) selectMobile.value = 'todos';
+
+    catItems.forEach(li => {
+      li.classList.toggle('active', li.dataset.filter === 'todos');
+    });
+
     applyFilters();
   });
 
@@ -68,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.href = `./artigo.html?slug=${slug}`;
     }
 
-    card.addEventListener('click', (e) => {
+    card.addEventListener('click', e => {
       if (slug && !e.target.closest('.blog-link')) {
         window.location.href = `./artigo.html?slug=${slug}`;
       }
@@ -80,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (header) {
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 30);
-    });
+    }, { passive: true });
   }
 
 });
