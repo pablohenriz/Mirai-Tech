@@ -2018,6 +2018,293 @@ button {
   font-size: 13px;
 }
 
+
+/* =============================================
+       SECTION BLOG
+       ============================================= */
+.section-blog {
+  background: var(--dark-700);
+  padding: 100px 0;
+}
+
+.blog-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 64px;
+  padding: 0 24px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.blog-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.blog-header p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 60px);
+}
+
+/* Card */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+/* Imagem */
+.blog-img {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  background: var(--dark-600);
+}
+
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.blog-card:hover .blog-img img {
+  transform: scale(1.05);
+}
+
+/* Placeholder para quando não há imagem */
+.blog-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--dark-600);
+}
+
+.blog-img-placeholder svg {
+  opacity: 0.2;
+}
+
+.blog-img-placeholder span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 242, 254, 0.3);
+}
+
+.card-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--cyan);
+  color: var(--dark-900);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+/* Corpo do card */
+.blog-info {
+  padding: 22px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.blog-info h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark-900);
+  line-height: 1.45;
+  flex: 1;
+}
+
+.blog-excerpt {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #777;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.blog-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cyan-dark);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.blog-link:hover {
+  color: var(--cyan);
+}
+
+/* Botão ver todos */
+.blog-ver-mais {
+  text-align: center;
+  margin-top: 56px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cyan);
+  color: var(--dark-900);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 32px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.25);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--cyan-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 242, 254, 0.35);
+}
+
+/* =============================================
+       RESPONSIVO
+       ============================================= */
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-blog {
+    padding: 64px 0;
+  }
+
+  .blog-header {
+    margin-bottom: 40px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  .blog-card {
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: var(--radius-sm);
+  }
+
+  .blog-img {
+    width: 120px;
+    min-width: 120px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .blog-info {
+    padding: 14px 16px 18px;
+    gap: 6px;
+  }
+
+  .blog-info h3 {
+    font-size: 14px;
+  }
+
+  .blog-excerpt {
+    display: none;
+  }
+
+  .card-tag {
+    font-size: 9px;
+    padding: 3px 8px;
+    top: 8px;
+    left: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-card {
+    flex-direction: column;
+  }
+
+  .blog-img {
+    width: 100%;
+    height: 180px;
+    min-width: unset;
+  }
+
+  .blog-excerpt {
+    display: block;
+    font-size: 12px;
+  }
+
+  .blog-info {
+    padding: 14px;
+  }
+}
+
 /* =============================================
    MOBILE RESPONSIVE — Mirai Tech
    Cole no final do style.css (substitui o bloco @media existente)
