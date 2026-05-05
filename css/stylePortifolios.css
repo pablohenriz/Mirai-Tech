@@ -984,12 +984,32 @@ button {
         gap: 32px;
     }
 
+    .carrosel-wrap {
+        gap: 12px;
+    }
+
+    .carrosel-nav-btn {
+        margin: 0 12px;
+    }
+
     .carrosel-viewport {
-        width: calc(100vw - 160px);
+        width: calc(100vw - 200px);
     }
 
     .carrosel-item {
-        min-width: calc(100vw - 160px);
+        min-width: calc(100vw - 200px);
+    }
+
+    .carrosel-img {
+        height: 380px;
+    }
+
+    .carrosel-desc {
+        padding: 20px 32px;
+    }
+
+    .carrosel-desc-left h3 {
+        font-size: clamp(20px, 3vw, 28px);
     }
 }
 
@@ -1052,5 +1072,95 @@ button {
 
     .cta-actions {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-carrosel {
+        padding: 60px 0 40px;
+    }
+
+    .carrosel-wrap {
+        gap: 4px;
+    }
+
+    .carrosel-nav-btn {
+        margin: 0 4px;
+        width: 36px;
+        height: 36px;
+        border-width: 0.8px;
+    }
+
+    .carrosel-nav-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .carrosel-viewport {
+        width: calc(100vw - 80px);
+        border-radius: 12px;
+    }
+
+    .carrosel-item {
+        min-width: calc(100vw - 80px);
+        border-radius: 12px;
+    }
+
+    .carrosel-img {
+        height: 180px;
+    }
+
+    .carrosel-tag {
+        top: 12px;
+        left: 12px;
+        font-size: 8px;
+        padding: 4px 10px;
+    }
+
+    .carrosel-desc {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .carrosel-desc-left h3 {
+        font-size: clamp(18px, 5vw, 28px);
+        line-height: 1.2;
+    }
+
+    .carrosel-desc-left p {
+        font-size: 9px;
+        margin-top: 2px;
+    }
+
+    .carrosel-desc-right {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .carrosel-counter {
+        font-size: 12px;
+    }
+
+    .btn-ver {
+        font-size: 12px;
+        padding: 8px 16px;
+        gap: 4px;
+    }
+
+    .carrosel-dots {
+        margin-top: 16px;
+        gap: 6px;
+    }
+
+    .carrosel-dots .dot {
+        height: 2px;
+        width: 20px;
+    }
+
+    .carrosel-dots .dot.active {
+        width: 32px;
     }
 }

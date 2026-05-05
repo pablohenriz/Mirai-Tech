@@ -32,18 +32,18 @@
       <div class="header-cta">
         <a class="btn-header" href="./bot.html">Fale conosco</a>
       </div>
-
+  
       <!-- Mobile hamburger -->
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-
+  
     <!-- Mobile nav -->
     <div class="mobile-nav" id="mobileNav">
       <ul>
-        <li><a href="./mirai.html" onclick="closeMobileNav()">Início</a></li>
-        <li><a href="./sobre.html" onclick="closeMobileNav()">Sobre</a></li>
+        <li><a href="./index.html" onclick="closeMobileNav()">Início</a></li>
+        <li><a href="./index.html#sobre" onclick="closeMobileNav()">Sobre</a></li>
         <li><a href="./projetos.html" onclick="closeMobileNav()">Serviços</a></li>
         <li><a href="./bot.html" onclick="closeMobileNav()">Orçamento</a></li>
         <li><a href="./blog.html" onclick="closeMobileNav()">Blog</a></li>
@@ -296,7 +296,7 @@
             <span class="section-label">Pronto para começar?</span>
             <h4>Quer um site profissional?</h4>
             <p>Fale com nossa equipe e receba uma proposta personalizada.</p>
-            <a href="./mirai.html#orcamento" class="btn-primary">Pedir orçamento</a>
+            <a href="./index.html#orcamento" class="btn-primary">Pedir orçamento</a>
           </div>
 
         </aside>
@@ -310,7 +310,7 @@
 
 
   <script src="./js/blog.js"></script>
-  <script src="js/carrosel-projetos.js"></script>
+  <script src="./js/carrosel-projetos.js"></script>
 
 
 
@@ -349,9 +349,9 @@
     <div class="footer-col">
       <h4>Institucional</h4>
       <ul>
-        <li><a href="./mirai.html">Home</a></li>
+        <li><a href="./index.html">Home</a></li>
         <li><a href="./projetos.html">Portfólio</a></li>
-        <li><a href="./mirai.html#orcamento">Orçamento</a></li>
+        <li><a href="./index.html#orcamento">Orçamento</a></li>
         <li><a href="./blog.html">Blog</a></li>
       </ul>
     </div>
@@ -430,16 +430,6 @@
       seta.style.transform = "rotate(180deg)";
     }
   }
-
-  function closeMobileNav() {
-    document.getElementById('mobileNav').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('active');
-  }
-
-  document.getElementById('hamburger').addEventListener('click', function () {
-    this.classList.toggle('active');
-    document.getElementById('mobileNav').classList.toggle('open');
-  });
 </script>
 
 </html>

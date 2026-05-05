@@ -2312,6 +2312,17 @@ button {
 
 /* ── 1024px — tablets e laptops pequenos ── */
 @media (max-width: 1024px) {
+  .planos-grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 800px;
+    gap: 20px;
+  }
+
+  .plano-destaque {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
   .steps-grid {
     flex-direction: column;
     align-items: stretch;
@@ -2608,22 +2619,40 @@ button {
   .planos-grid {
     grid-template-columns: 1fr;
     max-width: 100%;
-    padding: 0 20px;
-    gap: 16px;
+    padding: 0 12px;
+    gap: 12px;
   }
 
   .plano-card {
-    padding: 28px 24px;
-    gap: 16px;
+    padding: 24px 20px;
+    gap: 14px;
+  }
+
+  .plano-card h3 {
+    font-size: 19px;
+  }
+
+  .plano-desc {
+    font-size: 13px;
+  }
+
+  .plano-features li {
+    font-size: 13px;
   }
 
   .plano-preco strong {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .plano-destaque {
-    padding: 32px 20px;
+    padding: 28px 20px;
     order: -1;
+    gap: 16px;
+  }
+
+  .plano-destaque-icon {
+    width: 70px;
+    height: 70px;
   }
 
   /* Footer */

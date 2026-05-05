@@ -9,7 +9,7 @@
 
   // ── Lê o slug da URL (?slug=frontend-vs-backend) ─────────
   const params = new URLSearchParams(window.location.search);
-  const slug   = params.get('slug');
+  const slug = params.get('slug');
   const artigo = artigos.find(a => a.slug === slug);
 
   const hero = document.getElementById('artigo-hero-inner');
@@ -57,7 +57,7 @@
     <div class="artigo-cta">
       <h3>Pronto para colocar seu projeto no ar?</h3>
       <p>Na Mirai Tech desenvolvemos sites profissionais com Front-End impecável e Back-End robusto — do wireframe ao deploy.</p>
-      <a href="./mirai.html#orcamento" class="btn-primary">Solicitar orçamento grátis</a>
+      <a href="./index.html#orcamento" class="btn-primary">Solicitar orçamento grátis</a>
     </div>
   `;
 
